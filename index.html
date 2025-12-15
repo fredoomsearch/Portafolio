@@ -158,6 +158,7 @@
     }
 
     .hero p{ margin:0 0 1rem 0; color: var(--muted); }
+    .hero-note{ margin-top: 1rem; color: var(--muted2); font-size: .95rem; }
 
     .actions{ display:flex; gap:.75rem; flex-wrap:wrap; margin-top: 1rem; }
 
@@ -184,8 +185,6 @@
       color: var(--text);
     }
 
-    .hero-note{ margin-top: 1rem; color: var(--muted2); font-size: .95rem; }
-
     .pill-row{
       display:flex;
       flex-wrap:wrap;
@@ -210,16 +209,14 @@
       gap: 1.2rem;
       align-items: stretch;
     }
-    .projects-grid > *{
-      height: 100%;
-    }
 
-    /* Make cards behave nicely */
+    /* Stack for equal height + bottom aligned links */
     .stack{
       display:flex;
       flex-direction: column;
       gap: .9rem;
       height: 100%;
+      min-height: 100%;
     }
 
     .badge{
@@ -255,9 +252,9 @@
     }
 
     figure.media img{
-      height: 210px;          /* consistent */
-      object-fit: cover;      /* crops nicely */
-      object-position: top;   /* keeps UI top visible */
+      height: 210px;
+      object-fit: cover;
+      object-position: top;
     }
 
     figure.media figcaption{
@@ -270,7 +267,7 @@
     .links{
       display:grid;
       gap:.5rem;
-      margin-top: .6rem;
+      margin-top: auto; /* push links down */
     }
 
     .link{
@@ -374,9 +371,7 @@
       <div class="container hero-grid">
         <div>
           <div class="kicker"><span class="dot" aria-hidden="true"></span> Full-Stack · Data · Crypto / Fintech</div>
-
           <h2>Building data-driven platforms that connect code, models and real business needs.</h2>
-
           <p>
             I specialize in web development, data science and machine learning. I enjoy turning messy requirements
             into clear APIs, dashboards and prediction services – especially around crypto markets and business
@@ -392,20 +387,19 @@
         </div>
 
         <aside class="card pad">
-          <div class="stack">
-            <p style="margin:0;color:var(--muted2);font-weight:900;letter-spacing:.02em;">Current focus</p>
-            <h3 style="margin:0;">PlayWin – Crypto Forecasting Platform</h3>
-            <p style="margin:0;color:var(--muted);">
-              Crypto forecasting + investing platform with enriched data pipelines, ML models, and an AI assistant (Aegis).
-            </p>
-            <ul class="pill-row">
-              <li>FastAPI</li>
-              <li>TensorFlow</li>
-              <li>Scikit-learn</li>
-              <li>Angular</li>
-              <li>PostgreSQL</li>
-            </ul>
-          </div>
+          <p style="margin:0;color:var(--muted2);font-weight:900;letter-spacing:.02em;">Current focus</p>
+          <h3 style="margin:.35rem 0 0 0;">PlayWin – Crypto Forecasting Platform</h3>
+          <p style="margin:.6rem 0 0 0;color:var(--muted);">
+            Crypto forecasting + investing platform with enriched data pipelines, ML models, and an AI assistant (Aegis).
+          </p>
+
+          <ul class="pill-row">
+            <li>FastAPI</li>
+            <li>TensorFlow</li>
+            <li>Scikit-learn</li>
+            <li>Angular</li>
+            <li>PostgreSQL</li>
+          </ul>
         </aside>
       </div>
     </section>
@@ -429,28 +423,32 @@
               <p class="project-tags">FastAPI · TensorFlow · Scikit-Learn · Angular · PostgreSQL · Aegis Agent</p>
             </div>
 
-            <!-- NEW: trust.png shown here -->
+            <!-- trust1.png (fallback trust.png) -->
             <figure class="media">
               <a href="https://dtapppyfront.onrender.com/" target="_blank" rel="noreferrer">
-                <img src="./trust.png" alt="PlayWin preview" loading="lazy" />
+                <img
+                  src="./trust1.png"
+                  alt="PlayWin preview"
+                  loading="lazy"
+                  onerror="this.onerror=null;this.src='./trust.png';"
+                />
               </a>
               <figcaption>PlayWin preview. Click the image to open the live demo.</figcaption>
             </figure>
 
-            <p>
-              Developing a web platform for crypto price forecasting and investing.
-              Uses enriched data pipelines, web scraping, and data science with data from CoinGecko/Binance APIs
-              plus external news and social feeds.
+            <p style="margin:0;color:var(--muted);">
+              Developing a web platform for crypto price forecasting and investing. Uses enriched data pipelines,
+              scraping, and data science with market APIs plus external signals.
             </p>
 
             <ul class="project-points">
-              <li>Data ingestion from market APIs, news and social signals.</li>
+              <li>Data ingestion from market APIs + signals.</li>
               <li>Feature engineering + forecasting models.</li>
               <li>Angular dashboards (charts, filters, portfolio views).</li>
               <li>Aegis chatbot for interactive analysis + debugging.</li>
             </ul>
 
-            <div class="links" style="margin-top:auto;">
+            <div class="links">
               <a class="link" href="https://dtapppyfront.onrender.com/" target="_blank" rel="noreferrer">Live demo</a>
               <a class="link" href="https://github.com/fredoomsearch/DtappPy" target="_blank" rel="noreferrer">Backend repo (DtappPy)</a>
               <a class="link" href="https://github.com/fredoomsearch/DtAPPpyFront" target="_blank" rel="noreferrer">Frontend repo (DtAPPpyFront)</a>
@@ -469,16 +467,20 @@
 
             <figure class="media">
               <a href="https://aegischat.onrender.com/" target="_blank" rel="noreferrer">
-                <img src="./Aegis.png" alt="AegisChat UI preview" loading="lazy" />
+                <img
+                  src="./Aegis.png"
+                  alt="AegisChat UI preview"
+                  loading="lazy"
+                />
               </a>
               <figcaption>AegisChat preview. Click the image to open the live demo.</figcaption>
             </figure>
 
-            <p>
-              A chat assistant designed to help with debugging, reasoning about architecture, and experimenting with models.
+            <p style="margin:0;color:var(--muted);">
+              A chat assistant designed to help with debugging, architecture reasoning, and model experimentation.
             </p>
 
-            <div class="links" style="margin-top:auto;">
+            <div class="links">
               <a class="link" href="https://aegischat.onrender.com/" target="_blank" rel="noreferrer">Try AegisChat</a>
               <a class="link" href="https://github.com/fredoomsearch/AegisChat" target="_blank" rel="noreferrer">Source code</a>
             </div>
@@ -499,7 +501,7 @@
               <h3 style="margin:0;font-size:1.05rem;">PlayWin | Software Developer</h3>
               <span style="color:var(--muted2);font-weight:900;">01/2025 – Present</span>
             </div>
-            <p style="margin:.6rem 0 0 0;">
+            <p style="margin:.6rem 0 0 0;color:var(--muted);">
               Developing a web platform for crypto price forecasting and investing. Tech: FastAPI, TensorFlow, Scikit-learn, Angular, PostgreSQL.
             </p>
           </article>
@@ -509,7 +511,7 @@
               <h3 style="margin:0;font-size:1.05rem;">JC CODE | Software Developer</h3>
               <span style="color:var(--muted2);font-weight:900;">02/2024 – 07/2024</span>
             </div>
-            <p style="margin:.6rem 0 0 0;">
+            <p style="margin:.6rem 0 0 0;color:var(--muted);">
               Built a business management system for a casino using Django + Angular (Scrum), improving operational efficiency and reporting.
             </p>
           </article>
@@ -526,7 +528,7 @@
             <p style="margin:0;color:var(--text);font-weight:900;">
               Full-stack developer focused on web development, data science, and machine learning.
             </p>
-            <p style="margin:.8rem 0 0 0;">
+            <p style="margin:.8rem 0 0 0;color:var(--muted);">
               Comfortable working end-to-end: requirements → data modeling → APIs → UIs → Docker deployments.
             </p>
           </article>
@@ -587,5 +589,7 @@
     document.getElementById("year").textContent = new Date().getFullYear();
   </script>
 </body>
+</html>
+
 </html>
 
