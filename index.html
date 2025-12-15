@@ -37,6 +37,7 @@
 
     img { display:block; width:100%; }
     a { color: inherit; }
+    code { font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace; }
 
     .container{
       width: min(100% - 2rem, var(--container));
@@ -202,10 +203,10 @@
       border-radius: 999px;
     }
 
-    /* Projects layout */
+    /* Projects: single column now */
     .projects-grid{
       display:grid;
-      grid-template-columns: 1.2fr .8fr;
+      grid-template-columns: 1fr;
       gap: 1.2rem;
       align-items: stretch;
     }
@@ -241,7 +242,7 @@
     }
     .project-points li{ margin:.35rem 0; }
 
-    /* Main media (big image per card) */
+    /* Main media */
     figure.media{
       margin:0;
       border-radius: 14px;
@@ -250,7 +251,7 @@
       background: rgba(255,255,255,.06);
     }
     figure.media img{
-      height: 210px;
+      height: 230px;
       object-fit: cover;
       object-position: top;
     }
@@ -265,7 +266,7 @@
     .links{
       display:grid;
       gap:.5rem;
-      margin-top: auto;
+      margin-top: .4rem;
     }
 
     .link{
@@ -283,12 +284,12 @@
       transform: translateY(-1px);
     }
 
-    /* Aegis gallery (compact row) */
+    /* Gallery row */
     .shots-title{
-      margin: .2rem 0 0 0;
-      font-weight: 900;
+      margin: .25rem 0 0 0;
+      font-weight: 950;
       color: var(--muted2);
-      font-size: .92rem;
+      font-size: .95rem;
       letter-spacing: .02em;
     }
 
@@ -302,7 +303,7 @@
 
     .shot{
       flex: 0 0 auto;
-      width: 150px;
+      width: 160px;
       border: 1px solid var(--border);
       border-radius: 12px;
       overflow:hidden;
@@ -318,7 +319,7 @@
     }
 
     .shot img{
-      height: 90px;
+      height: 92px;
       object-fit: cover;
       object-position: top;
     }
@@ -334,7 +335,7 @@
       text-overflow: ellipsis;
     }
 
-    /* Details block for long explanation */
+    /* Details for long explanation */
     details.details{
       border: 1px solid var(--border);
       border-radius: 14px;
@@ -348,13 +349,11 @@
       list-style: none;
     }
     details.details summary::-webkit-details-marker{ display:none; }
-
     details.details .hint{
       margin:.35rem 0 0 0;
       color: var(--muted2);
       font-size: .92rem;
     }
-
     details.details ul{
       margin: .8rem 0 0 0;
       padding-left: 1.15rem;
@@ -418,9 +417,8 @@
     .footer-inner p{ margin:0; color: var(--muted2); }
 
     @media (max-width: 900px){
-      .hero-grid, .projects-grid, .about-grid { grid-template-columns: 1fr; }
-      figure.media img{ height: 200px; }
-      .shot{ width: 160px; }
+      .hero-grid, .about-grid { grid-template-columns: 1fr; }
+      figure.media img{ height: 210px; }
     }
   </style>
 </head>
@@ -467,7 +465,7 @@
           <p style="margin:0;color:var(--muted2);font-weight:900;letter-spacing:.02em;">Current focus</p>
           <h3 style="margin:.35rem 0 0 0;">PlayWin – Crypto Forecasting Platform</h3>
           <p style="margin:.6rem 0 0 0;color:var(--muted);">
-            Crypto forecasting + investing platform with enriched data pipelines, ML models, and an AI assistant (Aegis).
+            Crypto forecasting + investing platform with enriched data pipelines, ML models, and an internal AI assistant to speed up debugging and experimentation.
           </p>
 
           <ul class="pill-row">
@@ -486,21 +484,21 @@
       <div class="container">
         <h2 class="section-title">Featured Project</h2>
         <p class="section-subtitle">
-          Main product I’m currently developing, where I combine backend, data engineering,
-          machine learning and frontend skills – with Aegis as an internal AI agent.
+          Main product I’m currently developing, combining backend, data engineering,
+          machine learning and frontend — plus an internal assistant for faster iteration.
         </p>
 
         <div class="projects-grid">
-          <!-- PlayWin -->
+          <!-- PlayWin (now contains ALL screenshots + explanation) -->
           <article class="card pad stack">
             <span class="badge">PlayWin</span>
 
             <div>
               <h3 class="project-title">PlayWin – Crypto Forecasting &amp; Insights Platform</h3>
-              <p class="project-tags">FastAPI · TensorFlow · Scikit-Learn · Angular · PostgreSQL · Aegis Agent</p>
+              <p class="project-tags">FastAPI · TensorFlow · Scikit-Learn · Angular · PostgreSQL · Internal AI assistant</p>
             </div>
 
-            <!-- trust1.png (fallback trust.png) -->
+            <!-- PlayWin image: trust1.png (fallback trust.png) -->
             <figure class="media">
               <a href="https://dtapppyfront.onrender.com/" target="_blank" rel="noreferrer">
                 <img
@@ -514,103 +512,83 @@
             </figure>
 
             <p style="margin:0;color:var(--muted);">
-              Developing a web platform for crypto price forecasting and investing. Uses enriched data pipelines,
-              scraping, and data science with market APIs plus external signals.
+              Developing a web platform for crypto price forecasting and investing. It uses market APIs + enriched signals,
+              feature engineering, and forecasting models to support short-term decisions.
             </p>
 
             <ul class="project-points">
-              <li>Data ingestion from market APIs + signals.</li>
-              <li>Feature engineering + forecasting models.</li>
+              <li>Data ingestion from market APIs + external signals.</li>
+              <li>Feature engineering + forecasting models (short &amp; mid term).</li>
               <li>Angular dashboards (charts, filters, portfolio views).</li>
-              <li>Aegis chatbot for interactive analysis + debugging.</li>
+              <li>Internal assistant for interactive analysis, debugging, and experiments.</li>
             </ul>
 
-            <div class="links">
-              <a class="link" href="https://dtapppyfront.onrender.com/" target="_blank" rel="noreferrer">Live demo</a>
-              <a class="link" href="https://github.com/fredoomsearch/DtappPy" target="_blank" rel="noreferrer">Backend repo (DtappPy)</a>
-              <a class="link" href="https://github.com/fredoomsearch/DtAPPpyFront" target="_blank" rel="noreferrer">Frontend repo (DtAPPpyFront)</a>
-              <a class="link" href="https://github.com/fredoomsearch/AegisChat" target="_blank" rel="noreferrer">AegisChat – AI assistant</a>
-            </div>
-          </article>
-
-          <!-- AegisChat -->
-          <aside class="card pad stack">
-            <span class="badge">AegisChat</span>
-
-            <div>
-              <h3 class="project-title">AegisChat – AI Assistant</h3>
-              <p class="project-tags">Local/Remote LLM · Web mode search · Session info · Sources</p>
-            </div>
-
-            <figure class="media">
-              <a href="https://aegischat.onrender.com/" target="_blank" rel="noreferrer">
-                <img src="./Aegis.png" alt="AegisChat UI preview" loading="lazy" />
+            <!-- Aegis screenshots moved HERE -->
+            <p class="shots-title">Internal assistant screenshots (modes & tools)</p>
+            <div class="shot-row" aria-label="Assistant screenshots gallery">
+              <a class="shot" href="./Aegis.png" target="_blank" rel="noreferrer">
+                <img src="./Aegis.png" alt="Assistant UI main screen" loading="lazy">
+                <span>Main UI</span>
               </a>
-              <figcaption>AegisChat preview. Click the image to open the live demo.</figcaption>
-            </figure>
 
-            <!-- NEW: compact gallery of all your extra screenshots -->
-            <p class="shots-title">More screenshots (modes & tools)</p>
-            <div class="shot-row" aria-label="Aegis screenshots gallery">
               <a class="shot" href="./aegiscode8.png" target="_blank" rel="noreferrer">
-                <img src="./aegiscode8.png" alt="Aegis code mode screenshot" loading="lazy">
-                <span>Code / Debug mode</span>
+                <img src="./aegiscode8.png" alt="Code mode screenshot" loading="lazy">
+                <span>Code / Debug</span>
               </a>
 
               <a class="shot" href="./CRYPTO.png" target="_blank" rel="noreferrer">
-                <img src="./CRYPTO.png" alt="Aegis crypto mode screenshot" loading="lazy">
+                <img src="./CRYPTO.png" alt="Crypto mode screenshot" loading="lazy">
                 <span>Crypto mode</span>
               </a>
 
               <a class="shot" href="./crypto2.png" target="_blank" rel="noreferrer">
-                <img src="./crypto2.png" alt="Aegis crypto list screenshot" loading="lazy">
-                <span>Crypto list / Δ</span>
+                <img src="./crypto2.png" alt="Crypto list screenshot" loading="lazy">
+                <span>Predictions list (Δ)</span>
               </a>
 
               <a class="shot" href="./crypto3.png" target="_blank" rel="noreferrer">
-                <img src="./crypto3.png" alt="Aegis accuracy stats screenshot" loading="lazy">
-                <span>Accuracy / Σ stats</span>
+                <img src="./crypto3.png" alt="Accuracy stats screenshot" loading="lazy">
+                <span>Accuracy stats (Σ)</span>
               </a>
 
               <a class="shot" href="./aegispro3.png" target="_blank" rel="noreferrer">
-                <img src="./aegispro3.png" alt="Aegis pro workflow screenshot" loading="lazy">
+                <img src="./aegispro3.png" alt="Pro workflow screenshot" loading="lazy">
                 <span>Pro workflow</span>
               </a>
 
               <a class="shot" href="./aegisprohelp.png" target="_blank" rel="noreferrer">
-                <img src="./aegisprohelp.png" alt="Aegis help commands screenshot" loading="lazy">
+                <img src="./aegisprohelp.png" alt="Help commands screenshot" loading="lazy">
                 <span>Help / Commands</span>
               </a>
             </div>
 
-            <!-- NEW: your full description, clean + readable -->
+            <!-- Your long explanation -->
             <details class="details">
-              <summary>How AegisChat works (modes & commands)</summary>
-              <p class="hint">Resumen rápido de los modos y comandos principales.</p>
+              <summary>Assistant modes & commands (Spanish)</summary>
+              <p class="hint">Quick guide to features shown in the screenshots.</p>
               <ul>
                 <li><strong>Chat:</strong> conversación normal con memoria y modo código/cripto.</li>
                 <li><strong>Modo Web 🌐:</strong> activa el botón globo; usa <code>/websearch</code> y muestra fuentes a la derecha.</li>
                 <li><strong>Modo URL 🔗:</strong> pega una URL; <code>/fetch_url</code> la lee y aparece en Fuentes (HTTPS; .onion solo si Tor está activo en el servidor).</li>
                 <li><strong>Seguridad .onion:</strong> usa Tor en un entorno aislado/sandbox; protege con firewall, no descargues binarios ni ejecutes nada; asume riesgo de honeypots/malware. Si Tor no está disponible, el fetch fallará.</li>
                 <li><strong>Modo Cripto 🪙:</strong> escribe un símbolo (ej: BTCUSDT). H = horizonte en minutos (H=1 ultra corto, H=15 ≈ 15 min). Qty es la cantidad para Buy/Sell y comandos.</li>
-                <li><strong>Cripto avanzado:</strong> Save guarda/evalúa predicciones al pasar H; Alerts avisa si el resultado difiere; Logs sigue el refresh; ≣ lista predicciones con Δ; Σ muestra accuracy por modelo. Comandos: <code>evaluate [N] [symbol]</code> lista, <code>evaluate stats [N] [symbol]</code> stats, “buy 0.01 btc” / “sell 1 ethusdt” orden de prueba.</li>
+                <li><strong>Cripto avanzado:</strong> Save guarda/evalúa predicciones al pasar H; Alerts avisa si el resultado difiere; Logs sigue el refresh; ≣ lista predicciones con Δ; Σ muestra accuracy por modelo. Comandos: <code>evaluate [N] [symbol]</code>, <code>evaluate stats [N] [symbol]</code>, “buy 0.01 btc” / “sell 1 ethusdt”.</li>
                 <li><strong>Imagen 🖼️:</strong> sube una imagen; <code>/analyze_image</code> hace OCR local (ES/EN).</li>
                 <li><strong>Árbol 🗂️:</strong> botón diagrama → <code>/tools/tree</code>; abre archivos con <code>/tools/content</code>.</li>
                 <li><strong>ZIP/Clone/Ingest:</strong> subir ZIP o clonar repo y procesar con <code>/files/ingest</code> para RAG.</li>
-                <li><strong>Refresh cripto ⚡:</strong> dispara <code>/admin/refresh-crypto</code> (API key opcional). Descarga market data y entrena modelos en segundo plano; revisa el log que muestra el chat.</li>
-                <li><strong>Web/onion:</strong> la lectura de URLs acepta HTTP/HTTPS y .onion vía Tor si el servidor lo tiene activo; la búsqueda web sigue usando HTTP/HTTPS estándar.</li>
+                <li><strong>Refresh cripto ⚡:</strong> dispara <code>/admin/refresh-crypto</code>. Descarga market data y entrena modelos en segundo plano; revisa el log.</li>
+                <li><strong>Web/onion:</strong> URLs HTTP/HTTPS y .onion vía Tor si el servidor lo tiene activo; la búsqueda web usa HTTP/HTTPS estándar.</li>
               </ul>
             </details>
 
-            <p style="margin:0;color:var(--muted);">
-              AegisChat is an assistant designed to help with debugging, architecture reasoning, web context, and crypto workflows.
-            </p>
-
             <div class="links">
-              <a class="link" href="https://aegischat.onrender.com/" target="_blank" rel="noreferrer">Try AegisChat</a>
-              <a class="link" href="https://github.com/fredoomsearch/AegisChat" target="_blank" rel="noreferrer">Source code</a>
+              <a class="link" href="https://dtapppyfront.onrender.com/" target="_blank" rel="noreferrer">Live demo</a>
+              <a class="link" href="https://github.com/fredoomsearch/DtappPy" target="_blank" rel="noreferrer">Backend repo (DtappPy)</a>
+              <a class="link" href="https://github.com/fredoomsearch/DtAPPpyFront" target="_blank" rel="noreferrer">Frontend repo (DtAPPpyFront)</a>
+              <a class="link" href="https://aegischat.onrender.com/" target="_blank" rel="noreferrer">Internal assistant demo</a>
+              <a class="link" href="https://github.com/fredoomsearch/AegisChat" target="_blank" rel="noreferrer">Internal assistant source code</a>
             </div>
-          </aside>
+          </article>
         </div>
       </div>
     </section>
@@ -716,5 +694,6 @@
   </script>
 </body>
 </html>
+
 
 
