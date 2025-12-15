@@ -2,282 +2,372 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>Julián Grajales – Portfolio</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="description" content="Portfolio of Julián Esteban Grajales Vergara – Full-Stack & Data Developer." />
+  <title>Julián Grajales – Portfolio</title>
+
   <style>
-    /* Basic Reset */
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
+    /* --------- Modern reset + sensible defaults --------- */
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
     body {
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      margin: 0;
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
       line-height: 1.6;
-      color: #333;
-      background-color: #f9f9f9;
+      color: var(--text);
+      background: radial-gradient(1200px 600px at 20% 0%, rgba(0,123,255,.12), transparent 60%),
+                  radial-gradient(900px 500px at 80% 20%, rgba(16,185,129,.10), transparent 60%),
+                  var(--bg);
+    }
+    img { max-width: 100%; display: block; }
+    a { color: inherit; }
+    ::selection { background: rgba(0,123,255,.25); }
+
+    :root {
+      --bg: #0b1220;
+      --surface: rgba(255,255,255,.06);
+      --surface-2: rgba(255,255,255,.09);
+      --border: rgba(255,255,255,.12);
+      --text: rgba(255,255,255,.92);
+      --muted: rgba(255,255,255,.70);
+      --muted-2: rgba(255,255,255,.55);
+      --primary: #31c3ff;
+      --primary-2: #00ffa7;
+      --shadow: 0 10px 30px rgba(0,0,0,.35);
+      --radius: 16px;
+      --container: 1120px;
     }
 
+    /* If someone prefers light mode, don't punish them. */
+    @media (prefers-color-scheme: light) {
+      :root {
+        --bg: #f7f8fb;
+        --surface: #ffffff;
+        --surface-2: #f2f4f8;
+        --border: rgba(0,0,0,.10);
+        --text: #111827;
+        --muted: rgba(17,24,39,.75);
+        --muted-2: rgba(17,24,39,.58);
+        --primary: #0b76ff;
+        --primary-2: #0fb981;
+        --shadow: 0 10px 30px rgba(0,0,0,.10);
+      }
+      body {
+        background: radial-gradient(1200px 600px at 20% 0%, rgba(11,118,255,.10), transparent 60%),
+                    radial-gradient(900px 500px at 80% 20%, rgba(15,185,129,.10), transparent 60%),
+                    var(--bg);
+      }
+    }
+
+    /* --------- Layout helpers --------- */
     .container {
-      width: 100%;
-      max-width: 1200px;
+      width: min(100% - 2rem, var(--container));
       margin: 0 auto;
-      padding: 0 1.5rem;
     }
+    .section {
+      padding: 4.5rem 0;
+    }
+    .section-title {
+      font-size: clamp(1.6rem, 2.6vw, 2.1rem);
+      letter-spacing: -0.02em;
+      margin: 0 0 .75rem 0;
+    }
+    .section-subtitle {
+      margin: 0 0 2rem 0;
+      color: var(--muted);
+      max-width: 75ch;
+    }
+    .card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(10px);
+    }
+    .card-pad { padding: 1.6rem; }
 
-    /* Header */
+    /* --------- Header --------- */
     .site-header {
-      background: #fff;
-      padding: 2rem 0;
-      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      background: color-mix(in oklab, var(--bg) 72%, transparent);
+      border-bottom: 1px solid var(--border);
+      backdrop-filter: blur(12px);
     }
-
     .header-inner {
       display: flex;
+      align-items: center;
       justify-content: space-between;
-      align-items: center;
+      padding: 1rem 0;
+      gap: 1rem;
     }
-
     .logo {
-      font-size: 1.5rem;
-      font-weight: 700;
-      color: #333;
+      margin: 0;
+      font-size: 1.15rem;
+      letter-spacing: .02em;
     }
-
     .tagline {
-      color: #666;
-      font-size: 0.9rem;
-      margin-top: 0.5rem;
+      margin: .2rem 0 0 0;
+      font-size: .9rem;
+      color: var(--muted-2);
     }
-
-    .nav a {
-      margin-left: 1.5rem;
-      color: #333;
-      text-decoration: none;
-      font-weight: 500;
-    }
-
-    .nav a:hover {
-      color: #007bff;
-    }
-
-    /* Hero */
-    .hero {
-      padding: 4rem 0;
-      background: #fff;
-    }
-
-    .hero-inner {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 3rem;
+    .nav {
+      display: flex;
+      gap: 1rem;
       align-items: center;
+      flex-wrap: wrap;
     }
-
-    .hero-text h2 {
-      font-size: 2rem;
-      margin-bottom: 1rem;
-      color: #333;
-    }
-
-    .hero-kicker {
-      color: #007bff;
-      font-weight: 600;
-      font-size: 0.9rem;
-      margin-bottom: 0.5rem;
-    }
-
-    .hero-actions {
-      margin: 2rem 0;
-    }
-
-    .btn {
-      display: inline-block;
-      padding: 0.75rem 1.5rem;
-      border-radius: 4px;
+    .nav a {
       text-decoration: none;
-      font-weight: 500;
-      margin-right: 1rem;
-      transition: all 0.3s ease;
-    }
-
-    .btn.primary {
-      background: #007bff;
-      color: #fff;
-    }
-
-    .btn.primary:hover {
-      background: #0056b3;
-    }
-
-    .btn.secondary {
-      background: transparent;
-      color: #007bff;
-      border: 1px solid #007bff;
-    }
-
-    .btn.secondary:hover {
-      background: #007bff;
-      color: #fff;
-    }
-
-    .hero-note {
-      color: #666;
-      font-size: 0.9rem;
-      margin-top: 1rem;
-    }
-
-    .hero-card {
-      background: #f9f9f9;
-      padding: 2rem;
-      border-radius: 8px;
-      border: 1px solid #e0e0e0;
-    }
-
-    .hero-card-label {
-      color: #666;
-      font-size: 0.8rem;
+      color: var(--muted);
       font-weight: 600;
-      margin-bottom: 0.5rem;
+      font-size: .95rem;
+      padding: .35rem .6rem;
+      border-radius: 999px;
+      border: 1px solid transparent;
+      transition: .18s ease;
+    }
+    .nav a:hover {
+      color: var(--text);
+      border-color: var(--border);
+      background: color-mix(in oklab, var(--surface) 65%, transparent);
     }
 
-    .hero-card h3 {
-      font-size: 1.5rem;
-      margin-bottom: 1rem;
-      color: #333;
+    /* --------- Hero --------- */
+    .hero {
+      padding: 4.25rem 0 3.25rem;
+    }
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.15fr .85fr;
+      gap: 2rem;
+      align-items: start;
+    }
+    .kicker {
+      display: inline-flex;
+      align-items: center;
+      gap: .5rem;
+      font-size: .9rem;
+      font-weight: 700;
+      color: var(--muted);
+      border: 1px solid var(--border);
+      background: color-mix(in oklab, var(--surface) 75%, transparent);
+      padding: .35rem .65rem;
+      border-radius: 999px;
+      width: fit-content;
+    }
+    .dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 99px;
+      background: linear-gradient(90deg, var(--primary), var(--primary-2));
+      box-shadow: 0 0 0 3px color-mix(in oklab, var(--primary) 20%, transparent);
+    }
+    .hero h2 {
+      margin: .85rem 0 1rem;
+      font-size: clamp(2rem, 3.6vw, 3rem);
+      line-height: 1.1;
+      letter-spacing: -0.03em;
+    }
+    .hero p { margin: 0 0 1rem 0; color: var(--muted); max-width: 70ch; }
+    .hero-note { margin-top: 1.25rem; color: var(--muted-2); font-size: .95rem; }
+
+    .actions { display: flex; gap: .85rem; flex-wrap: wrap; margin-top: 1.4rem; }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: .55rem;
+      padding: .8rem 1.05rem;
+      border-radius: 999px;
+      text-decoration: none;
+      font-weight: 800;
+      letter-spacing: .01em;
+      border: 1px solid var(--border);
+      transition: transform .12s ease, background .18s ease, border-color .18s ease;
+    }
+    .btn:hover { transform: translateY(-1px); }
+    .btn.primary {
+      border-color: color-mix(in oklab, var(--primary) 45%, var(--border));
+      background: linear-gradient(90deg, color-mix(in oklab, var(--primary) 85%, #fff0), color-mix(in oklab, var(--primary-2) 65%, #fff0));
+      color: color-mix(in oklab, var(--bg) 25%, white);
+    }
+    .btn.secondary {
+      background: color-mix(in oklab, var(--surface) 70%, transparent);
+      color: var(--text);
     }
 
-    /* Projects */
-    .section {
-      padding: 4rem 0;
-      background: #fff;
+    .focus-card h3 { margin: 0 0 .6rem 0; font-size: 1.1rem; }
+    .focus-card p { margin: 0 0 1rem 0; color: var(--muted); }
+    .pill-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: .5rem;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+    .pill-row li {
+      font-size: .9rem;
+      color: var(--muted);
+      border: 1px solid var(--border);
+      background: color-mix(in oklab, var(--surface) 70%, transparent);
+      padding: .35rem .6rem;
+      border-radius: 999px;
     }
 
-    .section-alt {
-      background: #f9f9f9;
-    }
-
-    .section-title {
-      font-size: 2rem;
-      margin-bottom: 1rem;
-      color: #333;
-    }
-
-    .section-subtitle {
-      color: #666;
-      margin-bottom: 2rem;
-      max-width: 800px;
-    }
-
+    /* --------- Projects --------- */
     .projects-grid {
       display: grid;
-      gap: 2rem;
+      grid-template-columns: 1.2fr .8fr;
+      gap: 1.5rem;
+      align-items: start;
     }
-
-    .project-card {
-      background: #fff;
-      padding: 2rem;
-      border-radius: 8px;
-      border: 1px solid #e0e0e0;
-      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    }
-
-    .project-badge {
+    .badge {
       display: inline-block;
-      background: #007bff;
-      color: #fff;
-      padding: 0.25rem 0.75rem;
-      border-radius: 4px;
-      font-size: 0.8rem;
-      font-weight: 600;
-      margin-bottom: 1rem;
+      font-size: .78rem;
+      font-weight: 900;
+      letter-spacing: .06em;
+      text-transform: uppercase;
+      padding: .35rem .6rem;
+      border-radius: 999px;
+      background: linear-gradient(90deg, var(--primary), var(--primary-2));
+      color: color-mix(in oklab, var(--bg) 25%, white);
+      width: fit-content;
     }
-
-    .project-tags {
-      color: #666;
-      font-size: 0.9rem;
-      margin-bottom: 1rem;
+    .project-title { margin: .85rem 0 .5rem 0; font-size: 1.35rem; }
+    .project-tags { margin: 0 0 1rem 0; color: var(--muted-2); font-size: .95rem; }
+    .project-points { margin: 1rem 0 0 0; padding-left: 1.15rem; color: var(--muted); }
+    .project-points li { margin: .45rem 0; }
+    .links {
+      display: grid;
+      gap: .5rem;
+      margin-top: 1.15rem;
     }
-
-    .project-points {
-      margin: 1.5rem 0;
-      padding-left: 1.5rem;
-    }
-
-    .project-points li {
-      margin-bottom: 0.5rem;
-      color: #555;
-    }
-
-    .project-links {
-      margin-top: 1.5rem;
-    }
-
-    .text-link {
-      display: block;
-      color: #007bff;
+    .link {
       text-decoration: none;
-      margin-bottom: 0.5rem;
+      font-weight: 700;
+      color: var(--text);
+      border: 1px solid var(--border);
+      background: color-mix(in oklab, var(--surface) 70%, transparent);
+      padding: .6rem .75rem;
+      border-radius: 12px;
+      transition: .18s ease;
+    }
+    .link:hover {
+      border-color: color-mix(in oklab, var(--primary) 35%, var(--border));
+      transform: translateY(-1px);
     }
 
-    .text-link:hover {
-      text-decoration: underline;
+    .media {
+      border-radius: 14px;
+      overflow: hidden;
+      border: 1px solid var(--border);
+      background: color-mix(in oklab, var(--surface) 80%, transparent);
     }
-
-    /* AegisChat Card */
-    .aegischat-card {
-      margin-top: 2rem;
-      padding: 1.5rem;
-      border: 1px solid #e0e0e0;
-      border-radius: 8px;
-      background: #f9f9f9;
-      text-align: center;
-    }
-
-    .aegischat-card h3 {
-      margin-bottom: 1rem;
-      color: #333;
-    }
-
-    .aegischat-preview {
-      max-width: 100%;
+    .media img {
+      width: 100%;
       height: auto;
-      border-radius: 8px;
-      border: 1px solid #ddd;
-      transition: transform 0.3s ease;
+    }
+    .media figcaption {
+      padding: .8rem .9rem;
+      color: var(--muted-2);
+      font-size: .92rem;
+      border-top: 1px solid var(--border);
     }
 
-    .aegischat-preview:hover {
-      transform: scale(1.02);
+    /* --------- Experience --------- */
+    .timeline {
+      display: grid;
+      gap: 1rem;
+    }
+    .exp {
+      display: grid;
+      gap: .5rem;
+    }
+    .exp-head {
+      display: flex;
+      justify-content: space-between;
+      gap: 1rem;
+      flex-wrap: wrap;
+      align-items: baseline;
+    }
+    .exp h3 { margin: 0; font-size: 1.05rem; }
+    .dates { color: var(--muted-2); font-weight: 700; font-size: .95rem; }
+    .exp p { margin: 0; color: var(--muted); }
+
+    /* --------- About / Contact --------- */
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1.2fr .8fr;
+      gap: 1.5rem;
+      align-items: start;
+    }
+    .about-highlight {
+      font-weight: 800;
+      color: var(--text);
+      margin-top: .25rem;
+    }
+    .side-block h3 {
+      margin: 0 0 .6rem 0;
+      font-size: 1rem;
+      color: var(--text);
+    }
+    .list {
+      margin: 0 0 1.25rem 0;
+      padding-left: 1.1rem;
+      color: var(--muted);
+    }
+    .list li { margin: .35rem 0; }
+    .chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: .5rem;
+      margin: .25rem 0 1.25rem 0;
+      padding: 0;
+      list-style: none;
+    }
+    .chips li {
+      font-size: .9rem;
+      color: var(--muted);
+      border: 1px solid var(--border);
+      background: color-mix(in oklab, var(--surface) 70%, transparent);
+      padding: .35rem .6rem;
+      border-radius: 999px;
     }
 
-    .aegischat-card a {
-      color: #007bff;
-      text-decoration: none;
-      font-weight: 500;
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
     }
+    .contact-card p { margin: .35rem 0; color: var(--muted); }
+    .contact-card a { color: var(--text); font-weight: 800; text-decoration: none; }
+    .contact-card a:hover { text-decoration: underline; }
 
-    .aegischat-card a:hover {
-      text-decoration: underline;
-    }
-
-    /* Footer */
+    /* --------- Footer --------- */
     .site-footer {
-      background: #fff;
-      padding: 2rem 0;
-      text-align: center;
-      border-top: 1px solid #e0e0e0;
+      padding: 2.5rem 0 3rem;
+      border-top: 1px solid var(--border);
+      color: var(--muted-2);
+    }
+    .footer-inner {
+      display: flex;
+      justify-content: space-between;
+      gap: 1rem;
+      flex-wrap: wrap;
+      align-items: center;
     }
 
-    .footer-small {
-      color: #666;
-      font-size: 0.9rem;
-      margin-top: 0.5rem;
+    /* --------- Responsive --------- */
+    @media (max-width: 900px) {
+      .hero-grid, .projects-grid, .about-grid { grid-template-columns: 1fr; }
+      .contact-grid { grid-template-columns: 1fr; }
     }
   </style>
 </head>
+
 <body>
   <header class="site-header">
     <div class="container header-inner">
@@ -285,7 +375,8 @@
         <h1 class="logo">Julián Grajales</h1>
         <p class="tagline">Full-Stack & Data Developer · FastAPI · Django · Angular · ML · Crypto & Business Apps</p>
       </div>
-      <nav class="nav">
+
+      <nav class="nav" aria-label="Primary">
         <a href="#projects">Projects</a>
         <a href="#experience">Experience</a>
         <a href="#about">About</a>
@@ -297,37 +388,40 @@
   <main>
     <!-- HERO -->
     <section class="hero">
-      <div class="container hero-inner">
-        <div class="hero-text">
-          <p class="hero-kicker">Full-Stack · Data · Crypto / Fintech</p>
+      <div class="container hero-grid">
+        <div>
+          <div class="kicker"><span class="dot" aria-hidden="true"></span> Full-Stack · Data · Crypto / Fintech</div>
           <h2>Building data-driven platforms that connect code, models and real business needs.</h2>
+
           <p>
             I specialize in web development, data science and machine learning. I enjoy turning messy requirements
             into clear APIs, dashboards and prediction services – especially around crypto markets and business
             management systems.
           </p>
-          <div class="hero-actions">
+
+          <div class="actions">
             <a href="#projects" class="btn primary">View PlayWin</a>
             <a href="#experience" class="btn secondary">Work Experience</a>
           </div>
-          <p class="hero-note">
-            Based in Medellín, Colombia · English B2+ · Open to remote opportunities
-          </p>
+
+          <p class="hero-note">Based in Medellín, Colombia · English B2+ · Open to remote opportunities</p>
         </div>
 
-        <div class="hero-card">
-          <p class="hero-card-label">Current focus</p>
+        <aside class="card card-pad focus-card">
+          <p style="margin:0 0 .65rem 0; color: var(--muted-2); font-weight: 800; letter-spacing:.02em;">Current focus</p>
           <h3>PlayWin – Crypto Forecasting Platform</h3>
           <p>
             Crypto price forecasting and investing platform with enriched data pipelines, ML models,
             and an AI assistant (Aegis) that helps reason about complex logic and model iterations.
           </p>
-          <ul>
-            <li>FastAPI · TensorFlow · Scikit-learn · Angular · PostgreSQL</li>
-            <li>Data from CoinGecko / Binance, news and social feeds</li>
-            <li>Chatbot assistant + internal agent to support model experimentation</li>
+          <ul class="pill-row">
+            <li>FastAPI</li>
+            <li>TensorFlow</li>
+            <li>Scikit-learn</li>
+            <li>Angular</li>
+            <li>PostgreSQL</li>
           </ul>
-        </div>
+        </aside>
       </div>
     </section>
 
@@ -340,25 +434,30 @@
           machine learning and frontend skills – with Aegis as an internal AI agent.
         </p>
 
-        <div class="projects-grid single-project">
-          <article class="project-card">
-            <div class="project-badge">PlayWin</div>
-            <h3>PlayWin – Crypto Forecasting &amp; Insights Platform</h3>
+        <div class="projects-grid">
+          <!-- PlayWin -->
+          <article class="card card-pad">
+            <span class="badge">PlayWin</span>
+            <h3 class="project-title">PlayWin – Crypto Forecasting &amp; Insights Platform</h3>
             <p class="project-tags">FastAPI · TensorFlow · Scikit-Learn · Angular · PostgreSQL · Aegis Agent</p>
-            <p>
+
+            <p style="margin:0 0 1rem 0; color: var(--muted);">
               Developing a web platform for crypto price forecasting and investing.
               Uses enriched data pipelines, web scraping, and data science with data from CoinGecko/Binance APIs
               plus external news and social feeds.
             </p>
-            <p>
+
+            <p style="margin:0 0 1rem 0; color: var(--muted);">
               Tech: FastAPI (REST), TensorFlow, Scikit-learn (LLM training), Angular (UI and charts),
               PostgreSQL (database). Building a chatbot assistant.
             </p>
-            <p class="project-extra">
+
+            <p style="margin:0 0 1rem 0; color: var(--muted);">
               Aegis, my AI coding assistant, is being designed as an internal agent inside PlayWin:
               it helps explore hard logic, adjust prediction pipelines, reason about anomalies and
               support rapid experimentation with new models and strategies.
             </p>
+
             <ul class="project-points">
               <li>Data ingestion from market APIs, news and social signals.</li>
               <li>Feature engineering and ML models for short-term and mid-term forecasts.</li>
@@ -366,42 +465,44 @@
               <li>Chatbot interface backed by Aegis for interactive analysis and debugging.</li>
             </ul>
 
-            <div class="project-links">
-              <a href="https://dtapppyfront.onrender.com/"
-                 class="text-link" target="_blank" rel="noreferrer">
-                Live demo
-              </a>
-              <a href="https://github.com/fredoomsearch/DtappPy"
-                 class="text-link" target="_blank" rel="noreferrer">
-                Backend repo (DtappPy)
-              </a>
-              <a href="https://github.com/fredoomsearch/DtAPPpyFront"
-                 class="text-link" target="_blank" rel="noreferrer">
-                Frontend repo (DtAPPpyFront)
-              </a>
-              <a href="https://github.com/fredoomsearch/AegisChat"
-                 class="text-link" target="_blank" rel="noreferrer">
-                AegisChat – AI assistant
-              </a>
+            <div class="links" style="margin-top:1.35rem;">
+              <a class="link" href="https://dtapppyfront.onrender.com/" target="_blank" rel="noreferrer">Live demo</a>
+              <a class="link" href="https://github.com/fredoomsearch/DtappPy" target="_blank" rel="noreferrer">Backend repo (DtappPy)</a>
+              <a class="link" href="https://github.com/fredoomsearch/DtAPPpyFront" target="_blank" rel="noreferrer">Frontend repo (DtAPPpyFront)</a>
+              <a class="link" href="https://github.com/fredoomsearch/AegisChat" target="_blank" rel="noreferrer">AegisChat – AI assistant</a>
             </div>
           </article>
 
-          <!-- AegisChat Section -->
-          <div class="aegischat-card">
-            <h3>AegisChat – AI Assistant</h3>
-            <a href="https://aegischat.onrender.com/" target="_blank" rel="noreferrer">
-              <img src="https://mistralaichatupprodswe.blob.core.windows.net/chat-images/assistant/dc/7f/4e/dc7f4e6f-31a5-4864-bff9-916e38a66465/daad0306-8bc9-47e5-a5e4-cf20d52d6ead/16a6be97-3828-4c1d-8cad-d4f7c5c57a72/d3b94bd4-d1c6-407f-9837-a28f17093450.jpg?sv=2025-01-05&st=2025-12-14T09%3A27%3A30Z&se=2025-12-14T10%3A27%3A30Z&sr=b&sp=rade&sig=tQOEwgHovqWrsULzr4BolF%2F%2BB%2FRMr1IZ4zdsWFCJPgM%3D"
-                   alt="AegisChat Preview"
-                   class="aegischat-preview">
-            </a>
-            <p><a href="https://aegischat.onrender.com/" target="_blank" rel="noreferrer">Try AegisChat</a></p>
-          </div>
+          <!-- AegisChat (with your screenshot) -->
+          <aside class="card card-pad">
+            <span class="badge">AegisChat</span>
+            <h3 class="project-title">AegisChat – AI Assistant</h3>
+            <p class="project-tags">Local/Remote LLM · Web mode search · Session info · Sources</p>
+
+            <figure class="media">
+              <a href="https://aegischat.onrender.com/" target="_blank" rel="noreferrer">
+                <img
+                  src="assets/aegischat-preview.png"
+                  alt="AegisChat UI preview"
+                  loading="lazy"
+                />
+              </a>
+              <figcaption>
+                Live demo preview. Click the image to open AegisChat.
+              </figcaption>
+            </figure>
+
+            <div class="links" style="margin-top: 1rem;">
+              <a class="link" href="https://aegischat.onrender.com/" target="_blank" rel="noreferrer">Try AegisChat</a>
+              <a class="link" href="https://github.com/fredoomsearch/AegisChat" target="_blank" rel="noreferrer">Source code</a>
+            </div>
+          </aside>
         </div>
       </div>
     </section>
 
     <!-- EXPERIENCE -->
-    <section id="experience" class="section section-alt">
+    <section id="experience" class="section">
       <div class="container">
         <h2 class="section-title">Experience</h2>
         <p class="section-subtitle">
@@ -409,13 +510,13 @@
           Text below is kept exactly as written in my CV.
         </p>
 
-        <div class="experience-timeline">
-          <article class="experience-item">
-            <div class="exp-header">
+        <div class="timeline">
+          <article class="card card-pad exp">
+            <div class="exp-head">
               <h3>PlayWin | Software Developer</h3>
-              <span class="exp-dates">01/2025 – Present</span>
+              <span class="dates">01/2025 – Present</span>
             </div>
-            <p class="exp-body">
+            <p>
               Developing a web platform for crypto price forecasting and investing. Uses enriched data
               pipelines, web scraping, and data science with data from CoinGecko/Binance APIs plus external
               news and social feeds. Tech: FastAPI (REST), TensorFlow, Scikit-learn (LLM training), Angular
@@ -423,12 +524,12 @@
             </p>
           </article>
 
-          <article class="experience-item">
-            <div class="exp-header">
+          <article class="card card-pad exp">
+            <div class="exp-head">
               <h3>JC CODE | Software Developer</h3>
-              <span class="exp-dates">02/2024 – 07/2024</span>
+              <span class="dates">02/2024 – 07/2024</span>
             </div>
-            <p class="exp-body">
+            <p>
               I played a vital role in the entire development cycle of a business management system for a casino, from the collection of
               requirements to the final deployment. The project used technologies such as Django and Angular, and development was carried
               out using the Scrum methodology. This system significantly improved operational efficiency and optimized essential processes
@@ -437,24 +538,24 @@
             </p>
           </article>
 
-          <article class="experience-item">
-            <div class="exp-header">
+          <article class="card card-pad exp">
+            <div class="exp-head">
               <h3>Restaurante Carbon | Software Developer</h3>
-              <span class="exp-dates">06/2023 – 12/2023</span>
+              <span class="dates">06/2023 – 12/2023</span>
             </div>
-            <p class="exp-body">
+            <p>
               I created a mobile application in Flutter for the management of basic operational inventories and calculations. In addition, I
               developed a web platform using Java, React and MySQL to provide a dynamic menu based on feedback, product visualization and
               order management. These tools increased efficiency in several key areas:
             </p>
           </article>
 
-          <article class="experience-item">
-            <div class="exp-header">
+          <article class="card card-pad exp">
+            <div class="exp-head">
               <h3>TASS TECHNOLOGIES | FullstackDev</h3>
-              <span class="exp-dates">09/2025 – 11/2025</span>
+              <span class="dates">09/2025 – 11/2025</span>
             </div>
-            <p class="exp-body">
+            <p>
               FullstackDev using technologies how, Scss, Angular, Vue, Python, Django, Docker, PostgreSql, Github, NextJs.
             </p>
           </article>
@@ -464,58 +565,60 @@
 
     <!-- ABOUT -->
     <section id="about" class="section">
-      <div class="container about-grid">
-        <div>
-          <h2 class="section-title">About Me</h2>
-          <p class="about-highlight">
-            FULL STACK DEVELOPER – Specializing in web development, data science and machine learning.
-            Characterized by discipline, persistence and a goal-oriented mindset, accompanied by excellent
-            communication skills.
-          </p>
-          <p>
-            I’m comfortable working end-to-end: from gathering requirements and modeling data, to designing APIs,
-            building UIs and deploying applications with Docker and cloud providers like AWS.
-          </p>
-          <p>
-            I enjoy projects where code, data and business decisions meet – like PlayWin, where prediction models,
-            dashboards and Aegis (as an AI agent) work together to support better decisions.
-          </p>
-        </div>
+      <div class="container">
+        <div class="about-grid">
+          <article class="card card-pad">
+            <h2 class="section-title" style="margin-bottom:.75rem;">About Me</h2>
+            <p class="about-highlight">
+              FULL STACK DEVELOPER – Specializing in web development, data science and machine learning.
+              Characterized by discipline, persistence and a goal-oriented mindset, accompanied by excellent
+              communication skills.
+            </p>
+            <p style="color: var(--muted); margin-top: .9rem;">
+              I’m comfortable working end-to-end: from gathering requirements and modeling data, to designing APIs,
+              building UIs and deploying applications with Docker and cloud providers like AWS.
+            </p>
+            <p style="color: var(--muted); margin-top: .9rem;">
+              I enjoy projects where code, data and business decisions meet – like PlayWin, where prediction models,
+              dashboards and Aegis (as an AI agent) work together to support better decisions.
+            </p>
+          </article>
 
-        <div class="about-side">
-          <h3>Tech Stack</h3>
-          <ul class="pill-list">
-            <li>Python (FastAPI, Django, Data Science, ML)</li>
-            <li>Java (Spring Boot)</li>
-            <li>Flutter</li>
-            <li>Angular &amp; React</li>
-            <li>PostgreSQL / MySQL</li>
-            <li>Docker</li>
-            <li>AWS Cloud</li>
-          </ul>
+          <aside class="card card-pad side-block">
+            <h3>Tech Stack</h3>
+            <ul class="chips">
+              <li>Python (FastAPI, Django, DS/ML)</li>
+              <li>Java (Spring Boot)</li>
+              <li>Flutter</li>
+              <li>Angular &amp; React</li>
+              <li>PostgreSQL / MySQL</li>
+              <li>Docker</li>
+              <li>AWS Cloud</li>
+            </ul>
 
-          <h3>Strengths</h3>
-          <ul class="pill-list">
-            <li>Leadership</li>
-            <li>Teamwork</li>
-            <li>Self-Control</li>
-            <li>Proactivity</li>
-            <li>English B2+</li>
-          </ul>
+            <h3>Strengths</h3>
+            <ul class="chips">
+              <li>Leadership</li>
+              <li>Teamwork</li>
+              <li>Self-Control</li>
+              <li>Proactivity</li>
+              <li>English B2+</li>
+            </ul>
 
-          <h3>Education &amp; Certifications</h3>
-          <ul class="edu-list">
-            <li>Software Development Technician (UPB - 2024)</li>
-            <li>Quality Software Development (SENA, 2019)</li>
-            <li>AWS Fundamentals (Coursera)</li>
-            <li>Python on AWS (Coursera)</li>
-          </ul>
+            <h3>Education &amp; Certifications</h3>
+            <ul class="list">
+              <li>Software Development Technician (UPB - 2024)</li>
+              <li>Quality Software Development (SENA, 2019)</li>
+              <li>AWS Fundamentals (Coursera)</li>
+              <li>Python on AWS (Coursera)</li>
+            </ul>
+          </aside>
         </div>
       </div>
     </section>
 
     <!-- CONTACT -->
-    <section id="contact" class="section section-alt">
+    <section id="contact" class="section">
       <div class="container">
         <h2 class="section-title">Contact</h2>
         <p class="section-subtitle">
@@ -523,19 +626,19 @@
         </p>
 
         <div class="contact-grid">
-          <div class="contact-card">
-            <h3>Let’s talk</h3>
+          <div class="card card-pad contact-card">
+            <h3 style="margin:0 0 .75rem 0;">Let’s talk</h3>
             <p><strong>Location:</strong> Medellín, Antioquia, Colombia</p>
             <p><strong>Phone:</strong> <a href="tel:+573104920884">+57 3104920884</a></p>
             <p><strong>Email:</strong> <a href="mailto:grajalesj708@gmail.com">grajalesj708@gmail.com</a></p>
           </div>
 
-          <div class="contact-card">
-            <h3>Online</h3>
+          <div class="card card-pad contact-card">
+            <h3 style="margin:0 0 .75rem 0;">Online</h3>
             <p><strong>LinkedIn:</strong> <a href="https://www.linkedin.com/in/jeg-v75fullstack" target="_blank" rel="noreferrer">jeg-v75fullstack</a></p>
             <p><strong>GitHub:</strong> <a href="https://github.com/fredoomsearch" target="_blank" rel="noreferrer">fredoomsearch</a></p>
             <p><strong>Demo (example):</strong> <a href="https://dtapppyfront.onrender.com/" target="_blank" rel="noreferrer">dtapppyfront.onrender.com</a></p>
-            <p class="contact-note">
+            <p style="color: var(--muted-2); margin-top:.75rem;">
               More live demos will be linked here as I deploy additional services (including PlayWin).
             </p>
           </div>
@@ -546,8 +649,8 @@
 
   <footer class="site-footer">
     <div class="container footer-inner">
-      <p>© <span id="year"></span> Julián Esteban Grajales Vergara</p>
-      <p class="footer-small">Built with simple HTML &amp; CSS and deployed on Render.</p>
+      <p style="margin:0;">© <span id="year"></span> Julián Esteban Grajales Vergara</p>
+      <p style="margin:0;">Built with simple HTML &amp; CSS and deployed on Render.</p>
     </div>
   </footer>
 
@@ -556,5 +659,4 @@
   </script>
 </body>
 </html>
-
 
