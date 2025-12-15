@@ -202,7 +202,7 @@
       border-radius: 999px;
     }
 
-    /* Projects layout: same height columns */
+    /* Projects layout */
     .projects-grid{
       display:grid;
       grid-template-columns: 1.2fr .8fr;
@@ -210,7 +210,6 @@
       align-items: stretch;
     }
 
-    /* Stack for equal height + bottom aligned links */
     .stack{
       display:flex;
       flex-direction: column;
@@ -242,7 +241,7 @@
     }
     .project-points li{ margin:.35rem 0; }
 
-    /* Media: consistent size for both images */
+    /* Main media (big image per card) */
     figure.media{
       margin:0;
       border-radius: 14px;
@@ -250,13 +249,11 @@
       border: 1px solid var(--border);
       background: rgba(255,255,255,.06);
     }
-
     figure.media img{
       height: 210px;
       object-fit: cover;
       object-position: top;
     }
-
     figure.media figcaption{
       padding: .75rem .9rem;
       color: var(--muted2);
@@ -264,10 +261,11 @@
       border-top: 1px solid var(--border);
     }
 
+    /* Links */
     .links{
       display:grid;
       gap:.5rem;
-      margin-top: auto; /* push links down */
+      margin-top: auto;
     }
 
     .link{
@@ -280,11 +278,89 @@
       border-radius: 12px;
       transition: .18s ease;
     }
-
     .link:hover{
       border-color: rgba(49,195,255,.35);
       transform: translateY(-1px);
     }
+
+    /* Aegis gallery (compact row) */
+    .shots-title{
+      margin: .2rem 0 0 0;
+      font-weight: 900;
+      color: var(--muted2);
+      font-size: .92rem;
+      letter-spacing: .02em;
+    }
+
+    .shot-row{
+      display:flex;
+      gap:.65rem;
+      overflow:auto;
+      padding-bottom: .25rem;
+      scroll-snap-type: x mandatory;
+    }
+
+    .shot{
+      flex: 0 0 auto;
+      width: 150px;
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      overflow:hidden;
+      background: rgba(255,255,255,.05);
+      text-decoration:none;
+      scroll-snap-align: start;
+      transition: .18s ease;
+    }
+
+    .shot:hover{
+      border-color: rgba(49,195,255,.35);
+      transform: translateY(-1px);
+    }
+
+    .shot img{
+      height: 90px;
+      object-fit: cover;
+      object-position: top;
+    }
+
+    .shot span{
+      display:block;
+      padding: .45rem .55rem;
+      font-size: .82rem;
+      color: var(--muted2);
+      border-top: 1px solid var(--border);
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    /* Details block for long explanation */
+    details.details{
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      background: rgba(255,255,255,.04);
+      padding: .75rem .9rem;
+    }
+    details.details summary{
+      cursor:pointer;
+      font-weight: 950;
+      color: var(--text);
+      list-style: none;
+    }
+    details.details summary::-webkit-details-marker{ display:none; }
+
+    details.details .hint{
+      margin:.35rem 0 0 0;
+      color: var(--muted2);
+      font-size: .92rem;
+    }
+
+    details.details ul{
+      margin: .8rem 0 0 0;
+      padding-left: 1.15rem;
+      color: var(--muted);
+    }
+    details.details li{ margin: .35rem 0; }
 
     /* About/Contact */
     .about-grid{
@@ -344,6 +420,7 @@
     @media (max-width: 900px){
       .hero-grid, .projects-grid, .about-grid { grid-template-columns: 1fr; }
       figure.media img{ height: 200px; }
+      .shot{ width: 160px; }
     }
   </style>
 </head>
@@ -467,17 +544,66 @@
 
             <figure class="media">
               <a href="https://aegischat.onrender.com/" target="_blank" rel="noreferrer">
-                <img
-                  src="./Aegis.png"
-                  alt="AegisChat UI preview"
-                  loading="lazy"
-                />
+                <img src="./Aegis.png" alt="AegisChat UI preview" loading="lazy" />
               </a>
               <figcaption>AegisChat preview. Click the image to open the live demo.</figcaption>
             </figure>
 
+            <!-- NEW: compact gallery of all your extra screenshots -->
+            <p class="shots-title">More screenshots (modes & tools)</p>
+            <div class="shot-row" aria-label="Aegis screenshots gallery">
+              <a class="shot" href="./aegiscode8.png" target="_blank" rel="noreferrer">
+                <img src="./aegiscode8.png" alt="Aegis code mode screenshot" loading="lazy">
+                <span>Code / Debug mode</span>
+              </a>
+
+              <a class="shot" href="./CRYPTO.png" target="_blank" rel="noreferrer">
+                <img src="./CRYPTO.png" alt="Aegis crypto mode screenshot" loading="lazy">
+                <span>Crypto mode</span>
+              </a>
+
+              <a class="shot" href="./crypto2.png" target="_blank" rel="noreferrer">
+                <img src="./crypto2.png" alt="Aegis crypto list screenshot" loading="lazy">
+                <span>Crypto list / Δ</span>
+              </a>
+
+              <a class="shot" href="./crypto3.png" target="_blank" rel="noreferrer">
+                <img src="./crypto3.png" alt="Aegis accuracy stats screenshot" loading="lazy">
+                <span>Accuracy / Σ stats</span>
+              </a>
+
+              <a class="shot" href="./aegispro3.png" target="_blank" rel="noreferrer">
+                <img src="./aegispro3.png" alt="Aegis pro workflow screenshot" loading="lazy">
+                <span>Pro workflow</span>
+              </a>
+
+              <a class="shot" href="./aegisprohelp.png" target="_blank" rel="noreferrer">
+                <img src="./aegisprohelp.png" alt="Aegis help commands screenshot" loading="lazy">
+                <span>Help / Commands</span>
+              </a>
+            </div>
+
+            <!-- NEW: your full description, clean + readable -->
+            <details class="details">
+              <summary>How AegisChat works (modes & commands)</summary>
+              <p class="hint">Resumen rápido de los modos y comandos principales.</p>
+              <ul>
+                <li><strong>Chat:</strong> conversación normal con memoria y modo código/cripto.</li>
+                <li><strong>Modo Web 🌐:</strong> activa el botón globo; usa <code>/websearch</code> y muestra fuentes a la derecha.</li>
+                <li><strong>Modo URL 🔗:</strong> pega una URL; <code>/fetch_url</code> la lee y aparece en Fuentes (HTTPS; .onion solo si Tor está activo en el servidor).</li>
+                <li><strong>Seguridad .onion:</strong> usa Tor en un entorno aislado/sandbox; protege con firewall, no descargues binarios ni ejecutes nada; asume riesgo de honeypots/malware. Si Tor no está disponible, el fetch fallará.</li>
+                <li><strong>Modo Cripto 🪙:</strong> escribe un símbolo (ej: BTCUSDT). H = horizonte en minutos (H=1 ultra corto, H=15 ≈ 15 min). Qty es la cantidad para Buy/Sell y comandos.</li>
+                <li><strong>Cripto avanzado:</strong> Save guarda/evalúa predicciones al pasar H; Alerts avisa si el resultado difiere; Logs sigue el refresh; ≣ lista predicciones con Δ; Σ muestra accuracy por modelo. Comandos: <code>evaluate [N] [symbol]</code> lista, <code>evaluate stats [N] [symbol]</code> stats, “buy 0.01 btc” / “sell 1 ethusdt” orden de prueba.</li>
+                <li><strong>Imagen 🖼️:</strong> sube una imagen; <code>/analyze_image</code> hace OCR local (ES/EN).</li>
+                <li><strong>Árbol 🗂️:</strong> botón diagrama → <code>/tools/tree</code>; abre archivos con <code>/tools/content</code>.</li>
+                <li><strong>ZIP/Clone/Ingest:</strong> subir ZIP o clonar repo y procesar con <code>/files/ingest</code> para RAG.</li>
+                <li><strong>Refresh cripto ⚡:</strong> dispara <code>/admin/refresh-crypto</code> (API key opcional). Descarga market data y entrena modelos en segundo plano; revisa el log que muestra el chat.</li>
+                <li><strong>Web/onion:</strong> la lectura de URLs acepta HTTP/HTTPS y .onion vía Tor si el servidor lo tiene activo; la búsqueda web sigue usando HTTP/HTTPS estándar.</li>
+              </ul>
+            </details>
+
             <p style="margin:0;color:var(--muted);">
-              A chat assistant designed to help with debugging, architecture reasoning, and model experimentation.
+              AegisChat is an assistant designed to help with debugging, architecture reasoning, web context, and crypto workflows.
             </p>
 
             <div class="links">
@@ -591,5 +717,4 @@
 </body>
 </html>
 
-</html>
 
