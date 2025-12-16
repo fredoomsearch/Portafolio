@@ -35,6 +35,10 @@
         var(--bg);
     }
 
+    /* Language switch: show only current language */
+    body.lang-en .es { display: none !important; }
+    body.lang-es .en { display: none !important; }
+
     img { display:block; width:100%; }
     a { color: inherit; }
     code { font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace; }
@@ -76,7 +80,7 @@
 
     .nav{
       display:flex;
-      gap:.75rem;
+      gap:.6rem;
       flex-wrap: wrap;
       align-items: center;
     }
@@ -90,11 +94,42 @@
       border-radius: 999px;
       border: 1px solid transparent;
       transition: .18s ease;
+      white-space: nowrap;
     }
     .nav a:hover{
       color: var(--text);
       border-color: var(--border);
       background: rgba(255,255,255,.06);
+    }
+
+    /* Language buttons */
+    .lang-switch{
+      display:flex;
+      gap:.35rem;
+      padding-left:.4rem;
+      border-left: 1px solid var(--border);
+      margin-left:.4rem;
+    }
+    .lang-btn{
+      border: 1px solid var(--border);
+      background: rgba(255,255,255,.06);
+      color: var(--muted);
+      font-weight: 950;
+      border-radius: 999px;
+      padding: .35rem .55rem;
+      cursor: pointer;
+      transition: .18s ease;
+      line-height: 1;
+    }
+    .lang-btn:hover{
+      color: var(--text);
+      border-color: rgba(49,195,255,.35);
+      transform: translateY(-1px);
+    }
+    .lang-btn.active{
+      color: rgba(11,18,32,.92);
+      border-color: rgba(49,195,255,.45);
+      background: linear-gradient(90deg, rgba(49,195,255,.85), rgba(0,255,167,.65));
     }
 
     /* General sections */
@@ -107,7 +142,7 @@
     .section-subtitle{
       margin:0 0 1.8rem 0;
       color: var(--muted);
-      max-width: 75ch;
+      max-width: 80ch;
     }
 
     /* Cards */
@@ -173,6 +208,7 @@
       font-weight:900;
       border: 1px solid var(--border);
       transition: transform .12s ease, background .18s ease, border-color .18s ease;
+      white-space: nowrap;
     }
     .btn:hover{ transform: translateY(-1px); }
 
@@ -203,7 +239,7 @@
       border-radius: 999px;
     }
 
-    /* Projects: single column now */
+    /* Projects: single column */
     .projects-grid{
       display:grid;
       grid-template-columns: 1fr;
@@ -335,7 +371,7 @@
       text-overflow: ellipsis;
     }
 
-    /* Details for long explanation */
+    /* Details */
     details.details{
       border: 1px solid var(--border);
       border-radius: 14px;
@@ -360,6 +396,17 @@
       color: var(--muted);
     }
     details.details li{ margin: .35rem 0; }
+
+    /* Experience */
+    .timeline { display:grid; gap: 1rem; }
+    .exp-head{
+      display:flex;
+      justify-content:space-between;
+      gap:1rem;
+      flex-wrap:wrap;
+      align-items:baseline;
+    }
+    .dates{ color: var(--muted2); font-weight: 950; }
 
     /* About/Contact */
     .about-grid{
@@ -423,19 +470,27 @@
   </style>
 </head>
 
-<body>
+<body class="lang-en">
   <header class="site-header">
     <div class="container header-inner">
       <div>
         <h1 class="logo">Julián Grajales</h1>
-        <p class="tagline">Full-Stack & Data Developer · FastAPI · Django · Angular · ML · Crypto & Business Apps</p>
+        <p class="tagline">
+          <span class="en">Full-Stack & Data Developer · FastAPI · Django · Angular · ML · Crypto & Business Apps</span>
+          <span class="es">Desarrollador Full-Stack & Datos · FastAPI · Django · Angular · ML · Cripto & Apps de Negocio</span>
+        </p>
       </div>
 
       <nav class="nav" aria-label="Primary">
-        <a href="#projects">Projects</a>
-        <a href="#experience">Experience</a>
-        <a href="#about">About</a>
-        <a href="#contact">Contact</a>
+        <a href="#projects"><span class="en">Projects</span><span class="es">Proyectos</span></a>
+        <a href="#experience"><span class="en">Experience</span><span class="es">Experiencia</span></a>
+        <a href="#about"><span class="en">About</span><span class="es">Sobre mí</span></a>
+        <a href="#contact"><span class="en">Contact</span><span class="es">Contacto</span></a>
+
+        <div class="lang-switch" aria-label="Language switch">
+          <button class="lang-btn active" type="button" data-lang="en">EN</button>
+          <button class="lang-btn" type="button" data-lang="es">ES</button>
+        </div>
       </nav>
     </div>
   </header>
@@ -445,35 +500,50 @@
     <section class="hero">
       <div class="container hero-grid">
         <div>
-          <div class="kicker"><span class="dot" aria-hidden="true"></span> Full-Stack · Data · Crypto / Fintech</div>
-          <h2>Building data-driven platforms that connect code, models and real business needs.</h2>
-          <p>
-            I specialize in web development, data science and machine learning. I enjoy turning messy requirements
-            into clear APIs, dashboards and prediction services – especially around crypto markets and business
-            management systems.
+          <div class="kicker">
+            <span class="dot" aria-hidden="true"></span>
+            <span class="en">Full-Stack · Data · Crypto / Fintech</span>
+            <span class="es">Full-Stack · Datos · Cripto / Fintech</span>
+          </div>
+
+          <h2 class="en">Building data-driven platforms that connect code, models and real business needs.</h2>
+          <h2 class="es">Construyo plataformas basadas en datos que conectan código, modelos y necesidades reales del negocio.</h2>
+
+          <p class="en">
+            I build end-to-end products: APIs, dashboards, pipelines and ML experiments — especially around crypto markets
+            and business systems.
+          </p>
+          <p class="es">
+            Construyo productos de punta a punta: APIs, dashboards, pipelines y experimentos de ML — especialmente para
+            mercados cripto y sistemas de negocio.
           </p>
 
           <div class="actions">
-            <a href="#projects" class="btn primary">View PlayWin</a>
-            <a href="#experience" class="btn secondary">Work Experience</a>
+            <a href="#projects" class="btn primary"><span class="en">View PlayWin</span><span class="es">Ver PlayWin</span></a>
+            <a href="#experience" class="btn secondary"><span class="en">Work Experience</span><span class="es">Experiencia</span></a>
           </div>
 
-          <p class="hero-note">Based in Medellín, Colombia · English B2+ · Open to remote opportunities</p>
+          <p class="hero-note en">Based in Medellín, Colombia · English B2+ · Open to remote opportunities</p>
+          <p class="hero-note es">Vivo en Medellín, Colombia · Inglés B2+ · Abierto a oportunidades remotas</p>
         </div>
 
         <aside class="card pad">
-          <p style="margin:0;color:var(--muted2);font-weight:900;letter-spacing:.02em;">Current focus</p>
+          <p class="en" style="margin:0;color:var(--muted2);font-weight:900;letter-spacing:.02em;">Current focus</p>
+          <p class="es" style="margin:0;color:var(--muted2);font-weight:900;letter-spacing:.02em;">Enfoque actual</p>
+
           <h3 style="margin:.35rem 0 0 0;">PlayWin – Crypto Forecasting Platform</h3>
-          <p style="margin:.6rem 0 0 0;color:var(--muted);">
-            Crypto forecasting + investing platform with enriched data pipelines, ML models, and an internal AI assistant to speed up debugging and experimentation.
+
+          <p class="en" style="margin:.6rem 0 0 0;color:var(--muted);">
+            Crypto forecasting + investing platform with enriched data pipelines, ML models, and an internal AI assistant
+            to speed up debugging and experimentation.
+          </p>
+          <p class="es" style="margin:.6rem 0 0 0;color:var(--muted);">
+            Plataforma de predicción e inversión cripto con pipelines enriquecidos, modelos de ML y un asistente interno
+            para acelerar debugging y experimentación.
           </p>
 
           <ul class="pill-row">
-            <li>FastAPI</li>
-            <li>TensorFlow</li>
-            <li>Scikit-learn</li>
-            <li>Angular</li>
-            <li>PostgreSQL</li>
+            <li>FastAPI</li><li>TensorFlow</li><li>Scikit-learn</li><li>Angular</li><li>PostgreSQL</li>
           </ul>
         </aside>
       </div>
@@ -482,20 +552,27 @@
     <!-- PROJECTS -->
     <section id="projects" class="section">
       <div class="container">
-        <h2 class="section-title">Featured Project</h2>
-        <p class="section-subtitle">
-          Main product I’m currently developing, combining backend, data engineering,
-          machine learning and frontend — plus an internal assistant for faster iteration.
+        <h2 class="section-title en">Featured Project</h2>
+        <h2 class="section-title es">Proyecto destacado</h2>
+
+        <p class="section-subtitle en">
+          Main product I’m currently developing, combining backend, data engineering, machine learning and frontend —
+          plus an internal assistant for faster iteration.
+        </p>
+        <p class="section-subtitle es">
+          Producto principal que estoy desarrollando: backend, ingeniería de datos, machine learning y frontend —
+          más un asistente interno para iterar más rápido.
         </p>
 
         <div class="projects-grid">
-          <!-- PlayWin (now contains ALL screenshots + explanation) -->
+          <!-- PlayWin (contains ALL screenshots + bilingual explanation) -->
           <article class="card pad stack">
             <span class="badge">PlayWin</span>
 
             <div>
               <h3 class="project-title">PlayWin – Crypto Forecasting &amp; Insights Platform</h3>
-              <p class="project-tags">FastAPI · TensorFlow · Scikit-Learn · Angular · PostgreSQL · Internal AI assistant</p>
+              <p class="project-tags en">FastAPI · TensorFlow · Scikit-Learn · Angular · PostgreSQL · Internal AI assistant</p>
+              <p class="project-tags es">FastAPI · TensorFlow · Scikit-Learn · Angular · PostgreSQL · Asistente interno</p>
             </div>
 
             <!-- PlayWin image: trust1.png (fallback trust.png) -->
@@ -508,76 +585,108 @@
                   onerror="this.onerror=null;this.src='./trust.png';"
                 />
               </a>
-              <figcaption>PlayWin preview. Click the image to open the live demo.</figcaption>
+              <figcaption class="en">PlayWin preview. Click the image to open the live demo.</figcaption>
+              <figcaption class="es">Vista previa de PlayWin. Haz clic para abrir el demo en vivo.</figcaption>
             </figure>
 
-            <p style="margin:0;color:var(--muted);">
+            <p class="en" style="margin:0;color:var(--muted);">
               Developing a web platform for crypto price forecasting and investing. It uses market APIs + enriched signals,
               feature engineering, and forecasting models to support short-term decisions.
             </p>
+            <p class="es" style="margin:0;color:var(--muted);">
+              Desarrollo una plataforma web para predicción de precios cripto e inversión. Usa APIs de mercado + señales
+              enriquecidas, feature engineering y modelos de predicción para decisiones de corto plazo.
+            </p>
 
-            <ul class="project-points">
+            <ul class="project-points en">
               <li>Data ingestion from market APIs + external signals.</li>
               <li>Feature engineering + forecasting models (short &amp; mid term).</li>
               <li>Angular dashboards (charts, filters, portfolio views).</li>
               <li>Internal assistant for interactive analysis, debugging, and experiments.</li>
             </ul>
 
-            <!-- Aegis screenshots moved HERE -->
-            <p class="shots-title">Internal assistant screenshots (modes & tools)</p>
+            <ul class="project-points es">
+              <li>Ingesta de datos desde APIs de mercado + señales externas.</li>
+              <li>Feature engineering + modelos de predicción (corto y mediano plazo).</li>
+              <li>Dashboards en Angular (gráficas, filtros, portafolio).</li>
+              <li>Asistente interno para análisis, debugging y experimentos.</li>
+            </ul>
+
+            <!-- Assistant screenshots moved HERE -->
+            <p class="shots-title en">Internal assistant screenshots (modes & tools)</p>
+            <p class="shots-title es">Capturas del asistente interno (modos y herramientas)</p>
+
             <div class="shot-row" aria-label="Assistant screenshots gallery">
               <a class="shot" href="./Aegis.png" target="_blank" rel="noreferrer">
                 <img src="./Aegis.png" alt="Assistant UI main screen" loading="lazy">
-                <span>Main UI</span>
+                <span class="en">Main UI</span><span class="es">UI principal</span>
               </a>
 
               <a class="shot" href="./aegiscode8.png" target="_blank" rel="noreferrer">
                 <img src="./aegiscode8.png" alt="Code mode screenshot" loading="lazy">
-                <span>Code / Debug</span>
+                <span class="en">Code / Debug</span><span class="es">Código / Debug</span>
               </a>
 
               <a class="shot" href="./CRYPTO.png" target="_blank" rel="noreferrer">
                 <img src="./CRYPTO.png" alt="Crypto mode screenshot" loading="lazy">
-                <span>Crypto mode</span>
+                <span class="en">Crypto mode</span><span class="es">Modo cripto</span>
               </a>
 
               <a class="shot" href="./crypto2.png" target="_blank" rel="noreferrer">
                 <img src="./crypto2.png" alt="Crypto list screenshot" loading="lazy">
-                <span>Predictions list (Δ)</span>
+                <span class="en">Predictions list (Δ)</span><span class="es">Lista predicciones (Δ)</span>
               </a>
 
               <a class="shot" href="./crypto3.png" target="_blank" rel="noreferrer">
                 <img src="./crypto3.png" alt="Accuracy stats screenshot" loading="lazy">
-                <span>Accuracy stats (Σ)</span>
+                <span class="en">Accuracy stats (Σ)</span><span class="es">Accuracy (Σ)</span>
               </a>
 
               <a class="shot" href="./aegispro3.png" target="_blank" rel="noreferrer">
                 <img src="./aegispro3.png" alt="Pro workflow screenshot" loading="lazy">
-                <span>Pro workflow</span>
+                <span class="en">Pro workflow</span><span class="es">Flujo pro</span>
               </a>
 
               <a class="shot" href="./aegisprohelp.png" target="_blank" rel="noreferrer">
                 <img src="./aegisprohelp.png" alt="Help commands screenshot" loading="lazy">
-                <span>Help / Commands</span>
+                <span class="en">Help / Commands</span><span class="es">Ayuda / Comandos</span>
               </a>
             </div>
 
-            <!-- Your long explanation -->
+            <!-- Modes & commands: bilingual -->
             <details class="details">
-              <summary>Assistant modes & commands (Spanish)</summary>
-              <p class="hint">Quick guide to features shown in the screenshots.</p>
-              <ul>
+              <summary>
+                <span class="en">Assistant modes & commands</span>
+                <span class="es">Modos y comandos del asistente</span>
+              </summary>
+
+              <p class="hint en">Quick guide to features shown in the screenshots.</p>
+              <p class="hint es">Guía rápida de funciones mostradas en las capturas.</p>
+
+              <ul class="en">
+                <li><strong>Chat:</strong> normal conversation with memory + code/crypto modes.</li>
+                <li><strong>Web Mode 🌐:</strong> enable the globe button; use <code>/websearch</code> and show sources on the right.</li>
+                <li><strong>URL Mode 🔗:</strong> paste a URL; <code>/fetch_url</code> reads it and it appears in Sources (HTTPS; .onion only if Tor is active on the server).</li>
+                <li><strong>.onion safety:</strong> use Tor in an isolated/sandbox environment; firewall it, don’t download binaries or execute anything; assume honeypot/malware risk. If Tor isn’t available, fetch fails.</li>
+                <li><strong>Crypto Mode 🪙:</strong> type a symbol (e.g., BTCUSDT). H = horizon in minutes (H=1 ultra short, H=15 ≈ 15 min). Qty is amount for Buy/Sell and commands.</li>
+                <li><strong>Advanced crypto:</strong> Save stores/evaluates predictions after H; Alerts warns if result differs; Logs follows refresh; ≣ lists predictions with Δ; Σ shows accuracy by model.</li>
+                <li><strong>Image 🖼️:</strong> upload an image; <code>/analyze_image</code> runs local OCR (ES/EN).</li>
+                <li><strong>Tree 🗂️:</strong> diagram button → <code>/tools/tree</code>; open files with <code>/tools/content</code>.</li>
+                <li><strong>ZIP/Clone/Ingest:</strong> upload ZIP or clone repo and process with <code>/files/ingest</code> for RAG.</li>
+                <li><strong>Crypto refresh ⚡:</strong> trigger <code>/admin/refresh-crypto</code> to download market data and retrain models; check the log.</li>
+              </ul>
+
+              <ul class="es">
                 <li><strong>Chat:</strong> conversación normal con memoria y modo código/cripto.</li>
                 <li><strong>Modo Web 🌐:</strong> activa el botón globo; usa <code>/websearch</code> y muestra fuentes a la derecha.</li>
                 <li><strong>Modo URL 🔗:</strong> pega una URL; <code>/fetch_url</code> la lee y aparece en Fuentes (HTTPS; .onion solo si Tor está activo en el servidor).</li>
                 <li><strong>Seguridad .onion:</strong> usa Tor en un entorno aislado/sandbox; protege con firewall, no descargues binarios ni ejecutes nada; asume riesgo de honeypots/malware. Si Tor no está disponible, el fetch fallará.</li>
                 <li><strong>Modo Cripto 🪙:</strong> escribe un símbolo (ej: BTCUSDT). H = horizonte en minutos (H=1 ultra corto, H=15 ≈ 15 min). Qty es la cantidad para Buy/Sell y comandos.</li>
-                <li><strong>Cripto avanzado:</strong> Save guarda/evalúa predicciones al pasar H; Alerts avisa si el resultado difiere; Logs sigue el refresh; ≣ lista predicciones con Δ; Σ muestra accuracy por modelo. Comandos: <code>evaluate [N] [symbol]</code>, <code>evaluate stats [N] [symbol]</code>, “buy 0.01 btc” / “sell 1 ethusdt”.</li>
+                <li><strong>Cripto avanzado:</strong> Save guarda/evalúa predicciones al pasar H; Alerts avisa si el resultado difiere; Logs sigue el refresh; ≣ lista predicciones con Δ; Σ muestra accuracy por modelo.</li>
                 <li><strong>Imagen 🖼️:</strong> sube una imagen; <code>/analyze_image</code> hace OCR local (ES/EN).</li>
                 <li><strong>Árbol 🗂️:</strong> botón diagrama → <code>/tools/tree</code>; abre archivos con <code>/tools/content</code>.</li>
                 <li><strong>ZIP/Clone/Ingest:</strong> subir ZIP o clonar repo y procesar con <code>/files/ingest</code> para RAG.</li>
-                <li><strong>Refresh cripto ⚡:</strong> dispara <code>/admin/refresh-crypto</code>. Descarga market data y entrena modelos en segundo plano; revisa el log.</li>
-                <li><strong>Web/onion:</strong> URLs HTTP/HTTPS y .onion vía Tor si el servidor lo tiene activo; la búsqueda web usa HTTP/HTTPS estándar.</li>
+                <li><strong>Refresh cripto ⚡:</strong> dispara <code>/admin/refresh-crypto</code>. Descarga market data y entrena modelos; revisa el log.</li>
               </ul>
             </details>
 
@@ -593,64 +702,144 @@
       </div>
     </section>
 
-    <!-- EXPERIENCE -->
+    <!-- EXPERIENCE (expanded with ALL CV jobs) -->
     <section id="experience" class="section">
       <div class="container">
-        <h2 class="section-title">Experience</h2>
-        <p class="section-subtitle">Professional experience where I’ve applied full-stack development, data and cloud skills.</p>
+        <h2 class="section-title en">Experience</h2>
+        <h2 class="section-title es">Experiencia</h2>
 
-        <div style="display:grid;gap:1rem;">
+        <p class="section-subtitle en">Professional experience where I’ve applied full-stack development, data and cloud skills.</p>
+        <p class="section-subtitle es">Experiencia profesional donde he aplicado desarrollo full-stack, datos y nube.</p>
+
+        <div class="timeline">
           <article class="card pad">
-            <div style="display:flex;justify-content:space-between;gap:1rem;flex-wrap:wrap;align-items:baseline;">
+            <div class="exp-head">
               <h3 style="margin:0;font-size:1.05rem;">PlayWin | Software Developer</h3>
-              <span style="color:var(--muted2);font-weight:900;">01/2025 – Present</span>
+              <span class="dates">01/2025 – Present</span>
             </div>
-            <p style="margin:.6rem 0 0 0;color:var(--muted);">
-              Developing a web platform for crypto price forecasting and investing. Tech: FastAPI, TensorFlow, Scikit-learn, Angular, PostgreSQL.
+            <p class="en" style="margin:.6rem 0 0 0;color:var(--muted);">
+              Developing a crypto forecasting + investing platform using data pipelines, scraping and market APIs (CoinGecko/Binance),
+              plus external signals. Tech: FastAPI, TensorFlow, Scikit-learn, Angular, PostgreSQL. Building a chatbot assistant.
+            </p>
+            <p class="es" style="margin:.6rem 0 0 0;color:var(--muted);">
+              Desarrollo una plataforma de predicción e inversión cripto con pipelines de datos, scraping y APIs de mercado (CoinGecko/Binance),
+              más señales externas. Tech: FastAPI, TensorFlow, Scikit-learn, Angular, PostgreSQL. Construyendo un asistente tipo chatbot.
             </p>
           </article>
 
           <article class="card pad">
-            <div style="display:flex;justify-content:space-between;gap:1rem;flex-wrap:wrap;align-items:baseline;">
-              <h3 style="margin:0;font-size:1.05rem;">JC CODE | Software Developer</h3>
-              <span style="color:var(--muted2);font-weight:900;">02/2024 – 07/2024</span>
+            <div class="exp-head">
+              <h3 style="margin:0;font-size:1.05rem;">TASS TECHNOLOGIES | Fullstack Dev</h3>
+              <span class="dates">09/2025 – 11/2025</span>
             </div>
-            <p style="margin:.6rem 0 0 0;color:var(--muted);">
-              Built a business management system for a casino using Django + Angular (Scrum), improving operational efficiency and reporting.
+            <p class="en" style="margin:.6rem 0 0 0;color:var(--muted);">
+              Full-stack development using SCSS, Angular, Vue, Python, Django, Docker, PostgreSQL, GitHub and Next.js.
+            </p>
+            <p class="es" style="margin:.6rem 0 0 0;color:var(--muted);">
+              Desarrollo full-stack con SCSS, Angular, Vue, Python, Django, Docker, PostgreSQL, GitHub y Next.js.
+            </p>
+          </article>
+
+          <article class="card pad">
+            <div class="exp-head">
+              <h3 style="margin:0;font-size:1.05rem;">JC CODE | Software Developer</h3>
+              <span class="dates">02/2024 – 07/2024</span>
+            </div>
+            <p class="en" style="margin:.6rem 0 0 0;color:var(--muted);">
+              Built a business management system for a casino (Django + Angular, Scrum). Improved operational efficiency and reporting,
+              contributing to a ~30% reduction in decision-making time.
+            </p>
+            <p class="es" style="margin:.6rem 0 0 0;color:var(--muted);">
+              Construí un sistema de gestión para un casino (Django + Angular, Scrum). Mejoró eficiencia operativa y reporting,
+              contribuyendo a ~30% menos tiempo de toma de decisiones.
+            </p>
+          </article>
+
+          <article class="card pad">
+            <div class="exp-head">
+              <h3 style="margin:0;font-size:1.05rem;">Restaurante Carbon | Software Developer</h3>
+              <span class="dates">06/2023 – 12/2023</span>
+            </div>
+            <p class="en" style="margin:.6rem 0 0 0;color:var(--muted);">
+              Built a Flutter mobile app for basic inventory and operational calculations, plus a web platform (Java, React, MySQL)
+              for dynamic menu, product visualization and order management.
+            </p>
+            <p class="es" style="margin:.6rem 0 0 0;color:var(--muted);">
+              Creé una app móvil en Flutter para inventarios y cálculos operativos, y una plataforma web (Java, React, MySQL)
+              para menú dinámico, visualización de productos y gestión de pedidos.
             </p>
           </article>
         </div>
       </div>
     </section>
 
-    <!-- ABOUT -->
+    <!-- ABOUT (expanded with CV skills + certifications) -->
     <section id="about" class="section">
       <div class="container">
         <div class="about-grid">
           <article class="card pad">
-            <h2 class="section-title">About Me</h2>
-            <p style="margin:0;color:var(--text);font-weight:900;">
-              Full-stack developer focused on web development, data science, and machine learning.
+            <h2 class="section-title en">About Me</h2>
+            <h2 class="section-title es">Sobre mí</h2>
+
+            <p class="en" style="margin:0;color:var(--text);font-weight:950;">
+              Full-Stack Developer specializing in web development, data science and machine learning.
             </p>
-            <p style="margin:.8rem 0 0 0;color:var(--muted);">
-              Comfortable working end-to-end: requirements → data modeling → APIs → UIs → Docker deployments.
+            <p class="es" style="margin:0;color:var(--text);font-weight:950;">
+              Desarrollador Full-Stack enfocado en desarrollo web, ciencia de datos y machine learning.
+            </p>
+
+            <p class="en" style="margin:.8rem 0 0 0;color:var(--muted);">
+              I’m disciplined, persistent, and goal-oriented. I like turning messy requirements into clean APIs, dashboards and systems.
+            </p>
+            <p class="es" style="margin:.8rem 0 0 0;color:var(--muted);">
+              Soy disciplinado, persistente y orientado a objetivos. Me gusta convertir requerimientos “enredados” en APIs y sistemas claros.
+            </p>
+
+            <p class="en" style="margin:.8rem 0 0 0;color:var(--muted);">
+              Comfortable working end-to-end: requirements → data modeling → APIs → UI → Docker deployments (AWS basics).
+            </p>
+            <p class="es" style="margin:.8rem 0 0 0;color:var(--muted);">
+              Cómodo trabajando end-to-end: requerimientos → modelado de datos → APIs → UI → despliegues con Docker (AWS básico).
             </p>
           </article>
 
           <aside class="card pad">
-            <h3 style="margin:0 0 .6rem 0;">Tech Stack</h3>
+            <h3 class="en" style="margin:0 0 .6rem 0;">Tech Stack</h3>
+            <h3 class="es" style="margin:0 0 .6rem 0;">Stack técnico</h3>
             <ul class="chips">
               <li>Python (FastAPI, Django, DS/ML)</li>
+              <li>Java (Spring Boot)</li>
+              <li>Flutter</li>
               <li>Angular / React</li>
               <li>PostgreSQL / MySQL</li>
               <li>Docker</li>
-              <li>AWS basics</li>
+              <li>AWS (Basics)</li>
             </ul>
 
-            <h3 style="margin:0 0 .6rem 0;">Education</h3>
+            <h3 class="en" style="margin:0 0 .6rem 0;">Strengths</h3>
+            <h3 class="es" style="margin:0 0 .6rem 0;">Fortalezas</h3>
+            <ul class="chips">
+              <li class="en">Leadership</li><li class="es">Liderazgo</li>
+              <li class="en">Teamwork</li><li class="es">Trabajo en equipo</li>
+              <li class="en">Self-control</li><li class="es">Autocontrol</li>
+              <li class="en">Proactivity</li><li class="es">Proactividad</li>
+              <li>English B2+</li>
+            </ul>
+
+            <h3 class="en" style="margin:0 0 .6rem 0;">Education & Certifications</h3>
+            <h3 class="es" style="margin:0 0 .6rem 0;">Educación y certificaciones</h3>
             <ul class="list">
-              <li>Software Development Technician (UPB - 2024)</li>
-              <li>Quality Software Development (SENA, 2019)</li>
+              <li class="en">Software Development Technician (UPB – 2024)</li>
+              <li class="es">Técnico en Desarrollo de Software (UPB – 2024)</li>
+
+              <li class="en">Quality Software Development (SENA – 2019)</li>
+              <li class="es">Calidad en Desarrollo de Software (SENA – 2019)</li>
+
+              <li class="en">AWS Fundamentals (Coursera)</li>
+              <li class="es">AWS Fundamentals (Coursera)</li>
+
+              <li class="en">Python on AWS (Coursera)</li>
+              <li class="es">Python on AWS (Coursera)</li>
             </ul>
           </aside>
         </div>
@@ -660,22 +849,30 @@
     <!-- CONTACT -->
     <section id="contact" class="section">
       <div class="container">
-        <h2 class="section-title">Contact</h2>
-        <p class="section-subtitle">Open to remote roles, collaborations and interesting problems around data, crypto and full-stack development.</p>
+        <h2 class="section-title en">Contact</h2>
+        <h2 class="section-title es">Contacto</h2>
+
+        <p class="section-subtitle en">Open to remote roles, collaborations and interesting problems around data, crypto and full-stack development.</p>
+        <p class="section-subtitle es">Abierto a roles remotos, colaboraciones y problemas interesantes de datos, cripto y desarrollo full-stack.</p>
 
         <div class="contact-grid">
           <div class="card pad contact-card">
-            <h3 style="margin:0 0 .6rem 0;">Let’s talk</h3>
-            <p><strong>Location:</strong> Medellín, Antioquia, Colombia</p>
-            <p><strong>Phone:</strong> <a href="tel:+573104920884">+57 3104920884</a></p>
+            <h3 class="en" style="margin:0 0 .6rem 0;">Let’s talk</h3>
+            <h3 class="es" style="margin:0 0 .6rem 0;">Hablemos</h3>
+
+            <p><strong class="en">Location:</strong><strong class="es">Ubicación:</strong> Medellín, Antioquia, Colombia</p>
+            <p><strong class="en">Phone:</strong><strong class="es">Teléfono:</strong> <a href="tel:+573104920884">+57 3104920884</a></p>
             <p><strong>Email:</strong> <a href="mailto:grajalesj708@gmail.com">grajalesj708@gmail.com</a></p>
           </div>
 
           <div class="card pad contact-card">
-            <h3 style="margin:0 0 .6rem 0;">Online</h3>
+            <h3 class="en" style="margin:0 0 .6rem 0;">Online</h3>
+            <h3 class="es" style="margin:0 0 .6rem 0;">En línea</h3>
+
             <p><strong>LinkedIn:</strong> <a href="https://www.linkedin.com/in/jeg-v75fullstack" target="_blank" rel="noreferrer">jeg-v75fullstack</a></p>
             <p><strong>GitHub:</strong> <a href="https://github.com/fredoomsearch" target="_blank" rel="noreferrer">fredoomsearch</a></p>
-            <p><strong>Demo:</strong> <a href="https://dtapppyfront.onrender.com/" target="_blank" rel="noreferrer">dtapppyfront.onrender.com</a></p>
+            <p><strong class="en">Portfolio:</strong><strong class="es">Portafolio:</strong> <a href="https://portafolio-ypee.onrender.com/" target="_blank" rel="noreferrer">portafolio-ypee.onrender.com</a></p>
+            <p><strong class="en">Demo:</strong><strong class="es">Demo:</strong> <a href="https://dtapppyfront.onrender.com/" target="_blank" rel="noreferrer">dtapppyfront.onrender.com</a></p>
           </div>
         </div>
       </div>
@@ -684,14 +881,52 @@
 
   <footer class="site-footer">
     <div class="container footer-inner">
-      <p>© <span id="year"></span> Julián Esteban Grajales Vergara</p>
-      <p>Built with HTML &amp; CSS and deployed online.</p>
+      <p class="en">© <span id="year"></span> Julián Esteban Grajales Vergara</p>
+      <p class="es">© <span id="year2"></span> Julián Esteban Grajales Vergara</p>
+
+      <p class="en">Built with HTML &amp; CSS and deployed online.</p>
+      <p class="es">Hecho con HTML &amp; CSS y desplegado en línea.</p>
     </div>
   </footer>
 
   <script>
-    document.getElementById("year").textContent = new Date().getFullYear();
+    // Year
+    const y = new Date().getFullYear();
+    document.getElementById("year").textContent = y;
+    document.getElementById("year2").textContent = y;
+
+    // Language toggle
+    function setLang(lang) {
+      document.body.classList.toggle("lang-en", lang === "en");
+      document.body.classList.toggle("lang-es", lang === "es");
+      document.documentElement.lang = lang;
+      localStorage.setItem("lang", lang);
+
+      document.querySelectorAll(".lang-btn").forEach(btn => {
+        btn.classList.toggle("active", btn.dataset.lang === lang);
+      });
+    }
+
+    const saved = localStorage.getItem("lang") || "en";
+    setLang(saved);
+
+    document.querySelectorAll(".lang-btn").forEach(btn => {
+      btn.addEventListener("click", () => setLang(btn.dataset.lang));
+    });
   </script>
+
+  <!--
+    IMPORTANT:
+    Put these images in the SAME folder as index.html (case-sensitive!):
+    - trust1.png (or trust.png fallback)
+    - Aegis.png
+    - aegiscode8.png
+    - CRYPTO.png
+    - crypto2.png
+    - crypto3.png
+    - aegispro3.png
+    - aegisprohelp.png
+  -->
 </body>
 </html>
 
