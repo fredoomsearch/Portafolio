@@ -291,6 +291,17 @@
       object-fit: cover;
       object-position: top;
     }
+
+    /* ✅ Video styling added */
+    figure.media video{
+      width: 100%;
+      height: 230px;
+      object-fit: cover;
+      object-position: top;
+      background: #000;
+      display: block;
+    }
+
     figure.media figcaption{
       padding: .75rem .9rem;
       color: var(--muted2);
@@ -466,6 +477,9 @@
     @media (max-width: 900px){
       .hero-grid, .about-grid { grid-template-columns: 1fr; }
       figure.media img{ height: 210px; }
+
+      /* ✅ Video height on mobile */
+      figure.media video{ height: 210px; }
     }
   </style>
 </head>
@@ -587,6 +601,16 @@
               </a>
               <figcaption class="en">PlayWin preview. Click the image to open the live demo.</figcaption>
               <figcaption class="es">Vista previa de PlayWin. Haz clic para abrir el demo en vivo.</figcaption>
+            </figure>
+
+            <!-- ✅ MP4 video added HERE -->
+            <figure class="media">
+              <video controls playsinline preload="metadata" poster="./Aegis.png">
+                <source src="./aegispro_9ieOQcJa.mp4" type="video/mp4" />
+                Your browser does not support the video tag.
+              </video>
+              <figcaption class="en">Short demo video (workflow + features).</figcaption>
+              <figcaption class="es">Video corto de demo (flujo + funciones).</figcaption>
             </figure>
 
             <p class="en" style="margin:0;color:var(--muted);">
@@ -917,7 +941,7 @@
 
   <!--
     IMPORTANT:
-    Put these images in the SAME folder as index.html (case-sensitive!):
+    Put these images/videos in the SAME folder as index.html (case-sensitive!):
     - trust1.png (or trust.png fallback)
     - Aegis.png
     - aegiscode8.png
@@ -926,9 +950,11 @@
     - crypto3.png
     - aegispro3.png
     - aegisprohelp.png
+    - aegispro_9ieOQcJa.mp4
   -->
 </body>
 </html>
+
 
 
 
