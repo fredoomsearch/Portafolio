@@ -239,7 +239,7 @@
       border-radius: 999px;
     }
 
-    /* Projects: single column */
+    /* Projects */
     .projects-grid{
       display:grid;
       grid-template-columns: 1fr;
@@ -508,34 +508,34 @@
         <h2 class="section-title es">Proyectos</h2>
 
         <p class="section-subtitle en">
-          Selected work combining backend engineering, data/ML, and product UI — with demos, repos, and short walkthroughs.
+          One ecosystem: <strong>PlayWin</strong> (crypto forecasting + dashboards) powered by <strong>Aegis</strong> (internal AI assistant for faster iteration, debugging and ops).
         </p>
         <p class="section-subtitle es">
-          Proyectos seleccionados combinando backend, datos/ML y UI — con demos, repos y walkthroughs.
+          Un ecosistema: <strong>PlayWin</strong> (predicción cripto + dashboards) potenciado por <strong>Aegis</strong> (asistente AI interno para acelerar iteración, debugging y operaciones).
         </p>
 
         <div class="projects-grid">
-
-          <!-- AEGIS -->
           <article class="card pad stack">
-            <span class="badge">AEGIS</span>
+            <span class="badge">AEGIS + PLAYWIN</span>
 
             <div>
-              <h3 class="project-title">Aegis – Internal AI Assistant (RAG + Tools)</h3>
-              <p class="project-tags en">FastAPI · Repo ingestion (RAG) · Web/URL reading · Tools · Optional OCR</p>
-              <p class="project-tags es">FastAPI · Ingesta (RAG) · Lectura Web/URL · Tools · OCR opcional</p>
+              <h3 class="project-title en">AI-assisted Crypto Forecasting Platform</h3>
+              <h3 class="project-title es">Plataforma Cripto con Predicción + Asistente AI</h3>
+
+              <p class="project-tags en">FastAPI · Angular · PostgreSQL · ML (training pipeline) · RAG assistant (repo ingestion + tools)</p>
+              <p class="project-tags es">FastAPI · Angular · PostgreSQL · ML (pipeline de entrenamiento) · Asistente RAG (ingesta del repo + tools)</p>
             </div>
 
             <ul class="project-points en">
-              <li>Repo ingestion + semantic search (RAG) for code Q&amp;A.</li>
-              <li>Web/URL reading with sources and citations.</li>
-              <li>Tool endpoints to browse repo files.</li>
+              <li><strong>PlayWin</strong> provides market ingestion → feature engineering → model training → prediction APIs → dashboards.</li>
+              <li><strong>Aegis</strong> is the internal assistant that searches your codebase (RAG) + runs tools (web/read/ops) to speed up building & debugging.</li>
+              <li>When you ask for crypto insight, <strong>Aegis can call PlayWin prediction endpoints</strong> and explain the result with context.</li>
             </ul>
 
             <ul class="project-points es">
-              <li>Ingesta + búsqueda semántica (RAG) para Q&amp;A sobre código.</li>
-              <li>Lectura Web/URL con fuentes y citas.</li>
-              <li>Tools para explorar archivos del repo.</li>
+              <li><strong>PlayWin</strong> hace ingesta de mercado → features → entrenamiento → APIs de predicción → dashboards.</li>
+              <li><strong>Aegis</strong> es el asistente interno que busca en el repo (RAG) + ejecuta tools (web/lectura/ops) para acelerar desarrollo y debugging.</li>
+              <li>Cuando preguntas de cripto, <strong>Aegis puede llamar los endpoints de predicción de PlayWin</strong> y explicar el resultado con contexto.</li>
             </ul>
 
             <div class="media-grid">
@@ -544,8 +544,8 @@
                   <source src="./aegispro_9ieOQcJa.mp4" type="video/mp4" />
                   Your browser does not support the video tag.
                 </video>
-                <figcaption class="en">Aegis demo #1 (workflow + features).</figcaption>
-                <figcaption class="es">Demo Aegis #1 (flujo + funciones).</figcaption>
+                <figcaption class="en">Aegis demo #1 — repo ingestion + workflow.</figcaption>
+                <figcaption class="es">Demo Aegis #1 — ingesta del repo + flujo.</figcaption>
               </figure>
 
               <figure class="media">
@@ -553,44 +553,14 @@
                   <source src="./awesomescreenshot-1-11-2026-7-22-50pm_7CkQrj0q.mp4" type="video/mp4" />
                   Your browser does not support the video tag.
                 </video>
-                <figcaption class="en">Aegis demo #2 (Awesome Screenshot).</figcaption>
-                <figcaption class="es">Demo Aegis #2 (Awesome Screenshot).</figcaption>
+                <figcaption class="en">Aegis demo #2 — practical usage.</figcaption>
+                <figcaption class="es">Demo Aegis #2 — uso práctico.</figcaption>
               </figure>
-            </div>
 
-            <div class="links">
-              <a class="link" href="https://aegischat.onrender.com/" target="_blank" rel="noreferrer">Aegis demo</a>
-              <a class="link" href="https://github.com/fredoomsearch/AegisChat" target="_blank" rel="noreferrer">Aegis source code (GitHub)</a>
-            </div>
-          </article>
-
-          <!-- PLAYWIN / CRYPTO -->
-          <article class="card pad stack">
-            <span class="badge">PlayWin</span>
-
-            <div>
-              <h3 class="project-title">PlayWin – Crypto Forecasting &amp; Insights Platform</h3>
-              <p class="project-tags en">FastAPI · TensorFlow · Scikit-Learn · Angular · PostgreSQL</p>
-              <p class="project-tags es">FastAPI · TensorFlow · Scikit-Learn · Angular · PostgreSQL</p>
-            </div>
-
-            <ul class="project-points en">
-              <li>Market APIs + external signals → enriched datasets.</li>
-              <li>Forecasting models + evaluation tracking.</li>
-              <li>Angular dashboards: charts, filters, portfolio views.</li>
-            </ul>
-
-            <ul class="project-points es">
-              <li>APIs de mercado + señales externas → datos enriquecidos.</li>
-              <li>Modelos de predicción + seguimiento de evaluación.</li>
-              <li>Dashboards en Angular: gráficas, filtros, portafolio.</li>
-            </ul>
-
-            <div class="media-grid">
               <figure class="media">
-                <img src="./CRYPTO.png" alt="PlayWin / Crypto app UI snapshot" loading="lazy" />
-                <figcaption class="en">PlayWin / Crypto app (UI snapshot).</figcaption>
-                <figcaption class="es">PlayWin / App cripto (captura de UI).</figcaption>
+                <img src="./CRYPTO.png" alt="PlayWin dashboard snapshot" loading="lazy" />
+                <figcaption class="en">PlayWin — dashboard snapshot (UI).</figcaption>
+                <figcaption class="es">PlayWin — captura del dashboard (UI).</figcaption>
               </figure>
 
               <figure class="media">
@@ -603,71 +573,50 @@
               </figure>
             </div>
 
-            <!-- ✅ Binance snapshots (correct place: BODY, not inside <style>) -->
-            <div class="media-grid" style="margin-top:1rem;">
-              <figure class="media">
-                <img src="./BNBUSDT.png" alt="BNBUSDT chart" loading="lazy" />
-                <figcaption class="en">BNBUSDT snapshot</figcaption>
-                <figcaption class="es">Captura BNBUSDT</figcaption>
-              </figure>
-
-              <figure class="media">
-                <img src="./BTCUSDT.png" alt="BTCUSDT chart" loading="lazy" />
-                <figcaption class="en">BTCUSDT snapshot</figcaption>
-                <figcaption class="es">Captura BTCUSDT</figcaption>
-              </figure>
-
-              <figure class="media">
-                <img src="./ETHUSDT.png" alt="ETHUSDT chart" loading="lazy" />
-                <figcaption class="en">ETHUSDT snapshot</figcaption>
-                <figcaption class="es">Captura ETHUSDT</figcaption>
-              </figure>
-
-              <figure class="media">
-                <img src="./SOLUSDT.png" alt="SOLUSDT chart" loading="lazy" />
-                <figcaption class="en">SOLUSDT snapshot</figcaption>
-                <figcaption class="es">Captura SOLUSDT</figcaption>
-              </figure>
-            </div>
-
-            <p class="en" style="margin:0;color:var(--muted2);font-size:.92rem;">
-              If the video doesn’t load, open it directly: <a href="./TRUSTWIN.mp4" target="_blank" rel="noreferrer">TRUSTWIN.mp4</a>
-            </p>
-            <p class="es" style="margin:0;color:var(--muted2);font-size:.92rem;">
-              Si el video no carga, ábrelo directo: <a href="./TRUSTWIN.mp4" target="_blank" rel="noreferrer">TRUSTWIN.mp4</a>
-            </p>
-
             <details class="details">
               <summary>
-                <span class="en">About the “mixed conversation” responses</span>
-                <span class="es">Sobre respuestas “mezcladas”</span>
+                <span class="en">Charts (Binance snapshots)</span>
+                <span class="es">Gráficas (capturas Binance)</span>
               </summary>
 
-              <p class="hint en">
-                Responses are attached to the current session (conversation id). If you keep the same session, context persists and answers can look mixed.
-              </p>
-              <p class="hint es">
-                Las respuestas quedan ligadas a la sesión (conversation id). Si mantienes la misma sesión, el contexto persiste y puede verse mezclado.
-              </p>
+              <p class="hint en">These images must be in the same folder as <code>index.html</code> and the names must match exactly.</p>
+              <p class="hint es">Estas imágenes deben estar en la misma carpeta que <code>index.html</code> y los nombres deben coincidir exactamente.</p>
 
-              <ul class="en">
-                <li><strong>Reset cleanly:</strong> start a new conversation/session.</li>
-                <li><strong>Why it happens:</strong> session memory is intentional for continuity.</li>
-              </ul>
+              <div class="media-grid" style="margin-top:1rem;">
+                <figure class="media">
+                  <img src="./BNBUSDT.png" alt="BNBUSDT chart" loading="lazy" />
+                  <figcaption class="en">BNBUSDT snapshot</figcaption>
+                  <figcaption class="es">Captura BNBUSDT</figcaption>
+                </figure>
 
-              <ul class="es">
-                <li><strong>Reinicio limpio:</strong> inicia una nueva conversación/sesión.</li>
-                <li><strong>Por qué pasa:</strong> la memoria de sesión mantiene continuidad.</li>
-              </ul>
+                <figure class="media">
+                  <img src="./BTCUSDT.png" alt="BTCUSDT chart" loading="lazy" />
+                  <figcaption class="en">BTCUSDT snapshot</figcaption>
+                  <figcaption class="es">Captura BTCUSDT</figcaption>
+                </figure>
+
+                <figure class="media">
+                  <img src="./ETHUSDT.png" alt="ETHUSDT chart" loading="lazy" />
+                  <figcaption class="en">ETHUSDT snapshot</figcaption>
+                  <figcaption class="es">Captura ETHUSDT</figcaption>
+                </figure>
+
+                <figure class="media">
+                  <img src="./SOLUSDT.png" alt="SOLUSDT chart" loading="lazy" />
+                  <figcaption class="en">SOLUSDT snapshot</figcaption>
+                  <figcaption class="es">Captura SOLUSDT</figcaption>
+                </figure>
+              </div>
             </details>
 
             <div class="links">
-              <a class="link" href="https://dtapppyfront.onrender.com/" target="_blank" rel="noreferrer">Live demo</a>
-              <a class="link" href="https://github.com/fredoomsearch/DtappPy" target="_blank" rel="noreferrer">Backend repo (DtappPy)</a>
-              <a class="link" href="https://github.com/fredoomsearch/DtAPPpyFront" target="_blank" rel="noreferrer">Frontend repo (DtAPPpyFront)</a>
+              <a class="link" href="https://aegischat.onrender.com/" target="_blank" rel="noreferrer">Aegis demo</a>
+              <a class="link" href="https://github.com/fredoomsearch/AegisChat" target="_blank" rel="noreferrer">Aegis source code (GitHub)</a>
+              <a class="link" href="https://dtapppyfront.onrender.com/" target="_blank" rel="noreferrer">PlayWin live demo</a>
+              <a class="link" href="https://github.com/fredoomsearch/DtappPy" target="_blank" rel="noreferrer">PlayWin backend repo (DtappPy)</a>
+              <a class="link" href="https://github.com/fredoomsearch/DtAPPpyFront" target="_blank" rel="noreferrer">PlayWin frontend repo (DtappPyFront)</a>
             </div>
           </article>
-
         </div>
       </div>
     </section>
@@ -878,6 +827,12 @@
     - SOLUSDT.png
     - aegispro_9ieOQcJa.mp4
     - awesomescreenshot-1-11-2026-7-22-50pm_7CkQrj0q.mp4
+
+    DEBUG:
+    After deploy, test if images exist by opening directly in browser:
+    https://YOUR_DOMAIN/BNBUSDT.png
+    https://YOUR_DOMAIN/BTCUSDT.png
+    If it 404s => file not uploaded or name mismatch.
   -->
 </body>
 </html>
