@@ -39,6 +39,7 @@
     body.lang-en .es { display: none !important; }
     body.lang-es .en { display: none !important; }
 
+    img { display:block; width:100%; }
     a { color: inherit; }
     code { font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace; }
 
@@ -277,7 +278,7 @@
     }
     .project-points li{ margin:.35rem 0; }
 
-    /* Media (supports image + video) */
+    /* Media */
     figure.media{
       margin:0;
       border-radius: 14px;
@@ -285,25 +286,21 @@
       border: 1px solid var(--border);
       background: rgba(255,255,255,.06);
     }
-
     figure.media img{
-      width: 100%;
-      height: 230px;
+      width:100%;
+      height: 260px;
       object-fit: cover;
-      object-position: top;
+      object-position: center;
       display:block;
-      background: #000;
     }
-
     figure.media video{
       width: 100%;
-      height: 230px;
+      height: 260px;
       object-fit: cover;
       object-position: top;
       background: #000;
       display: block;
     }
-
     figure.media figcaption{
       padding: .75rem .9rem;
       color: var(--muted2);
@@ -427,8 +424,7 @@
 
     @media (max-width: 900px){
       .hero-grid, .about-grid { grid-template-columns: 1fr; }
-      figure.media img{ height: 210px; }
-      figure.media video{ height: 210px; }
+      figure.media img, figure.media video{ height: 220px; }
     }
   </style>
 </head>
@@ -492,17 +488,17 @@
           <p class="en" style="margin:0;color:var(--muted2);font-weight:900;letter-spacing:.02em;">Current focus</p>
           <p class="es" style="margin:0;color:var(--muted2);font-weight:900;letter-spacing:.02em;">Enfoque actual</p>
 
-          <h3 style="margin:.35rem 0 0 0;">Aegis – Internal AI Assistant</h3>
+          <h3 style="margin:.35rem 0 0 0;">Aegis + PlayWin</h3>
 
           <p class="en" style="margin:.6rem 0 0 0;color:var(--muted);">
-            An internal assistant for faster debugging, repo Q&amp;A (RAG), web/URL reading, and tool-driven workflows for dev + data tasks.
+            Building an internal AI assistant (RAG + tools) and a crypto forecasting platform with dashboards and enriched data pipelines.
           </p>
           <p class="es" style="margin:.6rem 0 0 0;color:var(--muted);">
-            Un asistente interno para acelerar debugging, Q&amp;A sobre repos (RAG), lectura web/URLs y flujos con herramientas para tareas de dev + datos.
+            Construyendo un asistente interno (RAG + herramientas) y una plataforma de predicción cripto con dashboards y pipelines enriquecidos.
           </p>
 
           <ul class="pill-row">
-            <li>FastAPI</li><li>RAG</li><li>Embeddings</li><li>PostgreSQL</li><li>Docker</li>
+            <li>FastAPI</li><li>Angular</li><li>RAG</li><li>ML</li><li>PostgreSQL</li><li>Docker</li>
           </ul>
         </aside>
       </div>
@@ -515,83 +511,13 @@
         <h2 class="section-title es">Proyectos</h2>
 
         <p class="section-subtitle en">
-          Selected work combining backend engineering, data/ML, and practical demos.
+          Selected work combining backend engineering, data/ML, and product UI — with demos, repos, and short walkthroughs.
         </p>
         <p class="section-subtitle es">
-          Proyectos seleccionados combinando backend, datos/ML y demos reales.
+          Proyectos seleccionados combinando backend, datos/ML y UI — con demos, repos y walkthroughs.
         </p>
 
         <div class="projects-grid">
-          <!-- PLAYWIN (Crypto app) -->
-          <article class="card pad stack">
-            <span class="badge">PLAYWIN</span>
-
-            <div>
-              <h3 class="project-title">PlayWin – Crypto Forecasting &amp; Insights Platform</h3>
-              <p class="project-tags en">FastAPI · TensorFlow · Scikit-Learn · Angular · PostgreSQL</p>
-              <p class="project-tags es">FastAPI · TensorFlow · Scikit-Learn · Angular · PostgreSQL</p>
-            </div>
-
-            <p class="en" style="margin:0;color:var(--muted);">
-              A web platform for crypto price forecasting and investing. It combines market APIs + enriched signals, feature engineering,
-              and forecasting models to support short-term decisions.
-            </p>
-            <p class="es" style="margin:0;color:var(--muted);">
-              Plataforma web para predicción de precios cripto e inversión. Combina APIs de mercado + señales enriquecidas,
-              feature engineering y modelos de predicción para decisiones de corto plazo.
-            </p>
-
-            <ul class="project-points en">
-              <li>Market ingestion (APIs) + feature engineering pipeline.</li>
-              <li>Forecasting models (short &amp; mid term) and evaluation tracking.</li>
-              <li>Angular dashboards: charts, filters, portfolio-style views.</li>
-            </ul>
-
-            <ul class="project-points es">
-              <li>Ingesta de mercado (APIs) + pipeline de features.</li>
-              <li>Modelos de predicción (corto/mediano plazo) y métricas.</li>
-              <li>Dashboards en Angular: gráficas, filtros, vistas tipo portafolio.</li>
-            </ul>
-
-            <!-- PlayWin UI screenshot (image) -->
-            <figure class="media">
-              <img src="./CRYPTO.png" alt="PlayWin / Crypto app UI snapshot" />
-              <figcaption class="en">PlayWin / Crypto app (UI snapshot).</figcaption>
-              <figcaption class="es">PlayWin / App cripto (captura de UI).</figcaption>
-            </figure>
-
-            <!-- ✅ TrustWin video ONLY (below the crypto app) -->
-            <figure class="media">
-              <video controls playsinline preload="metadata">
-                <source src="./trustwin.mp4" type="video/mp4" />
-                Your browser does not support the video tag.
-              </video>
-              <figcaption class="en">Trust Win – short walkthrough (video).</figcaption>
-              <figcaption class="es">Trust Win – walkthrough corto (video).</figcaption>
-            </figure>
-
-            <details class="details">
-              <summary>
-                <span class="en">About the “mixed conversation” responses</span>
-                <span class="es">Sobre las respuestas “mezcladas”</span>
-              </summary>
-
-              <p class="hint en">
-                The assistant can attach context from the current conversation/session. If the thread is getting noisy or mixed,
-                simply start a new conversation to reset context and keep answers clean.
-              </p>
-              <p class="hint es">
-                El asistente puede “enganchar” contexto de la conversación/sesión actual. Si el hilo se vuelve confuso o mezclado,
-                inicia una conversación nueva para reiniciar el contexto y mantener respuestas limpias.
-              </p>
-            </details>
-
-            <div class="links">
-              <a class="link" href="https://dtapppyfront.onrender.com/" target="_blank" rel="noreferrer">Live demo</a>
-              <a class="link" href="https://github.com/fredoomsearch/DtappPy" target="_blank" rel="noreferrer">Backend repo (DtappPy)</a>
-              <a class="link" href="https://github.com/fredoomsearch/DtAPPpyFront" target="_blank" rel="noreferrer">Frontend repo (DtAPPpyFront)</a>
-            </div>
-          </article>
 
           <!-- AEGIS -->
           <article class="card pad stack">
@@ -604,12 +530,12 @@
             </div>
 
             <p class="en" style="margin:0;color:var(--muted);">
-              A developer-focused assistant that can ingest repos, answer questions with sources, fetch URLs,
-              and run tool-driven workflows to speed up debugging and experimentation.
+              A developer-focused assistant that can ingest repos, answer questions with sources, fetch URLs, and run tool-driven workflows
+              to speed up debugging and experimentation.
             </p>
             <p class="es" style="margin:0;color:var(--muted);">
-              Un asistente enfocado en desarrollo que puede ingerir repos, responder con fuentes, leer URLs
-              y ejecutar flujos con herramientas para acelerar debugging y experimentación.
+              Un asistente enfocado en desarrollo que puede ingerir repos, responder con fuentes, leer URLs y ejecutar flujos con herramientas
+              para acelerar debugging y experimentación.
             </p>
 
             <ul class="project-points en">
@@ -626,7 +552,7 @@
               <li>OCR de imágenes opcional para extraer texto rápido.</li>
             </ul>
 
-            <!-- ✅ ONLY TWO AEGIS VIDEOS -->
+            <!-- ✅ AEGIS: ONLY TWO VIDEOS -->
             <figure class="media">
               <video controls playsinline preload="metadata">
                 <source src="./aegispro_9ieOQcJa.mp4" type="video/mp4" />
@@ -642,7 +568,7 @@
                 Your browser does not support the video tag.
               </video>
               <figcaption class="en">Aegis demo #2 (Awesome Screenshot recording).</figcaption>
-              <figcaption class="es">Demo Aegis #2 (grabación de Awesome Screenshot).</figcaption>
+              <figcaption class="es">Demo Aegis #2 (grabación Awesome Screenshot).</figcaption>
             </figure>
 
             <details class="details">
@@ -655,21 +581,17 @@
               <p class="hint es">Guía rápida de funciones mostradas en los videos.</p>
 
               <ul class="en">
-                <li><strong>Chat:</strong> normal conversation with memory + code/crypto modes.</li>
-                <li><strong>Web Mode 🌐:</strong> use <code>/websearch</code> and show sources.</li>
-                <li><strong>URL Mode 🔗:</strong> paste a URL; <code>/fetch_url</code> reads it.</li>
-                <li><strong>Image 🖼️:</strong> upload an image; <code>/analyze_image</code> runs OCR (ES/EN).</li>
-                <li><strong>Tree 🗂️:</strong> diagram button → <code>/tools/tree</code>; open files with <code>/tools/content</code>.</li>
-                <li><strong>ZIP/Clone/Ingest:</strong> upload ZIP or clone repo and process with <code>/files/ingest</code> for RAG.</li>
+                <li><strong>Repo ingestion (RAG):</strong> upload a ZIP or ingest a repo for searchable Q&amp;A.</li>
+                <li><strong>Web/URL Mode:</strong> read sources and show citations.</li>
+                <li><strong>Tools:</strong> browse project files (tree/content endpoints).</li>
+                <li><strong>Image OCR:</strong> extract text from images quickly.</li>
               </ul>
 
               <ul class="es">
-                <li><strong>Chat:</strong> conversación normal con memoria y modo código/cripto.</li>
-                <li><strong>Modo Web 🌐:</strong> usa <code>/websearch</code> y muestra fuentes.</li>
-                <li><strong>Modo URL 🔗:</strong> pega una URL; <code>/fetch_url</code> la lee.</li>
-                <li><strong>Imagen 🖼️:</strong> sube una imagen; <code>/analyze_image</code> hace OCR (ES/EN).</li>
-                <li><strong>Árbol 🗂️:</strong> botón diagrama → <code>/tools/tree</code>; abre con <code>/tools/content</code>.</li>
-                <li><strong>ZIP/Clone/Ingest:</strong> subir ZIP o clonar repo y procesar con <code>/files/ingest</code> para RAG.</li>
+                <li><strong>Ingesta (RAG):</strong> sube un ZIP o ingiere un repo para Q&amp;A con búsqueda.</li>
+                <li><strong>Modo Web/URL:</strong> lee fuentes y muestra citas.</li>
+                <li><strong>Herramientas:</strong> explora archivos del proyecto (tree/content).</li>
+                <li><strong>OCR de imágenes:</strong> extrae texto rápido.</li>
               </ul>
             </details>
 
@@ -678,46 +600,145 @@
               <a class="link" href="https://github.com/fredoomsearch/AegisChat" target="_blank" rel="noreferrer">Aegis source code (GitHub)</a>
             </div>
           </article>
+
+          <!-- PLAYWIN / CRYPTO -->
+          <article class="card pad stack">
+            <span class="badge">PlayWin</span>
+
+            <div>
+              <h3 class="project-title">PlayWin – Crypto Forecasting &amp; Insights Platform</h3>
+              <p class="project-tags en">FastAPI · TensorFlow · Scikit-Learn · Angular · PostgreSQL</p>
+              <p class="project-tags es">FastAPI · TensorFlow · Scikit-Learn · Angular · PostgreSQL</p>
+            </div>
+
+            <p class="en" style="margin:0;color:var(--muted);">
+              A web platform for crypto forecasting + investing, built with market APIs, enriched signals, feature engineering,
+              and dashboards for decision support.
+            </p>
+            <p class="es" style="margin:0;color:var(--muted);">
+              Plataforma web para predicción cripto + inversión, con APIs de mercado, señales enriquecidas, feature engineering
+              y dashboards para apoyar decisiones.
+            </p>
+
+            <ul class="project-points en">
+              <li>Data ingestion from market APIs + external signals.</li>
+              <li>Feature engineering + forecasting models (short &amp; mid term).</li>
+              <li>Angular dashboards (charts, filters, portfolio views).</li>
+            </ul>
+
+            <ul class="project-points es">
+              <li>Ingesta de datos desde APIs de mercado + señales externas.</li>
+              <li>Feature engineering + modelos de predicción (corto y mediano plazo).</li>
+              <li>Dashboards en Angular (gráficas, filtros, portafolio).</li>
+            </ul>
+
+            <!-- ✅ PlayWin image -->
+            <figure class="media">
+              <img src="./CRYPTO.png" alt="PlayWin / Crypto app UI snapshot" loading="lazy" />
+              <figcaption class="en">PlayWin / Crypto app (UI snapshot).</figcaption>
+              <figcaption class="es">PlayWin / App cripto (captura de UI).</figcaption>
+            </figure>
+
+            <!-- ✅ TrustWin: ONLY THE VIDEO (no empty image box, no MIME error box) -->
+            <figure class="media">
+              <video controls playsinline preload="metadata">
+                <source src="./TRUSTWIN.mp4" type="video/mp4" />
+                Your browser does not support the video tag.
+              </video>
+              <figcaption class="en">TrustWin — short walkthrough (video).</figcaption>
+              <figcaption class="es">TrustWin — walkthrough corto (video).</figcaption>
+            </figure>
+
+            <!-- ✅ Explanation below the TrustWin video -->
+            <details class="details">
+              <summary>
+                <span class="en">About the “mixed conversation” responses</span>
+                <span class="es">Sobre las respuestas “mezcladas” de la conversación</span>
+              </summary>
+
+              <p class="hint en">
+                In the assistant UI, answers can be “attached” to the current session (conversation id). If you keep using the same session,
+                the model may keep context and responses can look mixed across turns.
+              </p>
+              <p class="hint es">
+                En la UI del asistente, las respuestas pueden quedar “pegadas” a la sesión actual (conversation id). Si sigues usando la misma sesión,
+                el modelo mantiene contexto y las respuestas pueden verse mezcladas.
+              </p>
+
+              <ul class="en">
+                <li><strong>To reset cleanly:</strong> start a new conversation/session.</li>
+                <li><strong>Quick fix:</strong> clear the chat history for that session if your UI supports it.</li>
+                <li><strong>Why it happens:</strong> session memory/context is intentionally used to keep continuity.</li>
+              </ul>
+
+              <ul class="es">
+                <li><strong>Para reiniciar limpio:</strong> inicia una nueva conversación/sesión.</li>
+                <li><strong>Arreglo rápido:</strong> borra el historial de ese chat si tu UI lo permite.</li>
+                <li><strong>Por qué pasa:</strong> la memoria/contexto de sesión se usa para mantener continuidad.</li>
+              </ul>
+            </details>
+
+            <div class="links">
+              <a class="link" href="https://dtapppyfront.onrender.com/" target="_blank" rel="noreferrer">Live demo</a>
+              <a class="link" href="https://github.com/fredoomsearch/DtappPy" target="_blank" rel="noreferrer">Backend repo (DtappPy)</a>
+              <a class="link" href="https://github.com/fredoomsearch/DtAPPpyFront" target="_blank" rel="noreferrer">Frontend repo (DtAPPpyFront)</a>
+            </div>
+          </article>
+
         </div>
       </div>
     </section>
 
-    <!-- EXPERIENCE -->
+    <!-- EXPERIENCE (cleaned + reordered) -->
     <section id="experience" class="section">
       <div class="container">
         <h2 class="section-title en">Experience</h2>
         <h2 class="section-title es">Experiencia</h2>
 
-        <p class="section-subtitle en">Professional experience where I’ve applied full-stack development, data and cloud skills.</p>
-        <p class="section-subtitle es">Experiencia profesional donde he aplicado desarrollo full-stack, datos y nube.</p>
+        <p class="section-subtitle en">Professional experience applying full-stack development, data, and cloud skills.</p>
+        <p class="section-subtitle es">Experiencia profesional aplicando desarrollo full-stack, datos y nube.</p>
 
         <div class="timeline">
+          <article class="card pad">
+            <div class="exp-head">
+              <h3 style="margin:0;font-size:1.05rem;">TASS TECHNOLOGIES | Fullstack Developer</h3>
+              <span class="dates">09/2025 – 11/2025</span>
+            </div>
+            <p class="en" style="margin:.6rem 0 0 0;color:var(--muted);">
+              Full-stack development across modern web stacks. Built UI components and backend features, collaborated via Git workflows,
+              and shipped changes using Docker-based environments.
+            </p>
+            <p class="es" style="margin:.6rem 0 0 0;color:var(--muted);">
+              Desarrollo full-stack con stacks modernos. Construcción de componentes UI y features backend, trabajo con Git,
+              y despliegues/ambientes con Docker.
+            </p>
+            <ul class="project-points en">
+              <li>Tech: SCSS, Angular, Vue, Python, Django, Docker, PostgreSQL, GitHub, Next.js.</li>
+            </ul>
+            <ul class="project-points es">
+              <li>Tech: SCSS, Angular, Vue, Python, Django, Docker, PostgreSQL, GitHub, Next.js.</li>
+            </ul>
+          </article>
+
           <article class="card pad">
             <div class="exp-head">
               <h3 style="margin:0;font-size:1.05rem;">PlayWin | Software Developer</h3>
               <span class="dates">01/2025 – Present</span>
             </div>
             <p class="en" style="margin:.6rem 0 0 0;color:var(--muted);">
-              Developing a crypto forecasting + investing platform using data pipelines, scraping and market APIs (CoinGecko/Binance),
-              plus external signals. Tech: FastAPI, TensorFlow, Scikit-learn, Angular, PostgreSQL. Building a chatbot assistant.
+              Developing a crypto forecasting + investing platform with enriched data pipelines (market APIs + signals), forecasting models,
+              and Angular dashboards for analysis and decision support.
             </p>
             <p class="es" style="margin:.6rem 0 0 0;color:var(--muted);">
-              Desarrollo una plataforma de predicción e inversión cripto con pipelines de datos, scraping y APIs de mercado (CoinGecko/Binance),
-              más señales externas. Tech: FastAPI, TensorFlow, Scikit-learn, Angular, PostgreSQL. Construyendo un asistente tipo chatbot.
+              Desarrollo una plataforma de predicción + inversión cripto con pipelines enriquecidos (APIs + señales), modelos de predicción
+              y dashboards en Angular para análisis y decisiones.
             </p>
-          </article>
-
-          <article class="card pad">
-            <div class="exp-head">
-              <h3 style="margin:0;font-size:1.05rem;">TASS TECHNOLOGIES | Fullstack Dev</h3>
-              <span class="dates">09/2025 – 11/2025</span>
-            </div>
-            <p class="en" style="margin:.6rem 0 0 0;color:var(--muted);">
-              Full-stack development using SCSS, Angular, Vue, Python, Django, Docker, PostgreSQL, GitHub and Next.js.
-            </p>
-            <p class="es" style="margin:.6rem 0 0 0;color:var(--muted);">
-              Desarrollo full-stack con SCSS, Angular, Vue, Python, Django, Docker, PostgreSQL, GitHub y Next.js.
-            </p>
+            <ul class="project-points en">
+              <li>Tech: FastAPI (REST), TensorFlow, Scikit-learn, Angular, PostgreSQL.</li>
+            </ul>
+            <ul class="project-points es">
+              <li>Tech: FastAPI (REST), TensorFlow, Scikit-learn, Angular, PostgreSQL.</li>
+            </ul>
           </article>
 
           <article class="card pad">
@@ -726,13 +747,15 @@
               <span class="dates">02/2024 – 07/2024</span>
             </div>
             <p class="en" style="margin:.6rem 0 0 0;color:var(--muted);">
-              Built a business management system for a casino (Django + Angular, Scrum). Improved operational efficiency and reporting,
-              contributing to a ~30% reduction in decision-making time.
+              Built a casino business management system end-to-end: requirements → development → deployment (Scrum).
+              Improved processes (finance, HR, accounting), security and reporting, contributing to ~30% faster decision-making.
             </p>
             <p class="es" style="margin:.6rem 0 0 0;color:var(--muted);">
-              Construí un sistema de gestión para un casino (Django + Angular, Scrum). Mejoró eficiencia operativa y reporting,
-              contribuyendo a ~30% menos tiempo de toma de decisiones.
+              Construí un sistema de gestión para un casino de punta a punta: requerimientos → desarrollo → despliegue (Scrum).
+              Mejoré procesos (finanzas, RRHH, contabilidad), seguridad y reporting, contribuyendo a ~30% menos tiempo de decisión.
             </p>
+            <ul class="project-points en"><li>Tech: Django, Angular.</li></ul>
+            <ul class="project-points es"><li>Tech: Django, Angular.</li></ul>
           </article>
 
           <article class="card pad">
@@ -741,13 +764,15 @@
               <span class="dates">06/2023 – 12/2023</span>
             </div>
             <p class="en" style="margin:.6rem 0 0 0;color:var(--muted);">
-              Built a Flutter mobile app for basic inventory and operational calculations, plus a web platform (Java, React, MySQL)
-              for dynamic menu, product visualization and order management.
+              Built a Flutter mobile app for inventory + operational calculations, and a web platform for dynamic menu, product visualization
+              and order management.
             </p>
             <p class="es" style="margin:.6rem 0 0 0;color:var(--muted);">
-              Creé una app móvil en Flutter para inventarios y cálculos operativos, y una plataforma web (Java, React, MySQL)
-              para menú dinámico, visualización de productos y gestión de pedidos.
+              Creé una app móvil en Flutter para inventarios + cálculos operativos y una plataforma web para menú dinámico, visualización de productos
+              y gestión de pedidos.
             </p>
+            <ul class="project-points en"><li>Tech: Flutter, Java, React, MySQL.</li></ul>
+            <ul class="project-points es"><li>Tech: Flutter, Java, React, MySQL.</li></ul>
           </article>
         </div>
       </div>
@@ -762,24 +787,24 @@
             <h2 class="section-title es">Sobre mí</h2>
 
             <p class="en" style="margin:0;color:var(--text);font-weight:950;">
-              Full-Stack Developer specializing in web development, data science and machine learning.
+              Full-Stack Developer focused on building real products: APIs, dashboards, and data/ML workflows.
             </p>
             <p class="es" style="margin:0;color:var(--text);font-weight:950;">
-              Desarrollador Full-Stack enfocado en desarrollo web, ciencia de datos y machine learning.
+              Desarrollador Full-Stack enfocado en construir productos reales: APIs, dashboards y flujos de datos/ML.
             </p>
 
             <p class="en" style="margin:.8rem 0 0 0;color:var(--muted);">
-              I’m disciplined, persistent, and goal-oriented. I like turning messy requirements into clean APIs, dashboards and systems.
+              I’m disciplined, persistent, and goal-oriented. I like turning messy requirements into clean systems that ship.
             </p>
             <p class="es" style="margin:.8rem 0 0 0;color:var(--muted);">
-              Soy disciplinado, persistente y orientado a objetivos. Me gusta convertir requerimientos “enredados” en APIs y sistemas claros.
+              Soy disciplinado, persistente y orientado a objetivos. Me gusta convertir requerimientos complejos en sistemas claros que se entregan.
             </p>
 
             <p class="en" style="margin:.8rem 0 0 0;color:var(--muted);">
-              Comfortable working end-to-end: requirements → data modeling → APIs → UI → Docker deployments (AWS basics).
+              Comfortable end-to-end: requirements → data modeling → APIs → UI → Docker deployments (AWS basics).
             </p>
             <p class="es" style="margin:.8rem 0 0 0;color:var(--muted);">
-              Cómodo trabajando end-to-end: requerimientos → modelado de datos → APIs → UI → despliegues con Docker (AWS básico).
+              Cómodo end-to-end: requerimientos → modelado de datos → APIs → UI → despliegues con Docker (AWS básico).
             </p>
           </article>
 
@@ -811,13 +836,10 @@
             <ul class="list">
               <li class="en">Software Development Technician (UPB – 2024)</li>
               <li class="es">Técnico en Desarrollo de Software (UPB – 2024)</li>
-
               <li class="en">Quality Software Development (SENA – 2019)</li>
               <li class="es">Calidad en Desarrollo de Software (SENA – 2019)</li>
-
               <li class="en">AWS Fundamentals (Coursera)</li>
               <li class="es">AWS Fundamentals (Coursera)</li>
-
               <li class="en">Python on AWS (Coursera)</li>
               <li class="es">Python on AWS (Coursera)</li>
             </ul>
@@ -896,17 +918,11 @@
   </script>
 
   <!--
-    IMPORTANT (case-sensitive filenames, SAME folder as index.html):
-
-    PlayWin image:
-      - CRYPTO.png
-
-    Trust Win video:
-      - trustwin.mp4
-
-    Aegis videos:
-      - aegispro_9ieOQcJa.mp4
-      - awesomescreenshot-1-11-2026-7-22-50pm_7CkQrj0q.mp4
+    IMPORTANT (case-sensitive, same folder as index.html):
+    - CRYPTO.png
+    - TRUSTWIN.mp4            <-- must match repo: TRUSTWIN.mp4 (uppercase)
+    - aegispro_9ieOQcJa.mp4
+    - awesomescreenshot-1-11-2026-7-22-50pm_7CkQrj0q.mp4
   -->
 </body>
 </html>
