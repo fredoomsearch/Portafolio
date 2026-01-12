@@ -292,7 +292,6 @@
       object-position: top;
     }
 
-    /* ✅ Video styling added */
     figure.media video{
       width: 100%;
       height: 230px;
@@ -307,6 +306,13 @@
       color: var(--muted2);
       font-size: .92rem;
       border-top: 1px solid var(--border);
+    }
+
+    /* ✅ Media grid: image + video side-by-side on desktop */
+    .media-grid{
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
     }
 
     /* Links */
@@ -477,9 +483,8 @@
     @media (max-width: 900px){
       .hero-grid, .about-grid { grid-template-columns: 1fr; }
       figure.media img{ height: 210px; }
-
-      /* ✅ Video height on mobile */
       figure.media video{ height: 210px; }
+      .media-grid{ grid-template-columns: 1fr; }
     }
   </style>
 </head>
@@ -533,7 +538,7 @@
           </p>
 
           <div class="actions">
-            <a href="#projects" class="btn primary"><span class="en">View PlayWin</span><span class="es">Ver PlayWin</span></a>
+            <a href="#playwin" class="btn primary"><span class="en">View PlayWin</span><span class="es">Ver PlayWin</span></a>
             <a href="#experience" class="btn secondary"><span class="en">Work Experience</span><span class="es">Experiencia</span></a>
           </div>
 
@@ -566,52 +571,56 @@
     <!-- PROJECTS -->
     <section id="projects" class="section">
       <div class="container">
-        <h2 class="section-title en">Featured Project</h2>
-        <h2 class="section-title es">Proyecto destacado</h2>
+        <h2 class="section-title en">Featured Projects</h2>
+        <h2 class="section-title es">Proyectos destacados</h2>
 
         <p class="section-subtitle en">
-          Main product I’m currently developing, combining backend, data engineering, machine learning and frontend —
-          plus an internal assistant for faster iteration.
+          End-to-end work combining backend, data engineering, machine learning and frontend — plus demos and short walkthrough videos.
         </p>
         <p class="section-subtitle es">
-          Producto principal que estoy desarrollando: backend, ingeniería de datos, machine learning y frontend —
-          más un asistente interno para iterar más rápido.
+          Trabajo end-to-end combinando backend, ingeniería de datos, machine learning y frontend — más demos y videos cortos.
         </p>
 
         <div class="projects-grid">
-          <!-- PlayWin (contains ALL screenshots + bilingual explanation) -->
-          <article class="card pad stack">
+
+          <!-- ======================
+               PLAYWIN
+          ======================= -->
+          <article id="playwin" class="card pad stack">
             <span class="badge">PlayWin</span>
 
             <div>
               <h3 class="project-title">PlayWin – Crypto Forecasting &amp; Insights Platform</h3>
-              <p class="project-tags en">FastAPI · TensorFlow · Scikit-Learn · Angular · PostgreSQL · Internal AI assistant</p>
-              <p class="project-tags es">FastAPI · TensorFlow · Scikit-Learn · Angular · PostgreSQL · Asistente interno</p>
+              <p class="project-tags en">FastAPI · TensorFlow · Scikit-Learn · Angular · PostgreSQL</p>
+              <p class="project-tags es">FastAPI · TensorFlow · Scikit-Learn · Angular · PostgreSQL</p>
             </div>
 
-            <!-- PlayWin image: trust1.png (fallback trust.png) -->
-            <figure class="media">
-              <a href="https://dtapppyfront.onrender.com/" target="_blank" rel="noreferrer">
-                <img
-                  src="./trust1.png"
-                  alt="PlayWin preview"
-                  loading="lazy"
-                  onerror="this.onerror=null;this.src='./trust.png';"
-                />
-              </a>
-              <figcaption class="en">PlayWin preview. Click the image to open the live demo.</figcaption>
-              <figcaption class="es">Vista previa de PlayWin. Haz clic para abrir el demo en vivo.</figcaption>
-            </figure>
+            <!-- Image + Video (side-by-side desktop) -->
+            <div class="media-grid">
+              <figure class="media">
+                <a href="https://dtapppyfront.onrender.com/" target="_blank" rel="noreferrer">
+                  <img
+                    src="./trust1.png"
+                    alt="PlayWin preview"
+                    loading="lazy"
+                    onerror="this.onerror=null;this.src='./trust.png';"
+                  />
+                </a>
+                <figcaption class="en">PlayWin preview. Click the image to open the live demo.</figcaption>
+                <figcaption class="es">Vista previa de PlayWin. Haz clic para abrir el demo en vivo.</figcaption>
+              </figure>
 
-            <!-- ✅ MP4 video added HERE -->
-            <figure class="media">
-              <video controls playsinline preload="metadata" poster="./Aegis.png">
-                <source src="./aegispro_9ieOQcJa.mp4" type="video/mp4" />
-                Your browser does not support the video tag.
-              </video>
-              <figcaption class="en">Short demo video (workflow + features).</figcaption>
-              <figcaption class="es">Video corto de demo (flujo + funciones).</figcaption>
-            </figure>
+              <figure class="media">
+                <!-- ✅ VIDEO #1 (PlayWin) -->
+                <!-- CHANGE src to your real PlayWin mp4 filename -->
+                <video controls playsinline preload="metadata" poster="./trust1.png">
+                  <source src="./playwin_demo.mp4" type="video/mp4" />
+                  Your browser does not support the video tag.
+                </video>
+                <figcaption class="en">PlayWin demo video (workflow + forecasting features).</figcaption>
+                <figcaption class="es">Video demo de PlayWin (flujo + funciones de predicción).</figcaption>
+              </figure>
+            </div>
 
             <p class="en" style="margin:0;color:var(--muted);">
               Developing a web platform for crypto price forecasting and investing. It uses market APIs + enriched signals,
@@ -626,19 +635,67 @@
               <li>Data ingestion from market APIs + external signals.</li>
               <li>Feature engineering + forecasting models (short &amp; mid term).</li>
               <li>Angular dashboards (charts, filters, portfolio views).</li>
-              <li>Internal assistant for interactive analysis, debugging, and experiments.</li>
+              <li>Deployment-ready architecture (API + DB + UI).</li>
             </ul>
 
             <ul class="project-points es">
               <li>Ingesta de datos desde APIs de mercado + señales externas.</li>
               <li>Feature engineering + modelos de predicción (corto y mediano plazo).</li>
               <li>Dashboards en Angular (gráficas, filtros, portafolio).</li>
-              <li>Asistente interno para análisis, debugging y experimentos.</li>
+              <li>Arquitectura lista para despliegue (API + BD + UI).</li>
             </ul>
 
-            <!-- Assistant screenshots moved HERE -->
-            <p class="shots-title en">Internal assistant screenshots (modes & tools)</p>
-            <p class="shots-title es">Capturas del asistente interno (modos y herramientas)</p>
+            <div class="links">
+              <a class="link" href="https://dtapppyfront.onrender.com/" target="_blank" rel="noreferrer">Live demo</a>
+              <a class="link" href="https://github.com/fredoomsearch/DtappPy" target="_blank" rel="noreferrer">Backend repo (DtappPy)</a>
+              <a class="link" href="https://github.com/fredoomsearch/DtAPPpyFront" target="_blank" rel="noreferrer">Frontend repo (DtAPPpyFront)</a>
+            </div>
+          </article>
+
+          <!-- ======================
+               AEGISCHAT
+          ======================= -->
+          <article id="aegis" class="card pad stack">
+            <span class="badge">AegisChat</span>
+
+            <div>
+              <h3 class="project-title">AegisChat – Internal AI Assistant (RAG + Tools)</h3>
+              <p class="project-tags en">FastAPI · RAG ingestion · Web/URL/OCR tools · Crypto utilities</p>
+              <p class="project-tags es">FastAPI · Ingestión RAG · Herramientas Web/URL/OCR · Utilidades cripto</p>
+            </div>
+
+            <!-- Image + Video (side-by-side desktop) -->
+            <div class="media-grid">
+              <figure class="media">
+                <a href="https://aegischat.onrender.com/" target="_blank" rel="noreferrer">
+                  <img src="./Aegis.png" alt="AegisChat preview" loading="lazy" />
+                </a>
+                <figcaption class="en">AegisChat preview. Click the image to open the live demo.</figcaption>
+                <figcaption class="es">Vista previa de AegisChat. Haz clic para abrir el demo en vivo.</figcaption>
+              </figure>
+
+              <figure class="media">
+                <!-- ✅ VIDEO #2 (AegisChat) -->
+                <video controls playsinline preload="metadata" poster="./Aegis.png">
+                  <source src="./aegispro_9ieOQcJa.mp4" type="video/mp4" />
+                  Your browser does not support the video tag.
+                </video>
+                <figcaption class="en">AegisChat demo video (workflow + modes + tools).</figcaption>
+                <figcaption class="es">Video demo de AegisChat (flujo + modos + herramientas).</figcaption>
+              </figure>
+            </div>
+
+            <p class="en" style="margin:0;color:var(--muted);">
+              Internal assistant built to speed up debugging, research, and experiments. Includes RAG ingestion + tool modes
+              (web search, URL fetch, image OCR, repo ingestion) and crypto utilities.
+            </p>
+            <p class="es" style="margin:0;color:var(--muted);">
+              Asistente interno para acelerar debugging, investigación y experimentos. Incluye ingestión RAG + modos/herramientas
+              (búsqueda web, lectura de URLs, OCR de imágenes, ingestión de repos) y utilidades cripto.
+            </p>
+
+            <p class="shots-title en">Screenshots (modes & tools)</p>
+            <p class="shots-title es">Capturas (modos y herramientas)</p>
 
             <div class="shot-row" aria-label="Assistant screenshots gallery">
               <a class="shot" href="./Aegis.png" target="_blank" rel="noreferrer">
@@ -677,7 +734,6 @@
               </a>
             </div>
 
-            <!-- Modes & commands: bilingual -->
             <details class="details">
               <summary>
                 <span class="en">Assistant modes & commands</span>
@@ -692,8 +748,6 @@
                 <li><strong>Web Mode 🌐:</strong> enable the globe button; use <code>/websearch</code> and show sources on the right.</li>
                 <li><strong>URL Mode 🔗:</strong> paste a URL; <code>/fetch_url</code> reads it and it appears in Sources (HTTPS; .onion only if Tor is active on the server).</li>
                 <li><strong>.onion safety:</strong> use Tor in an isolated/sandbox environment; firewall it, don’t download binaries or execute anything; assume honeypot/malware risk. If Tor isn’t available, fetch fails.</li>
-                <li><strong>Crypto Mode 🪙:</strong> type a symbol (e.g., BTCUSDT). H = horizon in minutes (H=1 ultra short, H=15 ≈ 15 min). Qty is amount for Buy/Sell and commands.</li>
-                <li><strong>Advanced crypto:</strong> Save stores/evaluates predictions after H; Alerts warns if result differs; Logs follows refresh; ≣ lists predictions with Δ; Σ shows accuracy by model.</li>
                 <li><strong>Image 🖼️:</strong> upload an image; <code>/analyze_image</code> runs local OCR (ES/EN).</li>
                 <li><strong>Tree 🗂️:</strong> diagram button → <code>/tools/tree</code>; open files with <code>/tools/content</code>.</li>
                 <li><strong>ZIP/Clone/Ingest:</strong> upload ZIP or clone repo and process with <code>/files/ingest</code> for RAG.</li>
@@ -705,8 +759,6 @@
                 <li><strong>Modo Web 🌐:</strong> activa el botón globo; usa <code>/websearch</code> y muestra fuentes a la derecha.</li>
                 <li><strong>Modo URL 🔗:</strong> pega una URL; <code>/fetch_url</code> la lee y aparece en Fuentes (HTTPS; .onion solo si Tor está activo en el servidor).</li>
                 <li><strong>Seguridad .onion:</strong> usa Tor en un entorno aislado/sandbox; protege con firewall, no descargues binarios ni ejecutes nada; asume riesgo de honeypots/malware. Si Tor no está disponible, el fetch fallará.</li>
-                <li><strong>Modo Cripto 🪙:</strong> escribe un símbolo (ej: BTCUSDT). H = horizonte en minutos (H=1 ultra corto, H=15 ≈ 15 min). Qty es la cantidad para Buy/Sell y comandos.</li>
-                <li><strong>Cripto avanzado:</strong> Save guarda/evalúa predicciones al pasar H; Alerts avisa si el resultado difiere; Logs sigue el refresh; ≣ lista predicciones con Δ; Σ muestra accuracy por modelo.</li>
                 <li><strong>Imagen 🖼️:</strong> sube una imagen; <code>/analyze_image</code> hace OCR local (ES/EN).</li>
                 <li><strong>Árbol 🗂️:</strong> botón diagrama → <code>/tools/tree</code>; abre archivos con <code>/tools/content</code>.</li>
                 <li><strong>ZIP/Clone/Ingest:</strong> subir ZIP o clonar repo y procesar con <code>/files/ingest</code> para RAG.</li>
@@ -715,18 +767,16 @@
             </details>
 
             <div class="links">
-              <a class="link" href="https://dtapppyfront.onrender.com/" target="_blank" rel="noreferrer">Live demo</a>
-              <a class="link" href="https://github.com/fredoomsearch/DtappPy" target="_blank" rel="noreferrer">Backend repo (DtappPy)</a>
-              <a class="link" href="https://github.com/fredoomsearch/DtAPPpyFront" target="_blank" rel="noreferrer">Frontend repo (DtAPPpyFront)</a>
               <a class="link" href="https://aegischat.onrender.com/" target="_blank" rel="noreferrer">Internal assistant demo</a>
               <a class="link" href="https://github.com/fredoomsearch/AegisChat" target="_blank" rel="noreferrer">Internal assistant source code</a>
             </div>
           </article>
+
         </div>
       </div>
     </section>
 
-    <!-- EXPERIENCE (expanded with ALL CV jobs) -->
+    <!-- EXPERIENCE -->
     <section id="experience" class="section">
       <div class="container">
         <h2 class="section-title en">Experience</h2>
@@ -797,7 +847,7 @@
       </div>
     </section>
 
-    <!-- ABOUT (expanded with CV skills + certifications) -->
+    <!-- ABOUT -->
     <section id="about" class="section">
       <div class="container">
         <div class="about-grid">
@@ -906,7 +956,7 @@
   <footer class="site-footer">
     <div class="container footer-inner">
       <p class="en">© <span id="year"></span> Julián Esteban Grajales Vergara</p>
-      <p class="es">© <span id="year2"></span> Julián Esteban Grajales Vergara</p>
+      <p class="es">© <span id="year2"></span> Julián Esteban Grajales Vergjales Vergara</p>
 
       <p class="en">Built with HTML &amp; CSS and deployed online.</p>
       <p class="es">Hecho con HTML &amp; CSS y desplegado en línea.</p>
@@ -932,6 +982,34 @@
     }
 
     const saved = localStorage.getItem("lang") || "en";
+    setLang(saved);
+
+    document.querySelectorAll(".lang-btn").forEach(btn => {
+      btn.addEventListener("click", () => setLang(btn.dataset.lang));
+    });
+  </script>
+
+  <!--
+    IMPORTANT:
+    Put these images/videos in the SAME folder as index.html (case-sensitive!):
+
+    Images:
+    - trust1.png (or trust.png fallback)
+    - Aegis.png
+    - aegiscode8.png
+    - CRYPTO.png
+    - crypto2.png
+    - crypto3.png
+    - aegispro3.png
+    - aegisprohelp.png
+
+    Videos:
+    - playwin_demo.mp4          (RENAME this to your real PlayWin mp4 filename OR change the <source src="...">)
+    - aegispro_9ieOQcJa.mp4
+  -->
+</body>
+</html>
+
     setLang(saved);
 
     document.querySelectorAll(".lang-btn").forEach(btn => {
