@@ -39,7 +39,6 @@
     body.lang-en .es { display: none !important; }
     body.lang-es .en { display: none !important; }
 
-    img { display:block; width:100%; }
     a { color: inherit; }
     code { font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace; }
 
@@ -278,7 +277,7 @@
     }
     .project-points li{ margin:.35rem 0; }
 
-    /* Main media */
+    /* Media */
     figure.media{
       margin:0;
       border-radius: 14px;
@@ -286,13 +285,7 @@
       border: 1px solid var(--border);
       background: rgba(255,255,255,.06);
     }
-    figure.media img{
-      height: 230px;
-      object-fit: cover;
-      object-position: top;
-    }
 
-    /* Video styling */
     figure.media video{
       width: 100%;
       height: 230px;
@@ -329,57 +322,6 @@
     .link:hover{
       border-color: rgba(49,195,255,.35);
       transform: translateY(-1px);
-    }
-
-    /* Gallery row (kept in CSS, but images removed from HTML as requested) */
-    .shots-title{
-      margin: .25rem 0 0 0;
-      font-weight: 950;
-      color: var(--muted2);
-      font-size: .95rem;
-      letter-spacing: .02em;
-    }
-
-    .shot-row{
-      display:flex;
-      gap:.65rem;
-      overflow:auto;
-      padding-bottom: .25rem;
-      scroll-snap-type: x mandatory;
-    }
-
-    .shot{
-      flex: 0 0 auto;
-      width: 160px;
-      border: 1px solid var(--border);
-      border-radius: 12px;
-      overflow:hidden;
-      background: rgba(255,255,255,.05);
-      text-decoration:none;
-      scroll-snap-align: start;
-      transition: .18s ease;
-    }
-
-    .shot:hover{
-      border-color: rgba(49,195,255,.35);
-      transform: translateY(-1px);
-    }
-
-    .shot img{
-      height: 92px;
-      object-fit: cover;
-      object-position: top;
-    }
-
-    .shot span{
-      display:block;
-      padding: .45rem .55rem;
-      font-size: .82rem;
-      color: var(--muted2);
-      border-top: 1px solid var(--border);
-      white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
     }
 
     /* Details */
@@ -476,7 +418,6 @@
 
     @media (max-width: 900px){
       .hero-grid, .about-grid { grid-template-columns: 1fr; }
-      figure.media img{ height: 210px; }
       figure.media video{ height: 210px; }
     }
   </style>
@@ -514,24 +455,22 @@
         <div>
           <div class="kicker">
             <span class="dot" aria-hidden="true"></span>
-            <span class="en">Full-Stack · Data · Crypto / Fintech</span>
-            <span class="es">Full-Stack · Datos · Cripto / Fintech</span>
+            <span class="en">Full-Stack · Data · AI Assistant / RAG</span>
+            <span class="es">Full-Stack · Datos · Asistente AI / RAG</span>
           </div>
 
           <h2 class="en">Building data-driven platforms that connect code, models and real business needs.</h2>
           <h2 class="es">Construyo plataformas basadas en datos que conectan código, modelos y necesidades reales del negocio.</h2>
 
           <p class="en">
-            I build end-to-end products: APIs, dashboards, pipelines and ML experiments — especially around crypto markets
-            and business systems.
+            I build end-to-end products: APIs, dashboards, pipelines and ML experiments — plus internal assistants to speed up debugging and iteration.
           </p>
           <p class="es">
-            Construyo productos de punta a punta: APIs, dashboards, pipelines y experimentos de ML — especialmente para
-            mercados cripto y sistemas de negocio.
+            Construyo productos de punta a punta: APIs, dashboards, pipelines y experimentos de ML — más asistentes internos para acelerar debugging e iteración.
           </p>
 
           <div class="actions">
-            <a href="#projects" class="btn primary"><span class="en">View PlayWin</span><span class="es">Ver PlayWin</span></a>
+            <a href="#projects" class="btn primary"><span class="en">View Aegis</span><span class="es">Ver Aegis</span></a>
             <a href="#experience" class="btn secondary"><span class="en">Work Experience</span><span class="es">Experiencia</span></a>
           </div>
 
@@ -543,19 +482,17 @@
           <p class="en" style="margin:0;color:var(--muted2);font-weight:900;letter-spacing:.02em;">Current focus</p>
           <p class="es" style="margin:0;color:var(--muted2);font-weight:900;letter-spacing:.02em;">Enfoque actual</p>
 
-          <h3 style="margin:.35rem 0 0 0;">PlayWin – Crypto Forecasting Platform</h3>
+          <h3 style="margin:.35rem 0 0 0;">Aegis – Internal AI Assistant</h3>
 
           <p class="en" style="margin:.6rem 0 0 0;color:var(--muted);">
-            Crypto forecasting + investing platform with enriched data pipelines, ML models, and an internal AI assistant
-            to speed up debugging and experimentation.
+            An internal assistant for faster debugging, repo Q&amp;A (RAG), web/URL reading, and tool-driven workflows for dev + data tasks.
           </p>
           <p class="es" style="margin:.6rem 0 0 0;color:var(--muted);">
-            Plataforma de predicción e inversión cripto con pipelines enriquecidos, modelos de ML y un asistente interno
-            para acelerar debugging y experimentación.
+            Un asistente interno para acelerar debugging, Q&amp;A sobre repos (RAG), lectura web/URLs y flujos con herramientas para tareas de dev + datos.
           </p>
 
           <ul class="pill-row">
-            <li>FastAPI</li><li>TensorFlow</li><li>Scikit-learn</li><li>Angular</li><li>PostgreSQL</li>
+            <li>FastAPI</li><li>RAG</li><li>Embeddings</li><li>PostgreSQL</li><li>Docker</li>
           </ul>
         </aside>
       </div>
@@ -568,29 +505,50 @@
         <h2 class="section-title es">Proyecto destacado</h2>
 
         <p class="section-subtitle en">
-          Main product I’m currently developing, combining backend, data engineering, machine learning and frontend —
-          plus an internal assistant for faster iteration.
+          A product I’m actively building that mixes backend engineering with AI tooling: repo ingestion (RAG), URL/web reading, image OCR, and task-specific commands.
         </p>
         <p class="section-subtitle es">
-          Producto principal que estoy desarrollando: backend, ingeniería de datos, machine learning y frontend —
-          más un asistente interno para iterar más rápido.
+          Un producto que estoy construyendo y mejorando: ingesta de repos (RAG), lectura de web/URLs, OCR de imágenes y comandos por tarea.
         </p>
 
         <div class="projects-grid">
-          <!-- PlayWin -->
+          <!-- AEGIS -->
           <article class="card pad stack">
-            <span class="badge">PlayWin</span>
+            <span class="badge">AEGIS</span>
 
             <div>
-              <h3 class="project-title">PlayWin – Crypto Forecasting &amp; Insights Platform</h3>
-              <p class="project-tags en">FastAPI · TensorFlow · Scikit-Learn · Angular · PostgreSQL · Internal AI assistant</p>
-              <p class="project-tags es">FastAPI · TensorFlow · Scikit-Learn · Angular · PostgreSQL · Asistente interno</p>
+              <h3 class="project-title">Aegis – Internal AI Assistant (RAG + Tools)</h3>
+              <p class="project-tags en">FastAPI · Tool endpoints · Repo ingestion (RAG) · Web/URL mode · Image OCR</p>
+              <p class="project-tags es">FastAPI · Herramientas · Ingesta de repos (RAG) · Modo Web/URL · OCR de imágenes</p>
             </div>
 
-            <!-- ✅ Two videos ONLY (images removed) -->
+            <p class="en" style="margin:0;color:var(--muted);">
+              A developer-focused assistant that can ingest repos, answer questions with sources, fetch URLs, and run tool-driven workflows
+              to speed up debugging and experimentation.
+            </p>
+            <p class="es" style="margin:0;color:var(--muted);">
+              Un asistente enfocado en desarrollo que puede ingerir repos, responder con fuentes, leer URLs y ejecutar flujos con herramientas
+              para acelerar debugging y experimentación.
+            </p>
+
+            <ul class="project-points en">
+              <li>Repo ingestion + semantic search (RAG) for code Q&amp;A.</li>
+              <li>Web Mode and URL Mode to read sources and cite them.</li>
+              <li>Tool endpoints (tree/content) to browse project files.</li>
+              <li>Optional image OCR for quick text extraction.</li>
+            </ul>
+
+            <ul class="project-points es">
+              <li>Ingesta de repo + búsqueda semántica (RAG) para Q&amp;A sobre código.</li>
+              <li>Modo Web y Modo URL para leer fuentes y citarlas.</li>
+              <li>Endpoints de herramientas (tree/content) para explorar archivos.</li>
+              <li>OCR de imágenes opcional para extraer texto rápido.</li>
+            </ul>
+
+            <!-- ✅ ONLY TWO VIDEOS (no images, no other videos) -->
             <figure class="media">
               <video controls playsinline preload="metadata">
-                <source src="./aegis_demo_1.mp4" type="video/mp4" />
+                <source src="./aegispro_9ieOQcJa.mp4" type="video/mp4" />
                 Your browser does not support the video tag.
               </video>
               <figcaption class="en">Aegis demo video #1 (workflow + features).</figcaption>
@@ -599,35 +557,12 @@
 
             <figure class="media">
               <video controls playsinline preload="metadata">
-                <source src="./aegis_demo_2.mp4" type="video/mp4" />
+                <source src="./awesomescreenshot-1-11-2026-7-22-50pm_7CkQrj0q.mp4" type="video/mp4" />
                 Your browser does not support the video tag.
               </video>
-              <figcaption class="en">Aegis demo video #2 (awesome screenshot recording).</figcaption>
+              <figcaption class="en">Aegis demo video #2 (Awesome Screenshot recording).</figcaption>
               <figcaption class="es">Video demo Aegis #2 (grabación de Awesome Screenshot).</figcaption>
             </figure>
-
-            <p class="en" style="margin:0;color:var(--muted);">
-              Developing a web platform for crypto price forecasting and investing. It uses market APIs + enriched signals,
-              feature engineering, and forecasting models to support short-term decisions.
-            </p>
-            <p class="es" style="margin:0;color:var(--muted);">
-              Desarrollo una plataforma web para predicción de precios cripto e inversión. Usa APIs de mercado + señales
-              enriquecidas, feature engineering y modelos de predicción para decisiones de corto plazo.
-            </p>
-
-            <ul class="project-points en">
-              <li>Data ingestion from market APIs + external signals.</li>
-              <li>Feature engineering + forecasting models (short &amp; mid term).</li>
-              <li>Angular dashboards (charts, filters, portfolio views).</li>
-              <li>Internal assistant for interactive analysis, debugging, and experiments.</li>
-            </ul>
-
-            <ul class="project-points es">
-              <li>Ingesta de datos desde APIs de mercado + señales externas.</li>
-              <li>Feature engineering + modelos de predicción (corto y mediano plazo).</li>
-              <li>Dashboards en Angular (gráficas, filtros, portafolio).</li>
-              <li>Asistente interno para análisis, debugging y experimentos.</li>
-            </ul>
 
             <!-- Modes & commands: bilingual -->
             <details class="details">
@@ -649,7 +584,6 @@
                 <li><strong>Image 🖼️:</strong> upload an image; <code>/analyze_image</code> runs local OCR (ES/EN).</li>
                 <li><strong>Tree 🗂️:</strong> diagram button → <code>/tools/tree</code>; open files with <code>/tools/content</code>.</li>
                 <li><strong>ZIP/Clone/Ingest:</strong> upload ZIP or clone repo and process with <code>/files/ingest</code> for RAG.</li>
-                <li><strong>Crypto refresh ⚡:</strong> trigger <code>/admin/refresh-crypto</code> to download market data and retrain models; check the log.</li>
               </ul>
 
               <ul class="es">
@@ -662,23 +596,19 @@
                 <li><strong>Imagen 🖼️:</strong> sube una imagen; <code>/analyze_image</code> hace OCR local (ES/EN).</li>
                 <li><strong>Árbol 🗂️:</strong> botón diagrama → <code>/tools/tree</code>; abre archivos con <code>/tools/content</code>.</li>
                 <li><strong>ZIP/Clone/Ingest:</strong> subir ZIP o clonar repo y procesar con <code>/files/ingest</code> para RAG.</li>
-                <li><strong>Refresh cripto ⚡:</strong> dispara <code>/admin/refresh-crypto</code>. Descarga market data y entrena modelos; revisa el log.</li>
               </ul>
             </details>
 
             <div class="links">
-              <a class="link" href="https://dtapppyfront.onrender.com/" target="_blank" rel="noreferrer">Live demo</a>
-              <a class="link" href="https://github.com/fredoomsearch/DtappPy" target="_blank" rel="noreferrer">Backend repo (DtappPy)</a>
-              <a class="link" href="https://github.com/fredoomsearch/DtAPPpyFront" target="_blank" rel="noreferrer">Frontend repo (DtAPPpyFront)</a>
-              <a class="link" href="https://aegischat.onrender.com/" target="_blank" rel="noreferrer">Internal assistant demo</a>
-              <a class="link" href="https://github.com/fredoomsearch/AegisChat" target="_blank" rel="noreferrer">Internal assistant source code</a>
+              <a class="link" href="https://aegischat.onrender.com/" target="_blank" rel="noreferrer">Aegis demo</a>
+              <a class="link" href="https://github.com/fredoomsearch/AegisChat" target="_blank" rel="noreferrer">Aegis source code (GitHub)</a>
             </div>
           </article>
         </div>
       </div>
     </section>
 
-    <!-- EXPERIENCE (expanded with ALL CV jobs) -->
+    <!-- EXPERIENCE (left as-is) -->
     <section id="experience" class="section">
       <div class="container">
         <h2 class="section-title en">Experience</h2>
@@ -749,7 +679,7 @@
       </div>
     </section>
 
-    <!-- ABOUT (expanded with CV skills + certifications) -->
+    <!-- ABOUT -->
     <section id="about" class="section">
       <div class="container">
         <div class="about-grid">
@@ -848,7 +778,6 @@
             <p><strong>LinkedIn:</strong> <a href="https://www.linkedin.com/in/jeg-v75fullstack" target="_blank" rel="noreferrer">jeg-v75fullstack</a></p>
             <p><strong>GitHub:</strong> <a href="https://github.com/fredoomsearch" target="_blank" rel="noreferrer">fredoomsearch</a></p>
             <p><strong class="en">Portfolio:</strong><strong class="es">Portafolio:</strong> <a href="https://portafolio-ypee.onrender.com/" target="_blank" rel="noreferrer">portafolio-ypee.onrender.com</a></p>
-            <p><strong class="en">Demo:</strong><strong class="es">Demo:</strong> <a href="https://dtapppyfront.onrender.com/" target="_blank" rel="noreferrer">dtapppyfront.onrender.com</a></p>
           </div>
         </div>
       </div>
@@ -893,10 +822,12 @@
 
   <!--
     IMPORTANT:
-    Put these videos in the SAME folder as index.html (case-sensitive!) and rename them EXACTLY:
+    Put these two videos in the SAME folder as index.html (case-sensitive!) with these EXACT filenames:
 
-    - aegis_demo_1.mp4   (from: aegispro_9ieOQcJa.mp4)
-    - aegis_demo_2.mp4   (from: awesomescreenshot-... video)
+    1) aegispro_9ieOQcJa.mp4
+    2) awesomescreenshot-1-11-2026-7-22-50pm_7CkQrj0q.mp4
+
+    This page includes ONLY these two videos. No images. No other videos.
   -->
 </body>
 </html>
