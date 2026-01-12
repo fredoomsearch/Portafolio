@@ -42,6 +42,8 @@
     a { color: inherit; }
     code { font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace; }
 
+    img { display:block; width:100%; height:auto; }
+
     .container{
       width: min(100% - 2rem, var(--container));
       margin: 0 auto;
@@ -238,7 +240,7 @@
       border-radius: 999px;
     }
 
-    /* Projects: single column */
+    /* Projects */
     .projects-grid{
       display:grid;
       grid-template-columns: 1fr;
@@ -286,14 +288,12 @@
       background: rgba(255,255,255,.06);
     }
 
-    /* ✅ Added: image styling for PlayWin screenshot */
     figure.media img{
       width: 100%;
       height: 230px;
       object-fit: cover;
       object-position: top;
-      background: #000;
-      display: block;
+      display:block;
     }
 
     figure.media video{
@@ -466,24 +466,22 @@
         <div>
           <div class="kicker">
             <span class="dot" aria-hidden="true"></span>
-            <span class="en">Full-Stack · Data · Crypto / Fintech</span>
-            <span class="es">Full-Stack · Datos · Cripto / Fintech</span>
+            <span class="en">Full-Stack · Data · AI Assistant / RAG</span>
+            <span class="es">Full-Stack · Datos · Asistente AI / RAG</span>
           </div>
 
           <h2 class="en">Building data-driven platforms that connect code, models and real business needs.</h2>
           <h2 class="es">Construyo plataformas basadas en datos que conectan código, modelos y necesidades reales del negocio.</h2>
 
           <p class="en">
-            I build end-to-end products: APIs, dashboards, pipelines and ML experiments — especially around crypto markets
-            and business systems.
+            I build end-to-end products: APIs, dashboards, pipelines and ML experiments — plus internal assistants to speed up debugging and iteration.
           </p>
           <p class="es">
-            Construyo productos de punta a punta: APIs, dashboards, pipelines y experimentos de ML — especialmente para
-            mercados cripto y sistemas de negocio.
+            Construyo productos de punta a punta: APIs, dashboards, pipelines y experimentos de ML — más asistentes internos para acelerar debugging e iteración.
           </p>
 
           <div class="actions">
-            <a href="#projects" class="btn primary"><span class="en">View PlayWin</span><span class="es">Ver PlayWin</span></a>
+            <a href="#projects" class="btn primary"><span class="en">View Projects</span><span class="es">Ver Proyectos</span></a>
             <a href="#experience" class="btn secondary"><span class="en">Work Experience</span><span class="es">Experiencia</span></a>
           </div>
 
@@ -495,19 +493,17 @@
           <p class="en" style="margin:0;color:var(--muted2);font-weight:900;letter-spacing:.02em;">Current focus</p>
           <p class="es" style="margin:0;color:var(--muted2);font-weight:900;letter-spacing:.02em;">Enfoque actual</p>
 
-          <h3 style="margin:.35rem 0 0 0;">PlayWin – Crypto Forecasting Platform</h3>
+          <h3 style="margin:.35rem 0 0 0;">Aegis – Internal AI Assistant</h3>
 
           <p class="en" style="margin:.6rem 0 0 0;color:var(--muted);">
-            Crypto forecasting + investing platform with enriched data pipelines, ML models, and an internal AI assistant
-            to speed up debugging and experimentation.
+            An internal assistant for faster debugging, repo Q&amp;A (RAG), web/URL reading, and tool-driven workflows for dev + data tasks.
           </p>
           <p class="es" style="margin:.6rem 0 0 0;color:var(--muted);">
-            Plataforma de predicción e inversión cripto con pipelines enriquecidos, modelos de ML y un asistente interno
-            para acelerar debugging y experimentación.
+            Un asistente interno para acelerar debugging, Q&amp;A sobre repos (RAG), lectura web/URLs y flujos con herramientas para tareas de dev + datos.
           </p>
 
           <ul class="pill-row">
-            <li>FastAPI</li><li>TensorFlow</li><li>Scikit-learn</li><li>Angular</li><li>PostgreSQL</li>
+            <li>FastAPI</li><li>RAG</li><li>Embeddings</li><li>PostgreSQL</li><li>Docker</li>
           </ul>
         </aside>
       </div>
@@ -516,63 +512,17 @@
     <!-- PROJECTS -->
     <section id="projects" class="section">
       <div class="container">
-        <h2 class="section-title en">Featured Project</h2>
-        <h2 class="section-title es">Proyecto destacado</h2>
+        <h2 class="section-title en">Projects</h2>
+        <h2 class="section-title es">Proyectos</h2>
 
         <p class="section-subtitle en">
-          Main products I’m building: crypto forecasting platform + an internal assistant for faster iteration.
+          Aegis (assistant + tools) and PlayWin (crypto platform + data pipelines).
         </p>
         <p class="section-subtitle es">
-          Productos principales que estoy construyendo: plataforma cripto + un asistente interno para iterar más rápido.
+          Aegis (asistente + herramientas) y PlayWin (plataforma cripto + pipelines de datos).
         </p>
 
         <div class="projects-grid">
-          <!-- PLAYWIN -->
-          <article class="card pad stack">
-            <span class="badge">PlayWin</span>
-
-            <div>
-              <h3 class="project-title">PlayWin – Crypto Forecasting &amp; Insights Platform</h3>
-              <p class="project-tags en">FastAPI · TensorFlow · Scikit-Learn · Angular · PostgreSQL</p>
-              <p class="project-tags es">FastAPI · TensorFlow · Scikit-Learn · Angular · PostgreSQL</p>
-            </div>
-
-            <!-- ✅ Added: PlayWin screenshot (Trust & Win) -->
-            <figure class="media">
-              <img src="./trust.png" alt="PlayWin preview (Trust & Win / dashboard)" loading="lazy" />
-              <figcaption class="en">PlayWin preview (Trust &amp; Win / dashboard).</figcaption>
-              <figcaption class="es">Vista previa de PlayWin (Trust &amp; Win / dashboard).</figcaption>
-            </figure>
-
-            <p class="en" style="margin:0;color:var(--muted);">
-              Web platform for crypto price forecasting and investing. It uses market APIs + enriched signals,
-              feature engineering, and forecasting models to support short-term decisions.
-            </p>
-            <p class="es" style="margin:0;color:var(--muted);">
-              Plataforma web para predicción de precios cripto e inversión. Usa APIs de mercado + señales
-              enriquecidas, feature engineering y modelos de predicción para decisiones de corto plazo.
-            </p>
-
-            <ul class="project-points en">
-              <li>Data ingestion from market APIs + external signals.</li>
-              <li>Feature engineering + forecasting models (short &amp; mid term).</li>
-              <li>Angular dashboards (charts, filters, portfolio views).</li>
-              <li>Backtesting + tracking for model performance.</li>
-            </ul>
-
-            <ul class="project-points es">
-              <li>Ingesta de datos desde APIs de mercado + señales externas.</li>
-              <li>Feature engineering + modelos de predicción (corto y mediano plazo).</li>
-              <li>Dashboards en Angular (gráficas, filtros, portafolio).</li>
-              <li>Backtesting + seguimiento de desempeño.</li>
-            </ul>
-
-            <div class="links">
-              <a class="link" href="https://dtapppyfront.onrender.com/" target="_blank" rel="noreferrer">Live demo</a>
-              <a class="link" href="https://github.com/fredoomsearch/DtappPy" target="_blank" rel="noreferrer">Backend repo (DtappPy)</a>
-              <a class="link" href="https://github.com/fredoomsearch/DtAPPpyFront" target="_blank" rel="noreferrer">Frontend repo (DtAPPpyFront)</a>
-            </div>
-          </article>
 
           <!-- AEGIS -->
           <article class="card pad stack">
@@ -607,14 +557,14 @@
               <li>OCR de imágenes opcional para extraer texto rápido.</li>
             </ul>
 
-            <!-- ✅ Two Aegis videos -->
+            <!-- ✅ AEGIS: ONLY THESE TWO VIDEOS -->
             <figure class="media">
               <video controls playsinline preload="metadata">
                 <source src="./aegispro_9ieOQcJa.mp4" type="video/mp4" />
                 Your browser does not support the video tag.
               </video>
-              <figcaption class="en">Aegis walkthrough #1 (workflow + features).</figcaption>
-              <figcaption class="es">Aegis #1 (flujo + funciones).</figcaption>
+              <figcaption class="en">Aegis demo video #1 (workflow + features).</figcaption>
+              <figcaption class="es">Video demo Aegis #1 (flujo + funciones).</figcaption>
             </figure>
 
             <figure class="media">
@@ -622,31 +572,24 @@
                 <source src="./awesomescreenshot-1-11-2026-7-22-50pm_7CkQrj0q.mp4" type="video/mp4" />
                 Your browser does not support the video tag.
               </video>
-              <figcaption class="en">Aegis walkthrough #2 (screen recording).</figcaption>
-              <figcaption class="es">Aegis #2 (grabación de pantalla).</figcaption>
+              <figcaption class="en">Aegis demo video #2 (Awesome Screenshot recording).</figcaption>
+              <figcaption class="es">Video demo Aegis #2 (grabación de Awesome Screenshot).</figcaption>
             </figure>
 
-            <!-- ✅ Added: explanation under the last video (about mixed context) -->
-            <p class="en" style="margin:.1rem 0 0 0;color:var(--muted2);font-size:.92rem;">
-              Note: the assistant responses are attached to the current conversation context. If replies start mixing topics,
-              clear/reset the chat and start a new conversation for a clean context.
-            </p>
-            <p class="es" style="margin:.1rem 0 0 0;color:var(--muted2);font-size:.92rem;">
-              Nota: las respuestas del asistente quedan ligadas al contexto de la conversación actual. Si se empiezan a mezclar temas,
-              borra/reinicia el chat y comienza una nueva conversación para tener un contexto limpio.
-            </p>
-
+            <!-- Modes & commands: bilingual -->
             <details class="details">
               <summary>
                 <span class="en">Assistant modes & commands</span>
                 <span class="es">Modos y comandos del asistente</span>
               </summary>
 
+              <p class="hint en">Quick guide to features shown in the demo videos.</p>
+              <p class="hint es">Guía rápida de funciones mostradas en los videos.</p>
+
               <ul class="en">
                 <li><strong>Chat:</strong> normal conversation with memory + code/crypto modes.</li>
                 <li><strong>Web Mode 🌐:</strong> enable the globe button; use <code>/websearch</code> and show sources on the right.</li>
-                <li><strong>URL Mode 🔗:</strong> paste a URL; <code>/fetch_url</code> reads it and it appears in Sources (HTTPS; .onion only if Tor is active on the server).</li>
-                <li><strong>.onion safety:</strong> use Tor in an isolated/sandbox environment; firewall it, don’t download binaries or execute anything; assume honeypot/malware risk. If Tor isn’t available, fetch fails.</li>
+                <li><strong>URL Mode 🔗:</strong> paste a URL; <code>/fetch_url</code> reads it and it appears in Sources.</li>
                 <li><strong>Image 🖼️:</strong> upload an image; <code>/analyze_image</code> runs local OCR (ES/EN).</li>
                 <li><strong>Tree 🗂️:</strong> diagram button → <code>/tools/tree</code>; open files with <code>/tools/content</code>.</li>
                 <li><strong>ZIP/Clone/Ingest:</strong> upload ZIP or clone repo and process with <code>/files/ingest</code> for RAG.</li>
@@ -655,8 +598,7 @@
               <ul class="es">
                 <li><strong>Chat:</strong> conversación normal con memoria y modo código/cripto.</li>
                 <li><strong>Modo Web 🌐:</strong> activa el botón globo; usa <code>/websearch</code> y muestra fuentes a la derecha.</li>
-                <li><strong>Modo URL 🔗:</strong> pega una URL; <code>/fetch_url</code> la lee y aparece en Fuentes (HTTPS; .onion solo si Tor está activo en el servidor).</li>
-                <li><strong>Seguridad .onion:</strong> usa Tor en un entorno aislado/sandbox; protege con firewall, no descargues binarios ni ejecutes nada; asume riesgo de honeypots/malware. Si Tor no está disponible, el fetch fallará.</li>
+                <li><strong>Modo URL 🔗:</strong> pega una URL; <code>/fetch_url</code> la lee y aparece en Fuentes.</li>
                 <li><strong>Imagen 🖼️:</strong> sube una imagen; <code>/analyze_image</code> hace OCR local (ES/EN).</li>
                 <li><strong>Árbol 🗂️:</strong> botón diagrama → <code>/tools/tree</code>; abre archivos con <code>/tools/content</code>.</li>
                 <li><strong>ZIP/Clone/Ingest:</strong> subir ZIP o clonar repo y procesar con <code>/files/ingest</code> para RAG.</li>
@@ -664,15 +606,93 @@
             </details>
 
             <div class="links">
-              <a class="link" href="https://aegischat.onrender.com/" target="_blank" rel="noreferrer">Aegis assistant</a>
+              <a class="link" href="https://aegischat.onrender.com/" target="_blank" rel="noreferrer">Aegis demo</a>
               <a class="link" href="https://github.com/fredoomsearch/AegisChat" target="_blank" rel="noreferrer">Aegis source code (GitHub)</a>
             </div>
           </article>
+
+          <!-- PLAYWIN / CRYPTO APP (NO PLAYWIN VIDEO DEMO) -->
+          <article class="card pad stack">
+            <span class="badge">PLAYWIN</span>
+
+            <div>
+              <h3 class="project-title">PlayWin – Crypto Forecasting &amp; Insights Platform</h3>
+              <p class="project-tags en">FastAPI · TensorFlow · Scikit-Learn · Angular · PostgreSQL · Data pipelines</p>
+              <p class="project-tags es">FastAPI · TensorFlow · Scikit-Learn · Angular · PostgreSQL · Pipelines de datos</p>
+            </div>
+
+            <p class="en" style="margin:0;color:var(--muted);">
+              Crypto forecasting + investing platform with enriched market data, feature engineering, and ML models to support short-term decisions.
+            </p>
+            <p class="es" style="margin:0;color:var(--muted);">
+              Plataforma de predicción e inversión cripto con datos enriquecidos, feature engineering y modelos de ML para apoyar decisiones de corto plazo.
+            </p>
+
+            <ul class="project-points en">
+              <li>Data ingestion from market APIs + external signals.</li>
+              <li>Feature engineering + forecasting models (short &amp; mid term).</li>
+              <li>Angular dashboards (charts, filters, portfolio views).</li>
+              <li>Automations for refresh + evaluation.</li>
+            </ul>
+
+            <ul class="project-points es">
+              <li>Ingesta de datos desde APIs de mercado + señales externas.</li>
+              <li>Feature engineering + modelos de predicción (corto y mediano plazo).</li>
+              <li>Dashboards en Angular (gráficas, filtros, portafolio).</li>
+              <li>Automatizaciones para refresh + evaluación.</li>
+            </ul>
+
+            <!-- ✅ PlayWin / Crypto: images to show how it looks -->
+            <figure class="media">
+              <img src="./CRYPTO.png" alt="PlayWin / Crypto app screenshot" />
+              <figcaption class="en">PlayWin / Crypto app (UI snapshot).</figcaption>
+              <figcaption class="es">PlayWin / App cripto (captura de la UI).</figcaption>
+            </figure>
+
+            <figure class="media">
+              <img src="./trust.png" alt="Trust & Win screenshot" />
+              <figcaption class="en">Trust &amp; Win (snapshot).</figcaption>
+              <figcaption class="es">Trust &amp; Win (captura).</figcaption>
+            </figure>
+
+            <!-- ✅ TRUST WIN VIDEO (put it below the crypto fetching app) -->
+            <figure class="media">
+              <!-- IMPORTANT:
+                   Rename your Trust Win video to: trustwin.mp4
+                   OR change this src to your real filename.
+              -->
+              <video controls playsinline preload="metadata">
+                <source src="./trustwin.mp4" type="video/mp4" />
+                Your browser does not support the video tag.
+              </video>
+              <figcaption class="en">Trust Win – short walkthrough (video).</figcaption>
+              <figcaption class="es">Trust Win – walkthrough corto (video).</figcaption>
+            </figure>
+
+            <!-- Little explanation below the last video (the ~11 min one) -->
+            <div class="card" style="border-radius: 14px; padding: .9rem; background: rgba(255,255,255,.04); border: 1px solid var(--border);">
+              <p class="en" style="margin:0;color:var(--muted);">
+                <strong>Note:</strong> model responses are tied to the current conversation context. If the chat starts mixing topics,
+                the fastest “reset” is to delete/clear the conversation and start a new one — that gives clean context again.
+              </p>
+              <p class="es" style="margin:.55rem 0 0 0;color:var(--muted);">
+                <strong>Nota:</strong> las respuestas del modelo están ligadas al contexto de la conversación actual. Si el chat se empieza a “mezclar”,
+                lo más rápido es borrar/limpiar la conversación y comenzar una nueva — así el contexto queda limpio otra vez.
+              </p>
+            </div>
+
+            <div class="links">
+              <a class="link" href="https://dtapppyfront.onrender.com/" target="_blank" rel="noreferrer">Live demo</a>
+              <a class="link" href="https://github.com/fredoomsearch/DtappPy" target="_blank" rel="noreferrer">Backend repo (DtappPy)</a>
+              <a class="link" href="https://github.com/fredoomsearch/DtAPPpyFront" target="_blank" rel="noreferrer">Frontend repo (DtAPPpyFront)</a>
+            </div>
+          </article>
+
         </div>
       </div>
     </section>
 
-    <!-- EXPERIENCE -->
+    <!-- EXPERIENCE (left as-is) -->
     <section id="experience" class="section">
       <div class="container">
         <h2 class="section-title en">Experience</h2>
@@ -885,19 +905,21 @@
   </script>
 
   <!--
-    IMPORTANT:
-    Put these media files in the SAME folder as index.html (case-sensitive!) with these EXACT filenames:
+    IMPORTANT (FILES IN SAME FOLDER AS index.html):
+    AEGIS videos:
+      1) aegispro_9ieOQcJa.mp4
+      2) awesomescreenshot-1-11-2026-7-22-50pm_7CkQrj0q.mp4
 
-    IMAGE:
-    - trust.png  (or change to trust1.png if that's your real file)
+    PlayWin / Crypto images:
+      - CRYPTO.png
+      - trust.png   (or replace with trust1.png if you prefer)
 
-    VIDEOS:
-    1) aegispro_9ieOQcJa.mp4
-    2) awesomescreenshot-1-11-2026-7-22-50pm_7CkQrj0q.mp4
+    Trust Win video:
+      - Rename your Trust Win video to: trustwin.mp4
+        OR update the <source src="./trustwin.mp4"> to your real filename.
   -->
 </body>
 </html>
-
 
 
 
