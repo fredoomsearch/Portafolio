@@ -1,842 +1,215 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="description" content="Portfolio of Julián Esteban Grajales Vergara – Full-Stack & Data Developer." />
-  <title>Julián Grajales – Portfolio</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="description" content="Portfolio of Julián Esteban Grajales Vergara - Full-Stack and Data Developer." />
+  <title>Julián Grajales | Portfolio</title>
 
-  <style>
-    * { box-sizing: border-box; }
-    html { scroll-behavior: smooth; }
-
-    :root{
-      --bg:#0b1220;
-      --surface: rgba(255,255,255,.06);
-      --border: rgba(255,255,255,.12);
-      --text: rgba(255,255,255,.92);
-      --muted: rgba(255,255,255,.70);
-      --muted2: rgba(255,255,255,.55);
-      --primary:#31c3ff;
-      --primary2:#00ffa7;
-      --shadow: 0 10px 30px rgba(0,0,0,.35);
-      --radius: 16px;
-      --container: 1000px;
-    }
-
-    body{
-      margin:0;
-      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
-      line-height: 1.6;
-      color: var(--text);
-      background:
-        radial-gradient(1200px 600px at 20% 0%, rgba(0,123,255,.12), transparent 60%),
-        radial-gradient(900px 500px at 80% 20%, rgba(16,185,129,.10), transparent 60%),
-        var(--bg);
-    }
-
-    /* Language switch: show only current language */
-    body.lang-en .es { display: none !important; }
-    body.lang-es .en { display: none !important; }
-
-    a { color: inherit; }
-    img { display:block; width:100%; }
-    code { font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace; }
-
-    .container{
-      width: min(100% - 2rem, var(--container));
-      margin: 0 auto;
-    }
-
-    /* Header */
-    .site-header{
-      position: sticky;
-      top: 0;
-      z-index: 20;
-      background: rgba(11,18,32,.72);
-      border-bottom: 1px solid var(--border);
-      backdrop-filter: blur(12px);
-    }
-
-    .header-inner{
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      gap:1rem;
-      padding: .9rem 0;
-    }
-
-    .logo{
-      margin:0;
-      font-size: 1.1rem;
-      letter-spacing: .02em;
-    }
-
-    .tagline{
-      margin:.25rem 0 0 0;
-      font-size:.9rem;
-      color: var(--muted2);
-    }
-
-    .nav{
-      display:flex;
-      gap:.6rem;
-      flex-wrap: wrap;
-      align-items: center;
-    }
-
-    .nav a{
-      text-decoration:none;
-      color: var(--muted);
-      font-weight:700;
-      font-size:.95rem;
-      padding:.35rem .65rem;
-      border-radius: 999px;
-      border: 1px solid transparent;
-      transition: .18s ease;
-      white-space: nowrap;
-    }
-    .nav a:hover{
-      color: var(--text);
-      border-color: var(--border);
-      background: rgba(255,255,255,.06);
-    }
-
-    /* Language buttons */
-    .lang-switch{
-      display:flex;
-      gap:.35rem;
-      padding-left:.4rem;
-      border-left: 1px solid var(--border);
-      margin-left:.4rem;
-    }
-    .lang-btn{
-      border: 1px solid var(--border);
-      background: rgba(255,255,255,.06);
-      color: var(--muted);
-      font-weight: 950;
-      border-radius: 999px;
-      padding: .35rem .55rem;
-      cursor: pointer;
-      transition: .18s ease;
-      line-height: 1;
-    }
-    .lang-btn:hover{
-      color: var(--text);
-      border-color: rgba(49,195,255,.35);
-      transform: translateY(-1px);
-    }
-    .lang-btn.active{
-      color: rgba(11,18,32,.92);
-      border-color: rgba(49,195,255,.45);
-      background: linear-gradient(90deg, rgba(49,195,255,.85), rgba(0,255,167,.65));
-    }
-
-    /* General sections */
-    .section{ padding: 3.2rem 0; }
-    .section-title{
-      margin:0 0 .6rem 0;
-      font-size: clamp(1.5rem, 2.4vw, 2rem);
-      letter-spacing: -0.02em;
-    }
-    .section-subtitle{
-      margin:0 0 1.8rem 0;
-      color: var(--muted);
-      max-width: 85ch;
-    }
-
-    /* Cards */
-    .card{
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-      box-shadow: var(--shadow);
-      backdrop-filter: blur(10px);
-    }
-    .pad{ padding: 1.25rem; }
-
-    /* Hero */
-    .hero{ padding: 3.5rem 0 2.6rem; }
-
-    .hero-grid{
-      display:grid;
-      grid-template-columns: 1.15fr .85fr;
-      gap: 1.2rem;
-      align-items: start;
-    }
-
-    .kicker{
-      display:inline-flex;
-      align-items:center;
-      gap:.5rem;
-      font-size:.9rem;
-      font-weight:800;
-      color: var(--muted);
-      border: 1px solid var(--border);
-      background: rgba(255,255,255,.06);
-      padding: .35rem .65rem;
-      border-radius: 999px;
-      width: fit-content;
-      margin-bottom: .9rem;
-    }
-
-    .dot{
-      width:8px; height:8px; border-radius:99px;
-      background: linear-gradient(90deg, var(--primary), var(--primary2));
-      box-shadow: 0 0 0 3px rgba(49,195,255,.15);
-    }
-
-    .hero h2{
-      margin: 0 0 .9rem 0;
-      font-size: clamp(1.9rem, 3.2vw, 2.7rem);
-      line-height: 1.12;
-      letter-spacing: -0.03em;
-    }
-
-    .hero p{ margin:0 0 1rem 0; color: var(--muted); }
-    .hero-note{ margin-top: 1rem; color: var(--muted2); font-size: .95rem; }
-
-    .actions{ display:flex; gap:.75rem; flex-wrap:wrap; margin-top: 1rem; }
-
-    .btn{
-      display:inline-flex;
-      align-items:center;
-      justify-content:center;
-      padding: .75rem 1rem;
-      border-radius: 999px;
-      text-decoration:none;
-      font-weight:900;
-      border: 1px solid var(--border);
-      transition: transform .12s ease, background .18s ease, border-color .18s ease;
-      white-space: nowrap;
-    }
-    .btn:hover{ transform: translateY(-1px); }
-
-    .btn.primary{
-      border-color: rgba(49,195,255,.45);
-      background: linear-gradient(90deg, rgba(49,195,255,.85), rgba(0,255,167,.65));
-      color: rgba(11,18,32,.92);
-    }
-    .btn.secondary{
-      background: rgba(255,255,255,.06);
-      color: var(--text);
-    }
-
-    .pill-row{
-      display:flex;
-      flex-wrap:wrap;
-      gap:.5rem;
-      list-style:none;
-      padding:0;
-      margin: .9rem 0 0 0;
-    }
-    .pill-row li{
-      font-size:.9rem;
-      color: var(--muted);
-      border:1px solid var(--border);
-      background: rgba(255,255,255,.06);
-      padding:.35rem .6rem;
-      border-radius: 999px;
-    }
-
-    /* Projects */
-    .projects-grid{
-      display:grid;
-      grid-template-columns: 1fr;
-      gap: 1.2rem;
-      align-items: stretch;
-    }
-
-    .stack{
-      display:flex;
-      flex-direction: column;
-      gap: .95rem;
-      height: 100%;
-      min-height: 100%;
-    }
-
-    .badge{
-      display:inline-block;
-      font-size:.78rem;
-      font-weight: 1000;
-      letter-spacing: .06em;
-      text-transform: uppercase;
-      padding: .3rem .6rem;
-      border-radius: 999px;
-      background: linear-gradient(90deg, var(--primary), var(--primary2));
-      color: rgba(11,18,32,.92);
-      width: fit-content;
-    }
-
-    .project-title{ margin:.2rem 0 0 0; font-size: 1.25rem; }
-    .project-tags{ margin:0; color: var(--muted2); font-size:.95rem; }
-
-    .project-points{
-      margin: .2rem 0 0 0;
-      padding-left: 1.15rem;
-      color: var(--muted);
-    }
-    .project-points li{ margin:.35rem 0; }
-
-    /* Media */
-    .media-grid{
-      display:grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 1rem;
-    }
-
-    figure.media{
-      margin:0;
-      border-radius: 14px;
-      overflow:hidden;
-      border: 1px solid var(--border);
-      background: rgba(255,255,255,.06);
-    }
-
-    figure.media img,
-    figure.media video{
-      width: 100%;
-      height: 250px;
-      object-fit: cover;
-      object-position: center;
-      background: #000;
-      display: block;
-    }
-
-    figure.media figcaption{
-      padding: .75rem .9rem;
-      color: var(--muted2);
-      font-size: .92rem;
-      border-top: 1px solid var(--border);
-    }
-
-    /* Links */
-    .links{
-      display:grid;
-      gap:.5rem;
-      margin-top: .2rem;
-    }
-
-    .link{
-      text-decoration:none;
-      font-weight:800;
-      color: var(--text);
-      border: 1px solid var(--border);
-      background: rgba(255,255,255,.06);
-      padding: .6rem .75rem;
-      border-radius: 12px;
-      transition: .18s ease;
-    }
-    .link:hover{
-      border-color: rgba(49,195,255,.35);
-      transform: translateY(-1px);
-    }
-
-    /* Details */
-    details.details{
-      border: 1px solid var(--border);
-      border-radius: 14px;
-      background: rgba(255,255,255,.04);
-      padding: .75rem .9rem;
-    }
-    details.details summary{
-      cursor:pointer;
-      font-weight: 950;
-      color: var(--text);
-      list-style: none;
-    }
-    details.details summary::-webkit-details-marker{ display:none; }
-    details.details .hint{
-      margin:.35rem 0 0 0;
-      color: var(--muted2);
-      font-size: .92rem;
-    }
-    details.details ul{
-      margin: .8rem 0 0 0;
-      padding-left: 1.15rem;
-      color: var(--muted);
-    }
-    details.details li{ margin: .35rem 0; }
-
-    /* Experience */
-    .timeline { display:grid; gap: 1rem; }
-    .exp-head{
-      display:flex;
-      justify-content:space-between;
-      gap:1rem;
-      flex-wrap:wrap;
-      align-items:baseline;
-    }
-    .dates{ color: var(--muted2); font-weight: 950; }
-
-    /* About/Contact */
-    .about-grid{
-      display:grid;
-      grid-template-columns: 1.2fr .8fr;
-      gap: 1.2rem;
-      align-items: start;
-    }
-
-    .chips{
-      display:flex;
-      flex-wrap:wrap;
-      gap:.5rem;
-      list-style:none;
-      padding:0;
-      margin:.5rem 0 1rem 0;
-    }
-    .chips li{
-      font-size:.9rem;
-      color: var(--muted);
-      border:1px solid var(--border);
-      background: rgba(255,255,255,.06);
-      padding:.35rem .6rem;
-      border-radius: 999px;
-    }
-
-    .contact-grid{
-      display:grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 1rem;
-    }
-    .contact-card p{ margin:.35rem 0; color: var(--muted); }
-    .contact-card a{ color: var(--text); font-weight:900; text-decoration:none; }
-    .contact-card a:hover{ text-decoration: underline; }
-
-    /* Footer */
-    .site-footer{
-      padding: 2.2rem 0 2.6rem;
-      border-top: 1px solid var(--border);
-      color: var(--muted2);
-    }
-    .footer-inner{
-      display:flex;
-      align-items:center;
-      justify-content: space-between;
-      gap:1rem;
-      flex-wrap: wrap;
-    }
-    .footer-inner p{ margin:0; color: var(--muted2); }
-
-    @media (max-width: 900px){
-      .hero-grid, .about-grid { grid-template-columns: 1fr; }
-      .media-grid{ grid-template-columns: 1fr; }
-      figure.media img, figure.media video{ height: 220px; }
-    }
-  </style>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="./styles.css" />
 </head>
-
 <body class="lang-en">
   <header class="site-header">
-    <div class="container header-inner">
-      <div>
-        <h1 class="logo">Julián Grajales</h1>
-        <p class="tagline">
-          <span class="en">Full-Stack & Data Developer · FastAPI · Django · Angular · ML · Crypto & Business Apps</span>
-          <span class="es">Desarrollador Full-Stack & Datos · FastAPI · Django · Angular · ML · Cripto & Apps de Negocio</span>
-        </p>
+    <div class="container header-row">
+      <div class="brand">
+        <h1>Julián Grajales</h1>
+        <p class="en">Full-Stack & Data Developer · FastAPI · Django · Angular · ML</p>
+        <p class="es">Desarrollador Full-Stack & Datos · FastAPI · Django · Angular · ML</p>
       </div>
 
-      <nav class="nav" aria-label="Primary">
+      <nav class="main-nav" aria-label="Main">
         <a href="#projects"><span class="en">Projects</span><span class="es">Proyectos</span></a>
         <a href="#experience"><span class="en">Experience</span><span class="es">Experiencia</span></a>
         <a href="#about"><span class="en">About</span><span class="es">Sobre mí</span></a>
         <a href="#contact"><span class="en">Contact</span><span class="es">Contacto</span></a>
-
-        <div class="lang-switch" aria-label="Language switch">
-          <button class="lang-btn active" type="button" data-lang="en">EN</button>
-          <button class="lang-btn" type="button" data-lang="es">ES</button>
-        </div>
       </nav>
+
+      <div class="lang-switch" aria-label="Language switch">
+        <button class="lang-btn active" data-lang="en" type="button">EN</button>
+        <button class="lang-btn" data-lang="es" type="button">ES</button>
+      </div>
     </div>
   </header>
 
   <main>
-    <!-- HERO -->
-    <section class="hero">
+    <section class="section hero">
       <div class="container hero-grid">
-        <div>
-          <div class="kicker">
-            <span class="dot" aria-hidden="true"></span>
-            <span class="en">Full-Stack · Data · AI Assistant / RAG</span>
-            <span class="es">Full-Stack · Datos · Asistente AI / RAG</span>
-          </div>
+        <article>
+          <span class="kicker"><i></i><span class="en">Product + Data + AI</span><span class="es">Producto + Datos + AI</span></span>
 
-          <h2 class="en">Building data-driven platforms that connect code, models and real business needs.</h2>
-          <h2 class="es">Construyo plataformas basadas en datos que conectan código, modelos y necesidades reales del negocio.</h2>
+          <h2 class="en">Building practical systems where APIs, models and UX work together.</h2>
+          <h2 class="es">Construyo sistemas prácticos donde APIs, modelos y UX trabajan juntos.</h2>
 
           <p class="en">
-            I build end-to-end products: APIs, dashboards, pipelines and ML experiments — plus internal assistants to speed up debugging and iteration.
+            I develop end-to-end platforms: backend services, dashboards, data pipelines, and ML features ready for business use.
           </p>
           <p class="es">
-            Construyo productos de punta a punta: APIs, dashboards, pipelines y experimentos de ML — más asistentes internos para acelerar debugging e iteración.
+            Desarrollo plataformas end-to-end: servicios backend, dashboards, pipelines de datos y features de ML listas para negocio.
           </p>
 
-          <div class="actions">
-            <a href="#projects" class="btn primary"><span class="en">View Projects</span><span class="es">Ver Proyectos</span></a>
-            <a href="#experience" class="btn secondary"><span class="en">Work Experience</span><span class="es">Experiencia</span></a>
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="#projects"><span class="en">See projects</span><span class="es">Ver proyectos</span></a>
+            <a class="btn btn-ghost" href="#contact"><span class="en">Contact me</span><span class="es">Contáctame</span></a>
           </div>
 
-          <p class="hero-note en">Based in Medellín, Colombia · English B2+ · Open to remote opportunities</p>
-          <p class="hero-note es">Vivo en Medellín, Colombia · Inglés B2+ · Abierto a oportunidades remotas</p>
-        </div>
+          <small class="meta en">Medellín, Colombia · English B2+ · Open to remote work</small>
+          <small class="meta es">Medellín, Colombia · Inglés B2+ · Abierto a trabajo remoto</small>
+        </article>
 
-        <aside class="card pad">
-          <p class="en" style="margin:0;color:var(--muted2);font-weight:900;letter-spacing:.02em;">Current focus</p>
-          <p class="es" style="margin:0;color:var(--muted2);font-weight:900;letter-spacing:.02em;">Enfoque actual</p>
-
-          <h3 style="margin:.35rem 0 0 0;">Aegis + PlayWin</h3>
-
-          <p class="en" style="margin:.6rem 0 0 0;color:var(--muted);">
-            An internal AI assistant (RAG + tools) and a crypto forecasting platform with dashboards and enriched data pipelines.
-          </p>
-          <p class="es" style="margin:.6rem 0 0 0;color:var(--muted);">
-            Un asistente interno (RAG + herramientas) y una plataforma de predicción cripto con dashboards y pipelines enriquecidos.
-          </p>
-
-          <ul class="pill-row">
-            <li>FastAPI</li><li>Angular</li><li>RAG</li><li>ML</li><li>PostgreSQL</li><li>Docker</li>
+        <aside class="card">
+          <p class="label en">Current focus</p>
+          <p class="label es">Enfoque actual</p>
+          <h3>Aegis + PlayWin</h3>
+          <p class="en">Internal AI assistant + crypto analytics platform with live dashboards and forecasting pipelines.</p>
+          <p class="es">Asistente AI interno + plataforma cripto con dashboards en vivo y pipelines de predicción.</p>
+          <ul class="tags">
+            <li>FastAPI</li><li>Angular</li><li>PostgreSQL</li><li>RAG</li><li>TensorFlow</li><li>Docker</li>
           </ul>
         </aside>
       </div>
     </section>
 
-    <!-- PROJECTS -->
     <section id="projects" class="section">
       <div class="container">
-        <h2 class="section-title en">Projects</h2>
-        <h2 class="section-title es">Proyectos</h2>
+        <h2 class="title en">Featured Project</h2>
+        <h2 class="title es">Proyecto Principal</h2>
 
-        <p class="section-subtitle en">
-          One ecosystem: <strong>PlayWin</strong> (crypto forecasting + dashboards) powered by <strong>Aegis</strong> (internal AI assistant for faster iteration, debugging and ops).
-        </p>
-        <p class="section-subtitle es">
-          Un ecosistema: <strong>PlayWin</strong> (predicción cripto + dashboards) potenciado por <strong>Aegis</strong> (asistente AI interno para acelerar iteración, debugging y operaciones).
-        </p>
+        <article class="card project-card">
+          <div class="project-head">
+            <span class="chip">AEGIS + PLAYWIN</span>
+            <p class="stack">FastAPI · Angular · PostgreSQL · ML · RAG</p>
+          </div>
 
-        <div class="projects-grid">
-          <article class="card pad stack">
-            <span class="badge">AEGIS + PLAYWIN</span>
+          <h3 class="en">AI-assisted Crypto Forecasting Platform</h3>
+          <h3 class="es">Plataforma Cripto con Predicción + Asistente AI</h3>
 
-            <div>
-              <h3 class="project-title en">AI-assisted Crypto Forecasting Platform</h3>
-              <h3 class="project-title es">Plataforma Cripto con Predicción + Asistente AI</h3>
+          <ul class="points en">
+            <li><strong>PlayWin:</strong> ingestion, feature engineering, training and prediction APIs.</li>
+            <li><strong>Aegis:</strong> repo-aware assistant for faster debugging and iteration.</li>
+            <li>Unified workflow: request analysis, run tools, explain outputs with context.</li>
+          </ul>
+          <ul class="points es">
+            <li><strong>PlayWin:</strong> ingesta, features, entrenamiento y APIs de predicción.</li>
+            <li><strong>Aegis:</strong> asistente con contexto del repo para acelerar debugging.</li>
+            <li>Flujo unificado: análisis, tools y explicación con contexto.</li>
+          </ul>
 
-              <p class="project-tags en">FastAPI · Angular · PostgreSQL · ML (training pipeline) · RAG assistant (repo ingestion + tools)</p>
-              <p class="project-tags es">FastAPI · Angular · PostgreSQL · ML (pipeline de entrenamiento) · Asistente RAG (ingesta del repo + tools)</p>
-            </div>
+          <div class="media-grid">
+            <figure><img src="./CRYPTO.png" alt="PlayWin dashboard" loading="lazy" /><figcaption>Dashboard snapshot</figcaption></figure>
+            <figure><img src="./BTCUSDT.png" alt="BTCUSDT chart" loading="lazy" /><figcaption>BTCUSDT chart</figcaption></figure>
+            <figure><video controls preload="metadata"><source src="./TRUSTWIN.mp4" type="video/mp4" /></video><figcaption>TrustWin walkthrough</figcaption></figure>
+            <figure><video controls preload="metadata"><source src="./aegispro_9ieOQcJa.mp4" type="video/mp4" /></video><figcaption>Aegis demo</figcaption></figure>
+          </div>
 
-            <ul class="project-points en">
-              <li><strong>PlayWin</strong> provides market ingestion → feature engineering → model training → prediction APIs → dashboards.</li>
-              <li><strong>Aegis</strong> is the internal assistant that searches your codebase (RAG) + runs tools (web/read/ops) to speed up building & debugging.</li>
-              <li>When you ask for crypto insight, <strong>Aegis can call PlayWin prediction endpoints</strong> and explain the result with context.</li>
-            </ul>
-
-            <ul class="project-points es">
-              <li><strong>PlayWin</strong> hace ingesta de mercado → features → entrenamiento → APIs de predicción → dashboards.</li>
-              <li><strong>Aegis</strong> es el asistente interno que busca en el repo (RAG) + ejecuta tools (web/lectura/ops) para acelerar desarrollo y debugging.</li>
-              <li>Cuando preguntas de cripto, <strong>Aegis puede llamar los endpoints de predicción de PlayWin</strong> y explicar el resultado con contexto.</li>
-            </ul>
-
-            <div class="media-grid">
-              <figure class="media">
-                <video controls playsinline preload="metadata">
-                  <source src="./aegispro_9ieOQcJa.mp4" type="video/mp4" />
-                  Your browser does not support the video tag.
-                </video>
-                <figcaption class="en">Aegis demo #1 — repo ingestion + workflow.</figcaption>
-                <figcaption class="es">Demo Aegis #1 — ingesta del repo + flujo.</figcaption>
-              </figure>
-
-              <figure class="media">
-                <video controls playsinline preload="metadata">
-                  <source src="./awesomescreenshot-1-11-2026-7-22-50pm_7CkQrj0q.mp4" type="video/mp4" />
-                  Your browser does not support the video tag.
-                </video>
-                <figcaption class="en">Aegis demo #2 — practical usage.</figcaption>
-                <figcaption class="es">Demo Aegis #2 — uso práctico.</figcaption>
-              </figure>
-
-              <figure class="media">
-                <img src="./CRYPTO.png" alt="PlayWin dashboard snapshot" loading="lazy" />
-                <figcaption class="en">PlayWin — dashboard snapshot (UI).</figcaption>
-                <figcaption class="es">PlayWin — captura del dashboard (UI).</figcaption>
-              </figure>
-
-              <figure class="media">
-                <video controls playsinline preload="metadata">
-                  <source src="./TRUSTWIN.mp4" type="video/mp4" />
-                  Your browser does not support the video tag.
-                </video>
-                <figcaption class="en">TrustWin — short walkthrough (video).</figcaption>
-                <figcaption class="es">TrustWin — walkthrough corto (video).</figcaption>
-              </figure>
-            </div>
-
-            <details class="details">
-              <summary>
-                <span class="en">Charts (Binance snapshots)</span>
-                <span class="es">Gráficas (capturas Binance)</span>
-              </summary>
-
-              <p class="hint en">These images must be in the same folder as <code>index.html</code> and the names must match exactly.</p>
-              <p class="hint es">Estas imágenes deben estar en la misma carpeta que <code>index.html</code> y los nombres deben coincidir exactamente.</p>
-
-              <div class="media-grid" style="margin-top:1rem;">
-                <figure class="media">
-                  <img src="./BNBUSDT.png" alt="BNBUSDT chart" loading="lazy" />
-                  <figcaption class="en">BNBUSDT snapshot</figcaption>
-                  <figcaption class="es">Captura BNBUSDT</figcaption>
-                </figure>
-
-                <figure class="media">
-                  <img src="./BTCUSDT.png" alt="BTCUSDT chart" loading="lazy" />
-                  <figcaption class="en">BTCUSDT snapshot</figcaption>
-                  <figcaption class="es">Captura BTCUSDT</figcaption>
-                </figure>
-
-                <figure class="media">
-                  <img src="./ETHUSDT.png" alt="ETHUSDT chart" loading="lazy" />
-                  <figcaption class="en">ETHUSDT snapshot</figcaption>
-                  <figcaption class="es">Captura ETHUSDT</figcaption>
-                </figure>
-
-                <figure class="media">
-                  <img src="./SOLUSDT.png" alt="SOLUSDT chart" loading="lazy" />
-                  <figcaption class="en">SOLUSDT snapshot</figcaption>
-                  <figcaption class="es">Captura SOLUSDT</figcaption>
-                </figure>
-              </div>
-            </details>
-
-            <div class="links">
-              <a class="link" href="https://aegischat.onrender.com/" target="_blank" rel="noreferrer">Aegis demo</a>
-              <a class="link" href="https://github.com/fredoomsearch/AegisChat" target="_blank" rel="noreferrer">Aegis source code (GitHub)</a>
-              <a class="link" href="https://dtapppyfront.onrender.com/" target="_blank" rel="noreferrer">PlayWin live demo</a>
-              <a class="link" href="https://github.com/fredoomsearch/DtappPy" target="_blank" rel="noreferrer">PlayWin backend repo (DtappPy)</a>
-              <a class="link" href="https://github.com/fredoomsearch/DtAPPpyFront" target="_blank" rel="noreferrer">PlayWin frontend repo (DtappPyFront)</a>
-            </div>
-          </article>
-        </div>
+          <div class="links">
+            <a href="https://aegischat.onrender.com/" target="_blank" rel="noreferrer">Aegis demo</a>
+            <a href="https://github.com/fredoomsearch/AegisChat" target="_blank" rel="noreferrer">Aegis GitHub</a>
+            <a href="https://dtapppyfront.onrender.com/" target="_blank" rel="noreferrer">PlayWin demo</a>
+            <a href="https://github.com/fredoomsearch/DtappPy" target="_blank" rel="noreferrer">PlayWin backend</a>
+          </div>
+        </article>
       </div>
     </section>
 
-    <!-- EXPERIENCE -->
-    <section id="experience" class="section">
+    <section id="experience" class="section alt">
       <div class="container">
-        <h2 class="section-title en">Experience</h2>
-        <h2 class="section-title es">Experiencia</h2>
-
-        <p class="section-subtitle en">Professional experience where I’ve applied full-stack development, data and cloud skills.</p>
-        <p class="section-subtitle es">Experiencia profesional donde he aplicado desarrollo full-stack, datos y nube.</p>
+        <h2 class="title en">Experience</h2>
+        <h2 class="title es">Experiencia</h2>
 
         <div class="timeline">
-          <article class="card pad">
-            <div class="exp-head">
-              <h3 style="margin:0;font-size:1.05rem;">PlayWin | Software Developer</h3>
-              <span class="dates">01/2025 – Present</span>
-            </div>
-            <p class="en" style="margin:.6rem 0 0 0;color:var(--muted);">
-              Developing a crypto forecasting + investing platform using data pipelines, scraping and market APIs (CoinGecko/Binance),
-              plus external signals. Tech: FastAPI, TensorFlow, Scikit-learn, Angular, PostgreSQL. Building a chatbot assistant.
-            </p>
-            <p class="es" style="margin:.6rem 0 0 0;color:var(--muted);">
-              Desarrollo una plataforma de predicción e inversión cripto con pipelines de datos, scraping y APIs de mercado (CoinGecko/Binance),
-              más señales externas. Tech: FastAPI, TensorFlow, Scikit-learn, Angular, PostgreSQL. Construyendo un asistente tipo chatbot.
-            </p>
+          <article class="timeline-item">
+            <h3>PlayWin | Software Developer <span>01/2025 - Present</span></h3>
+            <p class="en">Crypto prediction platform, data pipelines, market APIs, chatbot tooling.</p>
+            <p class="es">Plataforma cripto de predicción, pipelines de datos, APIs de mercado y tooling de chatbot.</p>
           </article>
 
-          <article class="card pad">
-            <div class="exp-head">
-              <h3 style="margin:0;font-size:1.05rem;">TASS TECHNOLOGIES | Fullstack Dev</h3>
-              <span class="dates">09/2025 – 11/2025</span>
-            </div>
-            <p class="en" style="margin:.6rem 0 0 0;color:var(--muted);">
-              Full-stack development using SCSS, Angular, Vue, Python, Django, Docker, PostgreSQL, GitHub and Next.js.
-            </p>
-            <p class="es" style="margin:.6rem 0 0 0;color:var(--muted);">
-              Desarrollo full-stack con SCSS, Angular, Vue, Python, Django, Docker, PostgreSQL, GitHub y Next.js.
-            </p>
+          <article class="timeline-item">
+            <h3>TASS TECHNOLOGIES | Fullstack Dev <span>09/2025 - 11/2025</span></h3>
+            <p class="en">Angular/Vue + Python/Django + PostgreSQL + Docker production work.</p>
+            <p class="es">Trabajo productivo con Angular/Vue + Python/Django + PostgreSQL + Docker.</p>
           </article>
 
-          <article class="card pad">
-            <div class="exp-head">
-              <h3 style="margin:0;font-size:1.05rem;">JC CODE | Software Developer</h3>
-              <span class="dates">02/2024 – 07/2024</span>
-            </div>
-            <p class="en" style="margin:.6rem 0 0 0;color:var(--muted);">
-              Built a business management system for a casino (Django + Angular, Scrum). Improved operational efficiency and reporting,
-              contributing to a ~30% reduction in decision-making time.
-            </p>
-            <p class="es" style="margin:.6rem 0 0 0;color:var(--muted);">
-              Construí un sistema de gestión para un casino (Django + Angular, Scrum). Mejoró eficiencia operativa y reporting,
-              contribuyendo a ~30% menos tiempo de toma de decisiones.
-            </p>
-          </article>
-
-          <article class="card pad">
-            <div class="exp-head">
-              <h3 style="margin:0;font-size:1.05rem;">Restaurante Carbon | Software Developer</h3>
-              <span class="dates">06/2023 – 12/2023</span>
-            </div>
-            <p class="en" style="margin:.6rem 0 0 0;color:var(--muted);">
-              Built a Flutter mobile app for basic inventory and operational calculations, plus a web platform (Java, React, MySQL)
-              for dynamic menu, product visualization and order management.
-            </p>
-            <p class="es" style="margin:.6rem 0 0 0;color:var(--muted);">
-              Creé una app móvil en Flutter para inventarios y cálculos operativos, y una plataforma web (Java, React, MySQL)
-              para menú dinámico, visualización de productos y gestión de pedidos.
-            </p>
+          <article class="timeline-item">
+            <h3>JC CODE | Software Developer <span>02/2024 - 07/2024</span></h3>
+            <p class="en">Casino business management system with Django + Angular.</p>
+            <p class="es">Sistema de gestión para casino con Django + Angular.</p>
           </article>
         </div>
       </div>
     </section>
 
-    <!-- ABOUT -->
     <section id="about" class="section">
-      <div class="container">
-        <div class="about-grid">
-          <article class="card pad">
-            <h2 class="section-title en">About Me</h2>
-            <h2 class="section-title es">Sobre mí</h2>
+      <div class="container about-grid">
+        <article>
+          <h2 class="title en">About</h2>
+          <h2 class="title es">Sobre mí</h2>
+          <p class="en">I turn complex requirements into clean backend and frontend solutions with measurable impact.</p>
+          <p class="es">Convierto requerimientos complejos en soluciones backend y frontend limpias con impacto medible.</p>
+          <p class="en">Strong on API design, data workflows, system integration and pragmatic delivery.</p>
+          <p class="es">Fuerte en diseño de APIs, flujos de datos, integración de sistemas y entrega pragmática.</p>
+        </article>
 
-            <p class="en" style="margin:0;color:var(--text);font-weight:950;">
-              Full-Stack Developer specializing in web development, data science and machine learning.
-            </p>
-            <p class="es" style="margin:0;color:var(--text);font-weight:950;">
-              Desarrollador Full-Stack enfocado en desarrollo web, ciencia de datos y machine learning.
-            </p>
-
-            <p class="en" style="margin:.8rem 0 0 0;color:var(--muted);">
-              I’m disciplined, persistent, and goal-oriented. I like turning messy requirements into clean APIs, dashboards and systems.
-            </p>
-            <p class="es" style="margin:.8rem 0 0 0;color:var(--muted);">
-              Soy disciplinado, persistente y orientado a objetivos. Me gusta convertir requerimientos “enredados” en APIs y sistemas claros.
-            </p>
-
-            <p class="en" style="margin:.8rem 0 0 0;color:var(--muted);">
-              Comfortable working end-to-end: requirements → data modeling → APIs → UI → Docker deployments (AWS basics).
-            </p>
-            <p class="es" style="margin:.8rem 0 0 0;color:var(--muted);">
-              Cómodo trabajando end-to-end: requerimientos → modelado de datos → APIs → UI → despliegues con Docker (AWS básico).
-            </p>
-          </article>
-
-          <aside class="card pad">
-            <h3 class="en" style="margin:0 0 .6rem 0;">Tech Stack</h3>
-            <h3 class="es" style="margin:0 0 .6rem 0;">Stack técnico</h3>
-            <ul class="chips">
-              <li>Python (FastAPI, Django, DS/ML)</li>
-              <li>Java (Spring Boot)</li>
-              <li>Flutter</li>
-              <li>Angular / React</li>
-              <li>PostgreSQL / MySQL</li>
-              <li>Docker</li>
-              <li>AWS (Basics)</li>
-            </ul>
-
-            <h3 class="en" style="margin:0 0 .6rem 0;">Strengths</h3>
-            <h3 class="es" style="margin:0 0 .6rem 0;">Fortalezas</h3>
-            <ul class="chips">
-              <li class="en">Leadership</li><li class="es">Liderazgo</li>
-              <li class="en">Teamwork</li><li class="es">Trabajo en equipo</li>
-              <li class="en">Self-control</li><li class="es">Autocontrol</li>
-              <li class="en">Proactivity</li><li class="es">Proactividad</li>
-              <li>English B2+</li>
-            </ul>
-          </aside>
-        </div>
+        <aside class="card">
+          <h3 class="en">Tech Stack</h3>
+          <h3 class="es">Stack técnico</h3>
+          <ul class="tags">
+            <li>Python</li><li>FastAPI</li><li>Django</li><li>Angular</li><li>React</li>
+            <li>PostgreSQL</li><li>MySQL</li><li>Docker</li><li>AWS</li>
+          </ul>
+        </aside>
       </div>
     </section>
 
-    <!-- CONTACT -->
-    <section id="contact" class="section">
-      <div class="container">
-        <h2 class="section-title en">Contact</h2>
-        <h2 class="section-title es">Contacto</h2>
+    <section id="contact" class="section alt">
+      <div class="container contact-grid">
+        <article class="card">
+          <h2 class="title en">Contact</h2>
+          <h2 class="title es">Contacto</h2>
+          <p><strong>Email:</strong> <a href="mailto:grajalesj708@gmail.com">grajalesj708@gmail.com</a></p>
+          <p><strong>Phone:</strong> <a href="tel:+573104920884">+57 310 492 0884</a></p>
+          <p><strong>Location:</strong> Medellín, Colombia</p>
+        </article>
 
-        <p class="section-subtitle en">Open to remote roles, collaborations and interesting problems around data, crypto and full-stack development.</p>
-        <p class="section-subtitle es">Abierto a roles remotos, colaboraciones y problemas interesantes de datos, cripto y desarrollo full-stack.</p>
-
-        <div class="contact-grid">
-          <div class="card pad contact-card">
-            <h3 class="en" style="margin:0 0 .6rem 0;">Let’s talk</h3>
-            <h3 class="es" style="margin:0 0 .6rem 0;">Hablemos</h3>
-
-            <p><strong class="en">Location:</strong><strong class="es">Ubicación:</strong> Medellín, Antioquia, Colombia</p>
-            <p><strong class="en">Phone:</strong><strong class="es">Teléfono:</strong> <a href="tel:+573104920884">+57 3104920884</a></p>
-            <p><strong>Email:</strong> <a href="mailto:grajalesj708@gmail.com">grajalesj708@gmail.com</a></p>
-          </div>
-
-          <div class="card pad contact-card">
-            <h3 class="en" style="margin:0 0 .6rem 0;">Online</h3>
-            <h3 class="es" style="margin:0 0 .6rem 0;">En línea</h3>
-
-            <p><strong>LinkedIn:</strong> <a href="https://www.linkedin.com/in/jeg-v75fullstack" target="_blank" rel="noreferrer">jeg-v75fullstack</a></p>
-            <p><strong>GitHub:</strong> <a href="https://github.com/fredoomsearch" target="_blank" rel="noreferrer">fredoomsearch</a></p>
-            <p><strong class="en">Portfolio:</strong><strong class="es">Portafolio:</strong> <a href="https://portafolio-ypee.onrender.com/" target="_blank" rel="noreferrer">portafolio-ypee.onrender.com</a></p>
-          </div>
-        </div>
+        <article class="card">
+          <h2 class="title en">Links</h2>
+          <h2 class="title es">Enlaces</h2>
+          <p><a href="https://www.linkedin.com/in/jeg-v75fullstack" target="_blank" rel="noreferrer">LinkedIn</a></p>
+          <p><a href="https://github.com/fredoomsearch" target="_blank" rel="noreferrer">GitHub</a></p>
+          <p><a href="https://portafolio-ypee.onrender.com/" target="_blank" rel="noreferrer">Portfolio</a></p>
+        </article>
       </div>
     </section>
   </main>
 
   <footer class="site-footer">
-    <div class="container footer-inner">
-      <p class="en">© <span id="year"></span> Julián Esteban Grajales Vergara</p>
-      <p class="es">© <span id="year2"></span> Julián Esteban Grajales Vergara</p>
-
-      <p class="en">Built with HTML &amp; CSS and deployed online.</p>
-      <p class="es">Hecho con HTML &amp; CSS y desplegado en línea.</p>
+    <div class="container footer-row">
+      <p>© <span id="year"></span> Julián Esteban Grajales Vergara</p>
+      <p class="en">Built with HTML/CSS</p>
+      <p class="es">Hecho con HTML/CSS</p>
     </div>
   </footer>
 
   <script>
-    // Year
-    const y = new Date().getFullYear();
-    document.getElementById("year").textContent = y;
-    document.getElementById("year2").textContent = y;
+    const year = new Date().getFullYear();
+    document.getElementById("year").textContent = year;
 
-    // Language toggle
-    function setLang(lang) {
+    const setLang = (lang) => {
       document.body.classList.toggle("lang-en", lang === "en");
       document.body.classList.toggle("lang-es", lang === "es");
       document.documentElement.lang = lang;
-      localStorage.setItem("lang", lang);
-
+      localStorage.setItem("portfolio_lang", lang);
       document.querySelectorAll(".lang-btn").forEach(btn => {
         btn.classList.toggle("active", btn.dataset.lang === lang);
       });
-    }
+    };
 
-    const saved = localStorage.getItem("lang") || "en";
-    setLang(saved);
-
+    setLang(localStorage.getItem("portfolio_lang") || "en");
     document.querySelectorAll(".lang-btn").forEach(btn => {
       btn.addEventListener("click", () => setLang(btn.dataset.lang));
     });
   </script>
-
-  <!--
-    IMPORTANT (case-sensitive, same folder as index.html):
-    - CRYPTO.png
-    - TRUSTWIN.mp4
-    - BNBUSDT.png
-    - BTCUSDT.png
-    - ETHUSDT.png
-    - SOLUSDT.png
-    - aegispro_9ieOQcJa.mp4
-    - awesomescreenshot-1-11-2026-7-22-50pm_7CkQrj0q.mp4
-
-    DEBUG:
-    After deploy, test if images exist by opening directly in browser:
-    https://YOUR_DOMAIN/BNBUSDT.png
-    https://YOUR_DOMAIN/BTCUSDT.png
-    If it 404s => file not uploaded or name mismatch.
-  -->
 </body>
 </html>
-
-
-
-
