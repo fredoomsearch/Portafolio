@@ -27,7 +27,7 @@
       --accent: #28d1b5;
       --accent-2: #ffb44c;
       --radius: 16px;
-      --max: 1100px;
+      --max: 1160px;
       --shadow: 0 14px 36px rgba(0, 0, 0, 0.35);
     }
 
@@ -60,7 +60,7 @@
       text-decoration: none;
     }
 
-    img, video {
+    img {
       width: 100%;
       display: block;
     }
@@ -207,6 +207,7 @@
       font: 700 0.9rem "Sora", sans-serif;
       border: 1px solid transparent;
       cursor: pointer;
+      transition: 0.18s ease;
     }
 
     .btn-primary {
@@ -220,8 +221,7 @@
       background: rgba(255,255,255,0.03);
     }
 
-    .btn-ghost:hover,
-    .btn-primary:hover {
+    .btn:hover {
       transform: translateY(-1px);
     }
 
@@ -409,15 +409,17 @@
       background: rgba(255,255,255,0.04);
       color: #d8ecff;
       cursor: pointer;
+      transition: 0.18s ease;
     }
 
     .preview-open:hover {
       border-color: rgba(40,209,181,0.55);
+      transform: translateY(-1px);
     }
 
     .preview-tabs {
-      display: flex;
-      flex-wrap: wrap;
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
       gap: 0.55rem;
       padding: 0.85rem;
       border-top: 1px solid var(--line);
@@ -429,11 +431,13 @@
       border: 1px solid var(--line);
       background: rgba(255,255,255,0.03);
       color: #d8ecff;
-      border-radius: 999px;
-      padding: 0.5rem 0.78rem;
+      border-radius: 14px;
+      padding: 0.72rem 0.78rem;
       font: 700 0.78rem "Sora", sans-serif;
       cursor: pointer;
       transition: 0.18s ease;
+      text-align: left;
+      min-height: 58px;
     }
 
     .preview-tab:hover {
@@ -442,7 +446,7 @@
     }
 
     .preview-tab.active {
-      background: linear-gradient(90deg, var(--accent), var(--accent-2));
+      background: linear-gradient(90deg, rgba(40,209,181,0.95), rgba(255,180,76,0.95));
       color: #102131;
       border-color: transparent;
     }
@@ -569,7 +573,7 @@
 
     .lightbox-inner {
       position: relative;
-      width: min(95vw, 1400px);
+      width: min(95vw, 1480px);
       max-height: 92vh;
     }
 
@@ -608,6 +612,7 @@
       .header-row { grid-template-columns: 1fr; }
       .hero-grid, .about-grid { grid-template-columns: 1fr; }
       .links, .contact-grid { grid-template-columns: 1fr; }
+      .preview-tabs { grid-template-columns: repeat(2, minmax(0, 1fr)); }
     }
 
     @media (max-width: 720px) {
@@ -616,6 +621,7 @@
       }
 
       .preview-tabs {
+        grid-template-columns: 1fr;
         padding: 0.7rem;
       }
 
@@ -750,8 +756,8 @@
               <div class="window-dots">
                 <span></span><span></span><span></span>
               </div>
-              <p class="preview-title en">Aegis preview — explore the interface</p>
-              <p class="preview-title es">Vista previa de Aegis — explora la interfaz</p>
+              <p class="preview-title en">Aegis preview — explore the full interface set</p>
+              <p class="preview-title es">Vista previa de Aegis — explora el conjunto completo de interfaces</p>
             </div>
 
             <div class="preview-stage">
@@ -801,14 +807,80 @@
               </button>
 
               <button class="preview-tab"
+                data-img="./Screenshot_20260318_051721.png"
+                data-alt-en="Aegis development panel"
+                data-alt-es="Panel de desarrollo de Aegis"
+                data-caption-en="Development Panel — focused workspace for technical iteration"
+                data-caption-es="Panel de Desarrollo — espacio enfocado para iteración técnica"
+                type="button">
+                <span class="en">Development Panel</span>
+                <span class="es">Panel de Desarrollo</span>
+              </button>
+
+              <button class="preview-tab"
+                data-img="./Screenshot_20260318_051742.png"
+                data-alt-en="Aegis tools console"
+                data-alt-es="Consola de herramientas de Aegis"
+                data-caption-en="Tools Console — assistant-driven actions and workflow execution"
+                data-caption-es="Consola de Herramientas — acciones asistidas y ejecución de flujos"
+                type="button">
+                <span class="en">Tools Console</span>
+                <span class="es">Consola de Herramientas</span>
+              </button>
+
+              <button class="preview-tab"
+                data-img="./Screenshot_20260318_052854.png"
+                data-alt-en="Aegis insight board"
+                data-alt-es="Panel de insights de Aegis"
+                data-caption-en="Insight Board — structured output review and contextual interpretation"
+                data-caption-es="Panel de Insights — revisión estructurada e interpretación contextual"
+                type="button">
+                <span class="en">Insight Board</span>
+                <span class="es">Panel de Insights</span>
+              </button>
+
+              <button class="preview-tab"
+                data-img="./Screenshot_20260318_052949.png"
+                data-alt-en="Aegis workflow monitor"
+                data-alt-es="Monitor de flujo de Aegis"
+                data-caption-en="Workflow Monitor — follow process steps and system responses"
+                data-caption-es="Monitor de Flujo — sigue pasos del proceso y respuestas del sistema"
+                type="button">
+                <span class="en">Workflow Monitor</span>
+                <span class="es">Monitor de Flujo</span>
+              </button>
+
+              <button class="preview-tab"
                 data-img="./Screenshot_20260318_053016.png"
-                data-alt-en="Aegis dashboard workspace"
-                data-alt-es="Workspace de dashboard de Aegis"
+                data-alt-en="Aegis operations dashboard"
+                data-alt-es="Dashboard operativo de Aegis"
                 data-caption-en="Operations Dashboard — assistant plus integrated monitoring view"
                 data-caption-es="Dashboard Operativo — asistente más vista integrada de monitoreo"
                 type="button">
                 <span class="en">Operations Dashboard</span>
                 <span class="es">Dashboard Operativo</span>
+              </button>
+
+              <button class="preview-tab"
+                data-img="./Screenshot_20260318_053145.png"
+                data-alt-en="Aegis analytics view"
+                data-alt-es="Vista analítica de Aegis"
+                data-caption-en="Analytics View — consolidated technical and operational metrics"
+                data-caption-es="Vista Analítica — métricas técnicas y operativas consolidadas"
+                type="button">
+                <span class="en">Analytics View</span>
+                <span class="es">Vista Analítica</span>
+              </button>
+
+              <button class="preview-tab"
+                data-img="./Screenshot_20260318_053416.png"
+                data-alt-en="Aegis live metrics screen"
+                data-alt-es="Pantalla de métricas en vivo de Aegis"
+                data-caption-en="Live Metrics — active signals, indicators and runtime information"
+                data-caption-es="Métricas en Vivo — señales activas, indicadores e información en tiempo real"
+                type="button">
+                <span class="en">Live Metrics</span>
+                <span class="es">Métricas en Vivo</span>
               </button>
 
               <button class="preview-tab"
@@ -820,6 +892,17 @@
                 type="button">
                 <span class="en">Market Analysis</span>
                 <span class="es">Análisis de Mercado</span>
+              </button>
+
+              <button class="preview-tab"
+                data-img="./Screenshot_20260318_053505.png"
+                data-alt-en="Aegis strategy panel"
+                data-alt-es="Panel de estrategia de Aegis"
+                data-caption-en="Strategy Panel — compare signals, outputs and next-step context"
+                data-caption-es="Panel de Estrategia — compara señales, salidas y contexto de siguientes pasos"
+                type="button">
+                <span class="en">Strategy Panel</span>
+                <span class="es">Panel de Estrategia</span>
               </button>
 
               <button class="preview-tab"
@@ -1035,6 +1118,10 @@
     const lightboxImg = document.getElementById("lightboxImg");
     const lightboxClose = document.getElementById("lightboxClose");
 
+    function currentLangIsEs() {
+      return document.body.classList.contains("lang-es");
+    }
+
     function openLightbox() {
       lightboxImg.src = previewMain.src;
       lightboxImg.alt = previewMain.alt;
@@ -1053,10 +1140,7 @@
     previewTabs.forEach((tab) => {
       tab.addEventListener("click", () => {
         previewMain.src = tab.dataset.img;
-        previewMain.alt =
-          document.body.classList.contains("lang-es")
-            ? tab.dataset.altEs
-            : tab.dataset.altEn;
+        previewMain.alt = currentLangIsEs() ? tab.dataset.altEs : tab.dataset.altEn;
 
         previewCaption.textContent = tab.dataset.captionEn;
         previewCaptionEs.textContent = tab.dataset.captionEs;
@@ -1065,6 +1149,25 @@
         tab.classList.add("active");
       });
     });
+
+    previewMainBtn.addEventListener("click", openLightbox);
+    openPreviewBtn.addEventListener("click", openLightbox);
+    lightboxClose.addEventListener("click", closeLightbox);
+
+    lightbox.addEventListener("click", (event) => {
+      if (event.target === lightbox) {
+        closeLightbox();
+      }
+    });
+
+    document.addEventListener("keydown", (event) => {
+      if (event.key === "Escape" && lightbox.classList.contains("open")) {
+        closeLightbox();
+      }
+    });
+  </script>
+</body>
+</html>
 
     previewMainBtn.addEventListener("click", openLightbox);
     openPreviewBtn.addEventListener("click", openLightbox);
