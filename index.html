@@ -682,7 +682,7 @@
       </nav>
 
       <div class="lang-switch" aria-label="Language switch">
-        <button class="lang-btn active" data-lang="en" type="button">EN</button>
+        <button class="lang-btn" data-lang="en" type="button">EN</button>
         <button class="lang-btn" data-lang="es" type="button">ES</button>
       </div>
     </div>
@@ -981,27 +981,8 @@
       "./Screenshot_20260318_054154.png"
     ];
 
-    const year = new Date().getFullYear();
-    document.getElementById("year").textContent = year;
-
-    const setLang = (lang) => {
-      document.body.classList.toggle("lang-en", lang === "en");
-      document.body.classList.toggle("lang-es", lang === "es");
-      document.documentElement.lang = lang;
-      localStorage.setItem("portfolio_lang", lang);
-
-      document.querySelectorAll(".lang-btn").forEach((btn) => {
-        btn.classList.toggle("active", btn.dataset.lang === lang);
-      });
-
-      updateGallery(currentIndex);
-    };
-
-    setLang(localStorage.getItem("portfolio_lang") || "en");
-
-    document.querySelectorAll(".lang-btn").forEach((btn) => {
-      btn.addEventListener("click", () => setLang(btn.dataset.lang));
-    });
+    const yearEl = document.getElementById("year");
+    const langButtons = document.querySelectorAll(".lang-btn");
 
     const galleryMain = document.getElementById("galleryMain");
     const galleryCounter = document.getElementById("galleryCounter");
@@ -1039,6 +1020,7 @@
 
     function buildThumbs() {
       thumbStrip.innerHTML = "";
+
       screenshots.forEach((src, i) => {
         const btn = document.createElement("button");
         btn.type = "button";
@@ -1071,6 +1053,31 @@
       document.body.style.overflow = "";
     }
 
+    function setLang(lang) {
+      document.body.classList.toggle("lang-en", lang === "en");
+      document.body.classList.toggle("lang-es", lang === "es");
+      document.documentElement.lang = lang;
+      localStorage.setItem("portfolio_lang", lang);
+
+      langButtons.forEach((btn) => {
+        btn.classList.toggle("active", btn.dataset.lang === lang);
+      });
+
+      updateGallery(currentIndex);
+    }
+
+    yearEl.textContent = new Date().getFullYear();
+
+    buildThumbs();
+    updateGallery(0);
+
+    const savedLang = localStorage.getItem("portfolio_lang") || "en";
+    setLang(savedLang);
+
+    langButtons.forEach((btn) => {
+      btn.addEventListener("click", () => setLang(btn.dataset.lang));
+    });
+
     prevBtn.addEventListener("click", () => updateGallery(currentIndex - 1));
     nextBtn.addEventListener("click", () => updateGallery(currentIndex + 1));
     galleryMainBtn.addEventListener("click", openLightbox);
@@ -1078,7 +1085,9 @@
     lightboxClose.addEventListener("click", closeLightbox);
 
     lightbox.addEventListener("click", (event) => {
-      if (event.target === lightbox) closeLightbox();
+      if (event.target === lightbox) {
+        closeLightbox();
+      }
     });
 
     document.addEventListener("keydown", (event) => {
@@ -1092,9 +1101,6 @@
         updateGallery(currentIndex + 1);
       }
     });
-
-    buildThumbs();
-    updateGallery(0);
   </script>
 </body>
 </html>
