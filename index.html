@@ -338,7 +338,7 @@
       color: #b9d1e5;
     }
 
-    .preview-shell {
+    .gallery-shell {
       margin-top: 1rem;
       border: 1px solid var(--line);
       border-radius: 16px;
@@ -347,7 +347,7 @@
       box-shadow: var(--shadow);
     }
 
-    .preview-top {
+    .gallery-top {
       display: flex;
       align-items: center;
       gap: 0.8rem;
@@ -368,25 +368,25 @@
       background: rgba(255,255,255,0.3);
     }
 
-    .preview-title {
+    .gallery-title {
       margin: 0;
       font-size: 0.84rem;
       color: #bdd7ea;
     }
 
-    .preview-stage {
+    .gallery-stage {
       background: #08131f;
       position: relative;
     }
 
-    .preview-main-btn {
+    .gallery-main-btn {
       all: unset;
       display: block;
       width: 100%;
       cursor: zoom-in;
     }
 
-    .preview-stage img {
+    .gallery-main {
       width: 100%;
       display: block;
       aspect-ratio: 16 / 9;
@@ -394,17 +394,30 @@
       background: #050b12;
     }
 
-    .preview-actions {
+    .gallery-controls {
       display: flex;
       flex-wrap: wrap;
-      gap: 0.6rem;
-      padding: 0.85rem 0.9rem 0;
+      justify-content: space-between;
+      align-items: center;
+      gap: 0.75rem;
+      padding: 0.9rem;
+      border-top: 1px solid var(--line);
+      background: rgba(255,255,255,0.02);
     }
 
-    .preview-open {
+    .gallery-left-controls,
+    .gallery-right-controls {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 0.55rem;
+    }
+
+    .gallery-btn,
+    .gallery-open {
       border: 1px solid var(--line);
       border-radius: 999px;
-      padding: 0.55rem 0.78rem;
+      padding: 0.58rem 0.82rem;
       font: 700 0.78rem "Sora", sans-serif;
       background: rgba(255,255,255,0.04);
       color: #d8ecff;
@@ -412,50 +425,56 @@
       transition: 0.18s ease;
     }
 
-    .preview-open:hover {
+    .gallery-btn:hover,
+    .gallery-open:hover {
       border-color: rgba(40,209,181,0.55);
       transform: translateY(-1px);
     }
 
-    .preview-tabs {
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 0.55rem;
-      padding: 0.85rem;
-      border-top: 1px solid var(--line);
-      background: rgba(255,255,255,0.02);
-      margin-top: 0.85rem;
+    .gallery-counter {
+      font: 700 0.82rem "Sora", sans-serif;
+      color: #dff3ff;
+      padding: 0.3rem 0.2rem;
     }
 
-    .preview-tab {
-      border: 1px solid var(--line);
-      background: rgba(255,255,255,0.03);
-      color: #d8ecff;
-      border-radius: 14px;
-      padding: 0.72rem 0.78rem;
-      font: 700 0.78rem "Sora", sans-serif;
-      cursor: pointer;
-      transition: 0.18s ease;
-      text-align: left;
-      min-height: 58px;
-    }
-
-    .preview-tab:hover {
-      border-color: rgba(40,209,181,0.55);
-      transform: translateY(-1px);
-    }
-
-    .preview-tab.active {
-      background: linear-gradient(90deg, rgba(40,209,181,0.95), rgba(255,180,76,0.95));
-      color: #102131;
-      border-color: transparent;
-    }
-
-    .preview-caption {
+    .gallery-caption {
       margin: 0;
-      padding: 0 0.9rem 0.9rem;
+      padding: 0 0.9rem 0.95rem;
       font-size: 0.84rem;
       color: #95b4cc;
+    }
+
+    .thumb-strip {
+      display: grid;
+      grid-template-columns: repeat(5, minmax(0, 1fr));
+      gap: 0.55rem;
+      padding: 0 0.9rem 0.9rem;
+    }
+
+    .thumb-btn {
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      padding: 0;
+      overflow: hidden;
+      background: rgba(255,255,255,0.03);
+      cursor: pointer;
+      transition: 0.18s ease;
+    }
+
+    .thumb-btn:hover {
+      border-color: rgba(40,209,181,0.55);
+      transform: translateY(-1px);
+    }
+
+    .thumb-btn.active {
+      border-color: transparent;
+      box-shadow: inset 0 0 0 2px rgba(40,209,181,0.9);
+    }
+
+    .thumb-btn img {
+      aspect-ratio: 16 / 9;
+      object-fit: cover;
+      background: #050b12;
     }
 
     .links {
@@ -612,26 +631,36 @@
       .header-row { grid-template-columns: 1fr; }
       .hero-grid, .about-grid { grid-template-columns: 1fr; }
       .links, .contact-grid { grid-template-columns: 1fr; }
-      .preview-tabs { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .thumb-strip { grid-template-columns: repeat(4, minmax(0, 1fr)); }
     }
 
     @media (max-width: 720px) {
-      .preview-stage img {
+      .gallery-main {
         aspect-ratio: 4 / 3;
       }
 
-      .preview-tabs {
-        grid-template-columns: 1fr;
-        padding: 0.7rem;
+      .gallery-controls {
+        flex-direction: column;
+        align-items: stretch;
       }
 
-      .preview-tab {
-        width: 100%;
-        text-align: left;
+      .gallery-left-controls,
+      .gallery-right-controls {
+        justify-content: center;
+      }
+
+      .thumb-strip {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
       }
 
       .lightbox {
         padding: 1rem;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .thumb-strip {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
       }
     }
   </style>
@@ -751,211 +780,58 @@
             </p>
           </div>
 
-          <div class="preview-shell">
-            <div class="preview-top">
+          <div class="gallery-shell">
+            <div class="gallery-top">
               <div class="window-dots">
                 <span></span><span></span><span></span>
               </div>
-              <p class="preview-title en">Aegis preview — explore the full interface set</p>
-              <p class="preview-title es">Vista previa de Aegis — explora el conjunto completo de interfaces</p>
+              <p class="gallery-title en">Aegis interface gallery</p>
+              <p class="gallery-title es">Galería de interfaces de Aegis</p>
             </div>
 
-            <div class="preview-stage">
+            <div class="gallery-stage">
               <button
-                class="preview-main-btn"
-                id="previewMainBtn"
+                class="gallery-main-btn"
+                id="galleryMainBtn"
                 type="button"
                 aria-label="Open current image in full size"
               >
                 <img
-                  id="previewMain"
+                  id="galleryMain"
+                  class="gallery-main"
                   src="./Screenshot_20260318_051454.png"
-                  alt="Aegis main workspace"
+                  alt="Aegis interface screenshot"
                   loading="lazy"
                 />
               </button>
             </div>
 
-            <div class="preview-actions">
-              <button class="preview-open" id="openPreviewBtn" type="button">
-                <span class="en">Open full image</span>
-                <span class="es">Abrir imagen completa</span>
-              </button>
+            <div class="gallery-controls">
+              <div class="gallery-left-controls">
+                <button class="gallery-btn" id="prevBtn" type="button">
+                  <span class="en">← Previous</span>
+                  <span class="es">← Anterior</span>
+                </button>
+                <button class="gallery-btn" id="nextBtn" type="button">
+                  <span class="en">Next →</span>
+                  <span class="es">Siguiente →</span>
+                </button>
+              </div>
+
+              <div class="gallery-counter" id="galleryCounter">1 / 15</div>
+
+              <div class="gallery-right-controls">
+                <button class="gallery-open" id="openImageBtn" type="button">
+                  <span class="en">Open full image</span>
+                  <span class="es">Abrir imagen completa</span>
+                </button>
+              </div>
             </div>
 
-            <div class="preview-tabs">
-              <button class="preview-tab active"
-                data-img="./Screenshot_20260318_051454.png"
-                data-alt-en="Aegis main workspace"
-                data-alt-es="Espacio principal de Aegis"
-                data-caption-en="Main Workspace — assistant chat, panels and operational context"
-                data-caption-es="Espacio Principal — chat asistido, paneles y contexto operativo"
-                type="button">
-                <span class="en">Main Workspace</span>
-                <span class="es">Espacio Principal</span>
-              </button>
+            <p class="gallery-caption en" id="galleryCaptionEn">Aegis interface preview — screen 1 of 15</p>
+            <p class="gallery-caption es" id="galleryCaptionEs">Vista de interfaz de Aegis — pantalla 1 de 15</p>
 
-              <button class="preview-tab"
-                data-img="./Screenshot_20260318_051652.png"
-                data-alt-en="Aegis code review workspace"
-                data-alt-es="Espacio de revisión de código de Aegis"
-                data-caption-en="Code Review — inspect code, outputs and guided technical analysis"
-                data-caption-es="Revisión de Código — inspección de código, salidas y análisis técnico guiado"
-                type="button">
-                <span class="en">Code Review</span>
-                <span class="es">Revisión de Código</span>
-              </button>
-
-              <button class="preview-tab"
-                data-img="./Screenshot_20260318_051721.png"
-                data-alt-en="Aegis development panel"
-                data-alt-es="Panel de desarrollo de Aegis"
-                data-caption-en="Development Panel — focused workspace for technical iteration"
-                data-caption-es="Panel de Desarrollo — espacio enfocado para iteración técnica"
-                type="button">
-                <span class="en">Development Panel</span>
-                <span class="es">Panel de Desarrollo</span>
-              </button>
-
-              <button class="preview-tab"
-                data-img="./Screenshot_20260318_051742.png"
-                data-alt-en="Aegis tools console"
-                data-alt-es="Consola de herramientas de Aegis"
-                data-caption-en="Tools Console — assistant-driven actions and workflow execution"
-                data-caption-es="Consola de Herramientas — acciones asistidas y ejecución de flujos"
-                type="button">
-                <span class="en">Tools Console</span>
-                <span class="es">Consola de Herramientas</span>
-              </button>
-
-              <button class="preview-tab"
-                data-img="./Screenshot_20260318_052854.png"
-                data-alt-en="Aegis insight board"
-                data-alt-es="Panel de insights de Aegis"
-                data-caption-en="Insight Board — structured output review and contextual interpretation"
-                data-caption-es="Panel de Insights — revisión estructurada e interpretación contextual"
-                type="button">
-                <span class="en">Insight Board</span>
-                <span class="es">Panel de Insights</span>
-              </button>
-
-              <button class="preview-tab"
-                data-img="./Screenshot_20260318_052949.png"
-                data-alt-en="Aegis workflow monitor"
-                data-alt-es="Monitor de flujo de Aegis"
-                data-caption-en="Workflow Monitor — follow process steps and system responses"
-                data-caption-es="Monitor de Flujo — sigue pasos del proceso y respuestas del sistema"
-                type="button">
-                <span class="en">Workflow Monitor</span>
-                <span class="es">Monitor de Flujo</span>
-              </button>
-
-              <button class="preview-tab"
-                data-img="./Screenshot_20260318_053016.png"
-                data-alt-en="Aegis operations dashboard"
-                data-alt-es="Dashboard operativo de Aegis"
-                data-caption-en="Operations Dashboard — assistant plus integrated monitoring view"
-                data-caption-es="Dashboard Operativo — asistente más vista integrada de monitoreo"
-                type="button">
-                <span class="en">Operations Dashboard</span>
-                <span class="es">Dashboard Operativo</span>
-              </button>
-
-              <button class="preview-tab"
-                data-img="./Screenshot_20260318_053145.png"
-                data-alt-en="Aegis analytics view"
-                data-alt-es="Vista analítica de Aegis"
-                data-caption-en="Analytics View — consolidated technical and operational metrics"
-                data-caption-es="Vista Analítica — métricas técnicas y operativas consolidadas"
-                type="button">
-                <span class="en">Analytics View</span>
-                <span class="es">Vista Analítica</span>
-              </button>
-
-              <button class="preview-tab"
-                data-img="./Screenshot_20260318_053416.png"
-                data-alt-en="Aegis live metrics screen"
-                data-alt-es="Pantalla de métricas en vivo de Aegis"
-                data-caption-en="Live Metrics — active signals, indicators and runtime information"
-                data-caption-es="Métricas en Vivo — señales activas, indicadores e información en tiempo real"
-                type="button">
-                <span class="en">Live Metrics</span>
-                <span class="es">Métricas en Vivo</span>
-              </button>
-
-              <button class="preview-tab"
-                data-img="./Screenshot_20260318_053437.png"
-                data-alt-en="Aegis market analysis panel"
-                data-alt-es="Panel de análisis de mercado de Aegis"
-                data-caption-en="Market Analysis — charts, metrics and decision-support context"
-                data-caption-es="Análisis de Mercado — gráficos, métricas y contexto para decisiones"
-                type="button">
-                <span class="en">Market Analysis</span>
-                <span class="es">Análisis de Mercado</span>
-              </button>
-
-              <button class="preview-tab"
-                data-img="./Screenshot_20260318_053505.png"
-                data-alt-en="Aegis strategy panel"
-                data-alt-es="Panel de estrategia de Aegis"
-                data-caption-en="Strategy Panel — compare signals, outputs and next-step context"
-                data-caption-es="Panel de Estrategia — compara señales, salidas y contexto de siguientes pasos"
-                type="button">
-                <span class="en">Strategy Panel</span>
-                <span class="es">Panel de Estrategia</span>
-              </button>
-
-              <button class="preview-tab"
-                data-img="./Screenshot_20260318_053940.png"
-                data-alt-en="Aegis visual pipeline interface"
-                data-alt-es="Interfaz de pipeline visual de Aegis"
-                data-caption-en="Visual Pipeline — image and generation workflow tools"
-                data-caption-es="Pipeline Visual — herramientas de imágenes y flujos de generación"
-                type="button">
-                <span class="en">Visual Pipeline</span>
-                <span class="es">Pipeline Visual</span>
-              </button>
-
-              <button class="preview-tab"
-                data-img="./Screenshot_20260318_053956.png"
-                data-alt-en="Aegis multi panel view"
-                data-alt-es="Vista multipanel de Aegis"
-                data-caption-en="Multi-Panel View — navigate between related windows and assets"
-                data-caption-es="Vista Multipanel — navega entre ventanas y assets relacionados"
-                type="button">
-                <span class="en">Multi-Panel View</span>
-                <span class="es">Vista Multipanel</span>
-              </button>
-
-              <button class="preview-tab"
-                data-img="./Screenshot_20260318_054137.png"
-                data-alt-en="Aegis image workflow"
-                data-alt-es="Flujo de imágenes de Aegis"
-                data-caption-en="Image Workflow — visual interaction and asset-based operations"
-                data-caption-es="Flujo de Imágenes — interacción visual y operaciones basadas en assets"
-                type="button">
-                <span class="en">Image Workflow</span>
-                <span class="es">Flujo de Imágenes</span>
-              </button>
-
-              <button class="preview-tab"
-                data-img="./Screenshot_20260318_054154.png"
-                data-alt-en="Aegis reports reader"
-                data-alt-es="Lector de reportes de Aegis"
-                data-caption-en="Reports Reader — document review and report-driven context"
-                data-caption-es="Lector de Reportes — revisión documental y contexto guiado por reportes"
-                type="button">
-                <span class="en">Reports Reader</span>
-                <span class="es">Lector de Reportes</span>
-              </button>
-            </div>
-
-            <p id="previewCaption" class="preview-caption en">
-              Main Workspace — assistant chat, panels and operational context
-            </p>
-            <p id="previewCaptionEs" class="preview-caption es">
-              Espacio Principal — chat asistido, paneles y contexto operativo
-            </p>
+            <div class="thumb-strip" id="thumbStrip"></div>
           </div>
 
           <div class="links">
@@ -1087,6 +963,24 @@
   </div>
 
   <script>
+    const screenshots = [
+      "./Screenshot_20260318_051454.png",
+      "./Screenshot_20260318_051652.png",
+      "./Screenshot_20260318_051721.png",
+      "./Screenshot_20260318_051742.png",
+      "./Screenshot_20260318_052854.png",
+      "./Screenshot_20260318_052949.png",
+      "./Screenshot_20260318_053016.png",
+      "./Screenshot_20260318_053145.png",
+      "./Screenshot_20260318_053416.png",
+      "./Screenshot_20260318_053437.png",
+      "./Screenshot_20260318_053505.png",
+      "./Screenshot_20260318_053940.png",
+      "./Screenshot_20260318_053956.png",
+      "./Screenshot_20260318_054137.png",
+      "./Screenshot_20260318_054154.png"
+    ];
+
     const year = new Date().getFullYear();
     document.getElementById("year").textContent = year;
 
@@ -1099,6 +993,8 @@
       document.querySelectorAll(".lang-btn").forEach((btn) => {
         btn.classList.toggle("active", btn.dataset.lang === lang);
       });
+
+      updateGallery(currentIndex);
     };
 
     setLang(localStorage.getItem("portfolio_lang") || "en");
@@ -1107,24 +1003,62 @@
       btn.addEventListener("click", () => setLang(btn.dataset.lang));
     });
 
-    const previewMain = document.getElementById("previewMain");
-    const previewCaption = document.getElementById("previewCaption");
-    const previewCaptionEs = document.getElementById("previewCaptionEs");
-    const previewTabs = document.querySelectorAll(".preview-tab");
-    const previewMainBtn = document.getElementById("previewMainBtn");
-    const openPreviewBtn = document.getElementById("openPreviewBtn");
+    const galleryMain = document.getElementById("galleryMain");
+    const galleryCounter = document.getElementById("galleryCounter");
+    const galleryCaptionEn = document.getElementById("galleryCaptionEn");
+    const galleryCaptionEs = document.getElementById("galleryCaptionEs");
+    const thumbStrip = document.getElementById("thumbStrip");
+    const prevBtn = document.getElementById("prevBtn");
+    const nextBtn = document.getElementById("nextBtn");
+    const galleryMainBtn = document.getElementById("galleryMainBtn");
+    const openImageBtn = document.getElementById("openImageBtn");
 
     const lightbox = document.getElementById("lightbox");
     const lightboxImg = document.getElementById("lightboxImg");
     const lightboxClose = document.getElementById("lightboxClose");
 
-    function currentLangIsEs() {
-      return document.body.classList.contains("lang-es");
+    let currentIndex = 0;
+
+    function updateGallery(index) {
+      currentIndex = (index + screenshots.length) % screenshots.length;
+      const currentSrc = screenshots[currentIndex];
+
+      galleryMain.src = currentSrc;
+      galleryMain.alt = document.body.classList.contains("lang-es")
+        ? `Captura de interfaz de Aegis ${currentIndex + 1}`
+        : `Aegis interface screenshot ${currentIndex + 1}`;
+
+      galleryCounter.textContent = `${currentIndex + 1} / ${screenshots.length}`;
+      galleryCaptionEn.textContent = `Aegis interface preview — screen ${currentIndex + 1} of ${screenshots.length}`;
+      galleryCaptionEs.textContent = `Vista de interfaz de Aegis — pantalla ${currentIndex + 1} de ${screenshots.length}`;
+
+      document.querySelectorAll(".thumb-btn").forEach((btn, i) => {
+        btn.classList.toggle("active", i === currentIndex);
+      });
+    }
+
+    function buildThumbs() {
+      thumbStrip.innerHTML = "";
+      screenshots.forEach((src, i) => {
+        const btn = document.createElement("button");
+        btn.type = "button";
+        btn.className = "thumb-btn";
+        btn.setAttribute("aria-label", `Open screenshot ${i + 1}`);
+
+        const img = document.createElement("img");
+        img.src = src;
+        img.alt = `Screenshot ${i + 1}`;
+        img.loading = "lazy";
+
+        btn.appendChild(img);
+        btn.addEventListener("click", () => updateGallery(i));
+        thumbStrip.appendChild(btn);
+      });
     }
 
     function openLightbox() {
-      lightboxImg.src = previewMain.src;
-      lightboxImg.alt = previewMain.alt;
+      lightboxImg.src = screenshots[currentIndex];
+      lightboxImg.alt = galleryMain.alt;
       lightbox.classList.add("open");
       lightbox.setAttribute("aria-hidden", "false");
       document.body.style.overflow = "hidden";
@@ -1137,53 +1071,30 @@
       document.body.style.overflow = "";
     }
 
-    previewTabs.forEach((tab) => {
-      tab.addEventListener("click", () => {
-        previewMain.src = tab.dataset.img;
-        previewMain.alt = currentLangIsEs() ? tab.dataset.altEs : tab.dataset.altEn;
-
-        previewCaption.textContent = tab.dataset.captionEn;
-        previewCaptionEs.textContent = tab.dataset.captionEs;
-
-        previewTabs.forEach((btn) => btn.classList.remove("active"));
-        tab.classList.add("active");
-      });
-    });
-
-    previewMainBtn.addEventListener("click", openLightbox);
-    openPreviewBtn.addEventListener("click", openLightbox);
+    prevBtn.addEventListener("click", () => updateGallery(currentIndex - 1));
+    nextBtn.addEventListener("click", () => updateGallery(currentIndex + 1));
+    galleryMainBtn.addEventListener("click", openLightbox);
+    openImageBtn.addEventListener("click", openLightbox);
     lightboxClose.addEventListener("click", closeLightbox);
 
     lightbox.addEventListener("click", (event) => {
-      if (event.target === lightbox) {
-        closeLightbox();
-      }
+      if (event.target === lightbox) closeLightbox();
     });
 
     document.addEventListener("keydown", (event) => {
       if (event.key === "Escape" && lightbox.classList.contains("open")) {
         closeLightbox();
       }
-    });
-  </script>
-</body>
-</html>
-
-    previewMainBtn.addEventListener("click", openLightbox);
-    openPreviewBtn.addEventListener("click", openLightbox);
-    lightboxClose.addEventListener("click", closeLightbox);
-
-    lightbox.addEventListener("click", (event) => {
-      if (event.target === lightbox) {
-        closeLightbox();
+      if (event.key === "ArrowLeft") {
+        updateGallery(currentIndex - 1);
+      }
+      if (event.key === "ArrowRight") {
+        updateGallery(currentIndex + 1);
       }
     });
 
-    document.addEventListener("keydown", (event) => {
-      if (event.key === "Escape" && lightbox.classList.contains("open")) {
-        closeLightbox();
-      }
-    });
+    buildThumbs();
+    updateGallery(0);
   </script>
 </body>
 </html>
