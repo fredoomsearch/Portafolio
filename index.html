@@ -3,13 +3,632 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <meta name="description" content="Portfolio of Julián Esteban Grajales Vergara - Full-Stack and Data Developer." />
+  <meta
+    name="description"
+    content="Portfolio of Julián Esteban Grajales Vergara - Full-Stack and Data Developer."
+  />
   <title>Julián Grajales | Portfolio</title>
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="./styles.css" />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&family=IBM+Plex+Sans:wght@400;500;600&display=swap"
+    rel="stylesheet"
+  />
+
+  <style>
+    :root {
+      --bg: #08131f;
+      --bg-soft: #0d1d2d;
+      --card: #13273b;
+      --line: rgba(170, 205, 230, 0.24);
+      --text: #eaf4ff;
+      --muted: #9ab2c8;
+      --accent: #28d1b5;
+      --accent-2: #ffb44c;
+      --radius: 16px;
+      --max: 1100px;
+      --shadow: 0 14px 36px rgba(0, 0, 0, 0.35);
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      margin: 0;
+      color: var(--text);
+      background:
+        radial-gradient(1000px 500px at 0% -10%, rgba(40, 209, 181, 0.16), transparent 60%),
+        radial-gradient(900px 460px at 100% 0%, rgba(255, 180, 76, 0.12), transparent 58%),
+        var(--bg);
+      font-family: "IBM Plex Sans", sans-serif;
+      line-height: 1.55;
+    }
+
+    h1, h2, h3, h4 {
+      font-family: "Sora", sans-serif;
+      margin: 0;
+    }
+
+    p {
+      margin: 0.5rem 0 0;
+      color: var(--muted);
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    img, video {
+      width: 100%;
+      display: block;
+    }
+
+    button {
+      font-family: inherit;
+    }
+
+    body.lang-en .es { display: none !important; }
+    body.lang-es .en { display: none !important; }
+
+    .container {
+      width: min(100% - 2rem, var(--max));
+      margin: 0 auto;
+    }
+
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 30;
+      backdrop-filter: blur(12px);
+      background: rgba(8, 19, 31, 0.82);
+      border-bottom: 1px solid var(--line);
+    }
+
+    .header-row {
+      display: grid;
+      grid-template-columns: 1fr auto auto;
+      gap: 1rem;
+      align-items: center;
+      padding: 0.9rem 0;
+    }
+
+    .brand h1 {
+      font-size: 1.12rem;
+      letter-spacing: 0.02em;
+    }
+
+    .brand p {
+      font-size: 0.86rem;
+      margin-top: 0.2rem;
+    }
+
+    .main-nav {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.45rem;
+    }
+
+    .main-nav a {
+      padding: 0.38rem 0.7rem;
+      border-radius: 999px;
+      border: 1px solid transparent;
+      color: #d4e8fa;
+      font-weight: 600;
+      font-size: 0.92rem;
+    }
+
+    .main-nav a:hover {
+      border-color: var(--line);
+      background: rgba(255, 255, 255, 0.04);
+    }
+
+    .lang-switch {
+      display: flex;
+      gap: 0.35rem;
+    }
+
+    .lang-btn {
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      background: rgba(255,255,255,0.04);
+      color: #d9ecff;
+      padding: 0.33rem 0.58rem;
+      font: 700 0.78rem "Sora", sans-serif;
+      cursor: pointer;
+    }
+
+    .lang-btn.active {
+      background: linear-gradient(90deg, var(--accent), var(--accent-2));
+      color: #112233;
+      border-color: transparent;
+    }
+
+    .section {
+      padding: 3rem 0;
+    }
+
+    .section.alt {
+      background: rgba(9, 21, 35, 0.72);
+      border-top: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+    }
+
+    .title {
+      font-size: clamp(1.35rem, 2.4vw, 1.95rem);
+      margin-bottom: 0.65rem;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.3fr 0.95fr;
+      gap: 1.2rem;
+      align-items: start;
+    }
+
+    .kicker {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      padding: 0.33rem 0.64rem;
+      color: #cbe6fb;
+      font-size: 0.82rem;
+    }
+
+    .kicker i {
+      width: 8px;
+      height: 8px;
+      border-radius: 999px;
+      background: linear-gradient(90deg, var(--accent), var(--accent-2));
+    }
+
+    .hero h2 {
+      margin-top: 0.9rem;
+      font-size: clamp(1.8rem, 3vw, 2.7rem);
+      line-height: 1.1;
+    }
+
+    .hero-actions {
+      margin-top: 1rem;
+      display: flex;
+      gap: 0.65rem;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 999px;
+      padding: 0.65rem 1rem;
+      font: 700 0.9rem "Sora", sans-serif;
+      border: 1px solid transparent;
+      cursor: pointer;
+    }
+
+    .btn-primary {
+      background: linear-gradient(90deg, var(--accent), var(--accent-2));
+      color: #0f2233;
+    }
+
+    .btn-ghost {
+      border-color: var(--line);
+      color: #d7ebff;
+      background: rgba(255,255,255,0.03);
+    }
+
+    .btn-ghost:hover,
+    .btn-primary:hover {
+      transform: translateY(-1px);
+    }
+
+    .meta {
+      display: inline-block;
+      margin-top: 0.8rem;
+      color: #7fa2bd;
+    }
+
+    .card {
+      background: linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.015));
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: 1rem;
+      box-shadow: var(--shadow);
+    }
+
+    .label {
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      font-size: 0.75rem;
+      color: #9ec2de;
+      margin: 0;
+    }
+
+    .card h3 {
+      margin-top: 0.25rem;
+      font-size: 1.12rem;
+    }
+
+    .tags {
+      margin: 0.9rem 0 0;
+      padding: 0;
+      list-style: none;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.44rem;
+    }
+
+    .tags li {
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      padding: 0.28rem 0.55rem;
+      font-size: 0.8rem;
+      color: #c7e0f4;
+    }
+
+    .project-card {
+      margin-top: 0.8rem;
+    }
+
+    .project-head {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 0.6rem;
+    }
+
+    .chip {
+      font: 800 0.72rem "Sora", sans-serif;
+      letter-spacing: 0.08em;
+      color: #13263a;
+      background: linear-gradient(90deg, var(--accent), var(--accent-2));
+      border-radius: 999px;
+      padding: 0.3rem 0.6rem;
+    }
+
+    .stack {
+      margin: 0;
+      font-size: 0.84rem;
+      color: #b1cbdf;
+    }
+
+    .points {
+      margin: 0.8rem 0 0;
+      padding-left: 1.12rem;
+      color: #cbe1f1;
+    }
+
+    .points li {
+      margin: 0.35rem 0;
+    }
+
+    .project-status {
+      margin-top: 1rem;
+      padding: 0.95rem 1rem;
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      background: rgba(255,255,255,0.025);
+    }
+
+    .status-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.55rem;
+      padding: 0.45rem 0.75rem;
+      border-radius: 999px;
+      background: rgba(40, 209, 181, 0.10);
+      border: 1px solid rgba(40, 209, 181, 0.28);
+      font: 700 0.84rem "Sora", sans-serif;
+      color: #d9fff7;
+    }
+
+    .status-dot {
+      width: 9px;
+      height: 9px;
+      border-radius: 999px;
+      background: linear-gradient(90deg, var(--accent), var(--accent-2));
+      box-shadow: 0 0 12px rgba(40, 209, 181, 0.6);
+    }
+
+    .status-copy {
+      margin-top: 0.8rem;
+      color: #b9d1e5;
+    }
+
+    .preview-shell {
+      margin-top: 1rem;
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      overflow: hidden;
+      background: rgba(8, 16, 28, 0.92);
+      box-shadow: var(--shadow);
+    }
+
+    .preview-top {
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
+      padding: 0.75rem 0.9rem;
+      border-bottom: 1px solid var(--line);
+      background: rgba(255,255,255,0.03);
+    }
+
+    .window-dots {
+      display: flex;
+      gap: 0.35rem;
+    }
+
+    .window-dots span {
+      width: 10px;
+      height: 10px;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.3);
+    }
+
+    .preview-title {
+      margin: 0;
+      font-size: 0.84rem;
+      color: #bdd7ea;
+    }
+
+    .preview-stage {
+      background: #08131f;
+      position: relative;
+    }
+
+    .preview-main-btn {
+      all: unset;
+      display: block;
+      width: 100%;
+      cursor: zoom-in;
+    }
+
+    .preview-stage img {
+      width: 100%;
+      display: block;
+      aspect-ratio: 16 / 9;
+      object-fit: contain;
+      background: #050b12;
+    }
+
+    .preview-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.6rem;
+      padding: 0.85rem 0.9rem 0;
+    }
+
+    .preview-open {
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      padding: 0.55rem 0.78rem;
+      font: 700 0.78rem "Sora", sans-serif;
+      background: rgba(255,255,255,0.04);
+      color: #d8ecff;
+      cursor: pointer;
+    }
+
+    .preview-open:hover {
+      border-color: rgba(40,209,181,0.55);
+    }
+
+    .preview-tabs {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.55rem;
+      padding: 0.85rem;
+      border-top: 1px solid var(--line);
+      background: rgba(255,255,255,0.02);
+      margin-top: 0.85rem;
+    }
+
+    .preview-tab {
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,0.03);
+      color: #d8ecff;
+      border-radius: 999px;
+      padding: 0.5rem 0.78rem;
+      font: 700 0.78rem "Sora", sans-serif;
+      cursor: pointer;
+      transition: 0.18s ease;
+    }
+
+    .preview-tab:hover {
+      border-color: rgba(40,209,181,0.55);
+      transform: translateY(-1px);
+    }
+
+    .preview-tab.active {
+      background: linear-gradient(90deg, var(--accent), var(--accent-2));
+      color: #102131;
+      border-color: transparent;
+    }
+
+    .preview-caption {
+      margin: 0;
+      padding: 0 0.9rem 0.9rem;
+      font-size: 0.84rem;
+      color: #95b4cc;
+    }
+
+    .links {
+      margin-top: 0.95rem;
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 0.55rem;
+    }
+
+    .links a {
+      border: 1px solid var(--line);
+      border-radius: 10px;
+      padding: 0.55rem 0.65rem;
+      font-weight: 600;
+      color: #d9ecff;
+      background: rgba(255,255,255,0.02);
+    }
+
+    .links a:hover {
+      border-color: rgba(40,209,181,0.58);
+    }
+
+    .interest-box {
+      margin-top: 1rem;
+      padding: 1rem;
+      border-radius: 14px;
+      border: 1px solid var(--line);
+      background: linear-gradient(180deg, rgba(40,209,181,0.05), rgba(255,180,76,0.04));
+    }
+
+    .interest-box h4 {
+      margin: 0;
+      font-size: 1rem;
+    }
+
+    .pilot-note {
+      margin-top: 0.8rem;
+      font-weight: 600;
+      color: #dffcf5;
+    }
+
+    .timeline {
+      display: grid;
+      gap: 0.85rem;
+      margin-top: 0.6rem;
+    }
+
+    .timeline-item {
+      border-left: 2px solid rgba(40, 209, 181, 0.45);
+      padding: 0.3rem 0 0.3rem 0.85rem;
+    }
+
+    .timeline-item h3 {
+      font-size: 1rem;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 0.5rem;
+    }
+
+    .timeline-item span {
+      color: #8db1ca;
+      font-size: 0.84rem;
+    }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1.3fr 0.9fr;
+      gap: 1rem;
+      align-items: start;
+    }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 0.9rem;
+    }
+
+    .contact-grid a {
+      color: #d7f5ee;
+    }
+
+    .contact-grid a:hover {
+      text-decoration: underline;
+    }
+
+    .site-footer {
+      border-top: 1px solid var(--line);
+      padding: 1.2rem 0 1.6rem;
+    }
+
+    .footer-row {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 0.5rem;
+      color: #8fb0c9;
+      font-size: 0.84rem;
+    }
+
+    .lightbox {
+      position: fixed;
+      inset: 0;
+      background: rgba(3, 9, 16, 0.92);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 2rem;
+      z-index: 100;
+    }
+
+    .lightbox.open {
+      display: flex;
+    }
+
+    .lightbox-inner {
+      position: relative;
+      width: min(95vw, 1400px);
+      max-height: 92vh;
+    }
+
+    .lightbox-img {
+      width: 100%;
+      max-height: 92vh;
+      object-fit: contain;
+      border-radius: 14px;
+      border: 1px solid var(--line);
+      background: #02070d;
+      box-shadow: var(--shadow);
+    }
+
+    .lightbox-close {
+      position: absolute;
+      top: -0.8rem;
+      right: -0.2rem;
+      width: 42px;
+      height: 42px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      background: rgba(10, 18, 28, 0.9);
+      color: #eaf4ff;
+      font-size: 1.2rem;
+      cursor: pointer;
+    }
+
+    .lightbox-hint {
+      text-align: center;
+      margin-top: 0.8rem;
+      color: #9eb9cf;
+      font-size: 0.85rem;
+    }
+
+    @media (max-width: 980px) {
+      .header-row { grid-template-columns: 1fr; }
+      .hero-grid, .about-grid { grid-template-columns: 1fr; }
+      .links, .contact-grid { grid-template-columns: 1fr; }
+    }
+
+    @media (max-width: 720px) {
+      .preview-stage img {
+        aspect-ratio: 4 / 3;
+      }
+
+      .preview-tabs {
+        padding: 0.7rem;
+      }
+
+      .preview-tab {
+        width: 100%;
+        text-align: left;
+      }
+
+      .lightbox {
+        padding: 1rem;
+      }
+    }
+  </style>
 </head>
 <body class="lang-en">
   <header class="site-header">
@@ -131,87 +750,129 @@
               <div class="window-dots">
                 <span></span><span></span><span></span>
               </div>
-              <p class="preview-title en">Aegis preview — multi-window workflow</p>
-              <p class="preview-title es">Vista previa de Aegis — flujo multi-ventana</p>
+              <p class="preview-title en">Aegis preview — explore the interface</p>
+              <p class="preview-title es">Vista previa de Aegis — explora la interfaz</p>
             </div>
 
             <div class="preview-stage">
-              <img
-                id="previewMain"
-                src="./Screenshot_20260318_051454.png"
-                alt="Aegis interface preview"
-                loading="lazy"
-              />
+              <button
+                class="preview-main-btn"
+                id="previewMainBtn"
+                type="button"
+                aria-label="Open current image in full size"
+              >
+                <img
+                  id="previewMain"
+                  src="./Screenshot_20260318_051454.png"
+                  alt="Aegis main workspace"
+                  loading="lazy"
+                />
+              </button>
+            </div>
+
+            <div class="preview-actions">
+              <button class="preview-open" id="openPreviewBtn" type="button">
+                <span class="en">Open full image</span>
+                <span class="es">Abrir imagen completa</span>
+              </button>
             </div>
 
             <div class="preview-tabs">
               <button class="preview-tab active"
                 data-img="./Screenshot_20260318_051454.png"
-                data-caption-en="Chat + analytics workspace"
-                data-caption-es="Espacio de chat + analítica"
+                data-alt-en="Aegis main workspace"
+                data-alt-es="Espacio principal de Aegis"
+                data-caption-en="Main Workspace — assistant chat, panels and operational context"
+                data-caption-es="Espacio Principal — chat asistido, paneles y contexto operativo"
                 type="button">
-                Chat + Analytics
+                <span class="en">Main Workspace</span>
+                <span class="es">Espacio Principal</span>
               </button>
 
               <button class="preview-tab"
                 data-img="./Screenshot_20260318_051652.png"
-                data-caption-en="Code analysis view"
-                data-caption-es="Vista de análisis de código"
+                data-alt-en="Aegis code review workspace"
+                data-alt-es="Espacio de revisión de código de Aegis"
+                data-caption-en="Code Review — inspect code, outputs and guided technical analysis"
+                data-caption-es="Revisión de Código — inspección de código, salidas y análisis técnico guiado"
                 type="button">
-                Code Analysis
+                <span class="en">Code Review</span>
+                <span class="es">Revisión de Código</span>
               </button>
 
               <button class="preview-tab"
                 data-img="./Screenshot_20260318_053016.png"
-                data-caption-en="Integrated dashboard and assistant"
-                data-caption-es="Dashboard integrado con asistente"
+                data-alt-en="Aegis dashboard workspace"
+                data-alt-es="Workspace de dashboard de Aegis"
+                data-caption-en="Operations Dashboard — assistant plus integrated monitoring view"
+                data-caption-es="Dashboard Operativo — asistente más vista integrada de monitoreo"
                 type="button">
-                Dashboard
+                <span class="en">Operations Dashboard</span>
+                <span class="es">Dashboard Operativo</span>
               </button>
 
               <button class="preview-tab"
                 data-img="./Screenshot_20260318_053437.png"
-                data-caption-en="Market chart and metrics panel"
-                data-caption-es="Panel de métricas y gráfico de mercado"
+                data-alt-en="Aegis market analysis panel"
+                data-alt-es="Panel de análisis de mercado de Aegis"
+                data-caption-en="Market Analysis — charts, metrics and decision-support context"
+                data-caption-es="Análisis de Mercado — gráficos, métricas y contexto para decisiones"
                 type="button">
-                Market View
+                <span class="en">Market Analysis</span>
+                <span class="es">Análisis de Mercado</span>
               </button>
 
               <button class="preview-tab"
                 data-img="./Screenshot_20260318_053940.png"
-                data-caption-en="Visual generation workflow"
-                data-caption-es="Flujo de generación visual"
+                data-alt-en="Aegis visual pipeline interface"
+                data-alt-es="Interfaz de pipeline visual de Aegis"
+                data-caption-en="Visual Pipeline — image and generation workflow tools"
+                data-caption-es="Pipeline Visual — herramientas de imágenes y flujos de generación"
                 type="button">
-                Visual Tools
+                <span class="en">Visual Pipeline</span>
+                <span class="es">Pipeline Visual</span>
               </button>
 
               <button class="preview-tab"
                 data-img="./Screenshot_20260318_053956.png"
-                data-caption-en="Asset navigation between views"
-                data-caption-es="Navegación de assets entre vistas"
+                data-alt-en="Aegis multi panel view"
+                data-alt-es="Vista multipanel de Aegis"
+                data-caption-en="Multi-Panel View — navigate between related windows and assets"
+                data-caption-es="Vista Multipanel — navega entre ventanas y assets relacionados"
                 type="button">
-                Multi-Window
+                <span class="en">Multi-Panel View</span>
+                <span class="es">Vista Multipanel</span>
               </button>
 
               <button class="preview-tab"
                 data-img="./Screenshot_20260318_054137.png"
-                data-caption-en="Image-based interaction flow"
-                data-caption-es="Flujo de interacción basado en imágenes"
+                data-alt-en="Aegis image workflow"
+                data-alt-es="Flujo de imágenes de Aegis"
+                data-caption-en="Image Workflow — visual interaction and asset-based operations"
+                data-caption-es="Flujo de Imágenes — interacción visual y operaciones basadas en assets"
                 type="button">
-                Image Flow
+                <span class="en">Image Workflow</span>
+                <span class="es">Flujo de Imágenes</span>
               </button>
 
               <button class="preview-tab"
                 data-img="./Screenshot_20260318_054154.png"
-                data-caption-en="Document/report reading workflow"
-                data-caption-es="Flujo de lectura de documentos/reportes"
+                data-alt-en="Aegis reports reader"
+                data-alt-es="Lector de reportes de Aegis"
+                data-caption-en="Reports Reader — document review and report-driven context"
+                data-caption-es="Lector de Reportes — revisión documental y contexto guiado por reportes"
                 type="button">
-                Reports
+                <span class="en">Reports Reader</span>
+                <span class="es">Lector de Reportes</span>
               </button>
             </div>
 
-            <p id="previewCaption" class="preview-caption en">Chat + analytics workspace</p>
-            <p id="previewCaptionEs" class="preview-caption es">Espacio de chat + analítica</p>
+            <p id="previewCaption" class="preview-caption en">
+              Main Workspace — assistant chat, panels and operational context
+            </p>
+            <p id="previewCaptionEs" class="preview-caption es">
+              Espacio Principal — chat asistido, paneles y contexto operativo
+            </p>
           </div>
 
           <div class="links">
@@ -333,6 +994,15 @@
     </div>
   </footer>
 
+  <div class="lightbox" id="lightbox" aria-hidden="true">
+    <div class="lightbox-inner">
+      <button class="lightbox-close" id="lightboxClose" type="button" aria-label="Close image">✕</button>
+      <img class="lightbox-img" id="lightboxImg" src="" alt="Expanded preview" />
+      <p class="lightbox-hint en">Press Esc or click outside the image to close.</p>
+      <p class="lightbox-hint es">Presiona Esc o haz clic fuera de la imagen para cerrar.</p>
+    </div>
+  </div>
+
   <script>
     const year = new Date().getFullYear();
     document.getElementById("year").textContent = year;
@@ -342,14 +1012,15 @@
       document.body.classList.toggle("lang-es", lang === "es");
       document.documentElement.lang = lang;
       localStorage.setItem("portfolio_lang", lang);
-      document.querySelectorAll(".lang-btn").forEach(btn => {
+
+      document.querySelectorAll(".lang-btn").forEach((btn) => {
         btn.classList.toggle("active", btn.dataset.lang === lang);
       });
     };
 
     setLang(localStorage.getItem("portfolio_lang") || "en");
 
-    document.querySelectorAll(".lang-btn").forEach(btn => {
+    document.querySelectorAll(".lang-btn").forEach((btn) => {
       btn.addEventListener("click", () => setLang(btn.dataset.lang));
     });
 
@@ -357,16 +1028,58 @@
     const previewCaption = document.getElementById("previewCaption");
     const previewCaptionEs = document.getElementById("previewCaptionEs");
     const previewTabs = document.querySelectorAll(".preview-tab");
+    const previewMainBtn = document.getElementById("previewMainBtn");
+    const openPreviewBtn = document.getElementById("openPreviewBtn");
 
-    previewTabs.forEach(tab => {
+    const lightbox = document.getElementById("lightbox");
+    const lightboxImg = document.getElementById("lightboxImg");
+    const lightboxClose = document.getElementById("lightboxClose");
+
+    function openLightbox() {
+      lightboxImg.src = previewMain.src;
+      lightboxImg.alt = previewMain.alt;
+      lightbox.classList.add("open");
+      lightbox.setAttribute("aria-hidden", "false");
+      document.body.style.overflow = "hidden";
+    }
+
+    function closeLightbox() {
+      lightbox.classList.remove("open");
+      lightbox.setAttribute("aria-hidden", "true");
+      lightboxImg.src = "";
+      document.body.style.overflow = "";
+    }
+
+    previewTabs.forEach((tab) => {
       tab.addEventListener("click", () => {
         previewMain.src = tab.dataset.img;
+        previewMain.alt =
+          document.body.classList.contains("lang-es")
+            ? tab.dataset.altEs
+            : tab.dataset.altEn;
+
         previewCaption.textContent = tab.dataset.captionEn;
         previewCaptionEs.textContent = tab.dataset.captionEs;
 
-        previewTabs.forEach(btn => btn.classList.remove("active"));
+        previewTabs.forEach((btn) => btn.classList.remove("active"));
         tab.classList.add("active");
       });
+    });
+
+    previewMainBtn.addEventListener("click", openLightbox);
+    openPreviewBtn.addEventListener("click", openLightbox);
+    lightboxClose.addEventListener("click", closeLightbox);
+
+    lightbox.addEventListener("click", (event) => {
+      if (event.target === lightbox) {
+        closeLightbox();
+      }
+    });
+
+    document.addEventListener("keydown", (event) => {
+      if (event.key === "Escape" && lightbox.classList.contains("open")) {
+        closeLightbox();
+      }
     });
   </script>
 </body>
