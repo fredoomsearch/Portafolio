@@ -38,7 +38,11 @@
     <section class="section hero">
       <div class="container hero-grid">
         <article>
-          <span class="kicker"><i></i><span class="en">Product + Data + AI</span><span class="es">Producto + Datos + AI</span></span>
+          <span class="kicker">
+            <i></i>
+            <span class="en">Product + Data + AI</span>
+            <span class="es">Producto + Datos + AI</span>
+          </span>
 
           <h2 class="en">Building practical systems where APIs, models and UX work together.</h2>
           <h2 class="es">Construyo sistemas prácticos donde APIs, modelos y UX trabajan juntos.</h2>
@@ -66,7 +70,12 @@
           <p class="en">Internal AI assistant + crypto analytics platform with live dashboards and forecasting pipelines.</p>
           <p class="es">Asistente AI interno + plataforma cripto con dashboards en vivo y pipelines de predicción.</p>
           <ul class="tags">
-            <li>FastAPI</li><li>Angular</li><li>PostgreSQL</li><li>RAG</li><li>TensorFlow</li><li>Docker</li>
+            <li>FastAPI</li>
+            <li>Angular</li>
+            <li>PostgreSQL</li>
+            <li>RAG</li>
+            <li>TensorFlow</li>
+            <li>Docker</li>
           </ul>
         </aside>
       </div>
@@ -97,11 +106,138 @@
             <li>Flujo unificado: análisis, tools y explicación con contexto.</li>
           </ul>
 
+          <div class="project-status">
+            <div class="status-badge">
+              <span class="status-dot"></span>
+              <span class="en">Aegis is ~80% complete and ready for pilot use</span>
+              <span class="es">Aegis está ~80% completo y listo para pilotos</span>
+            </div>
+
+            <p class="status-copy en">
+              Aegis is an internal AI workspace in active development, currently around 80% complete.
+              It already supports contextual assistance, technical analysis, multi-view workflows and visual interaction patterns.
+              The remaining work is focused on production hardening, workflow polish and deployment refinement.
+            </p>
+
+            <p class="status-copy es">
+              Aegis es un workspace interno de AI en desarrollo activo, actualmente alrededor de un 80% completo.
+              Ya soporta asistencia contextual, análisis técnico, flujos multi-vista y patrones de interacción visual.
+              El trabajo restante está enfocado en endurecimiento productivo, pulido de flujos y refinamiento de despliegue.
+            </p>
+          </div>
+
+          <div class="preview-shell">
+            <div class="preview-top">
+              <div class="window-dots">
+                <span></span><span></span><span></span>
+              </div>
+              <p class="preview-title en">Aegis preview — multi-window workflow</p>
+              <p class="preview-title es">Vista previa de Aegis — flujo multi-ventana</p>
+            </div>
+
+            <div class="preview-stage">
+              <img
+                id="previewMain"
+                src="./aegis-chat-analytics.png"
+                alt="Aegis interface preview"
+                loading="lazy"
+              />
+            </div>
+
+            <div class="preview-tabs">
+              <button class="preview-tab active"
+                data-img="./aegis-chat-analytics.png"
+                data-caption-en="Chat + analytics workspace"
+                data-caption-es="Espacio de chat + analítica"
+                type="button">
+                Chat + Analytics
+              </button>
+
+              <button class="preview-tab"
+                data-img="./aegis-code-analysis.png"
+                data-caption-en="Code analysis view"
+                data-caption-es="Vista de análisis de código"
+                type="button">
+                Code Analysis
+              </button>
+
+              <button class="preview-tab"
+                data-img="./aegis-dashboard.png"
+                data-caption-en="Integrated dashboard and assistant"
+                data-caption-es="Dashboard integrado con asistente"
+                type="button">
+                Dashboard
+              </button>
+
+              <button class="preview-tab"
+                data-img="./aegis-market-view.png"
+                data-caption-en="Market chart and metrics panel"
+                data-caption-es="Panel de métricas y gráfico de mercado"
+                type="button">
+                Market View
+              </button>
+
+              <button class="preview-tab"
+                data-img="./aegis-visual-tools.png"
+                data-caption-en="Visual generation workflow"
+                data-caption-es="Flujo de generación visual"
+                type="button">
+                Visual Tools
+              </button>
+
+              <button class="preview-tab"
+                data-img="./aegis-multi-window.png"
+                data-caption-en="Asset navigation between views"
+                data-caption-es="Navegación de assets entre vistas"
+                type="button">
+                Multi-Window
+              </button>
+
+              <button class="preview-tab"
+                data-img="./aegis-image-flow.png"
+                data-caption-en="Image-based interaction flow"
+                data-caption-es="Flujo de interacción basado en imágenes"
+                type="button">
+                Image Flow
+              </button>
+
+              <button class="preview-tab"
+                data-img="./aegis-reports.png"
+                data-caption-en="Document/report reading workflow"
+                data-caption-es="Flujo de lectura de documentos/reportes"
+                type="button">
+                Reports
+              </button>
+            </div>
+
+            <p id="previewCaption" class="preview-caption en">Chat + analytics workspace</p>
+            <p id="previewCaptionEs" class="preview-caption es">Espacio de chat + analítica</p>
+          </div>
+
           <div class="media-grid">
-            <figure><img src="./CRYPTO.png" alt="PlayWin dashboard" loading="lazy" /><figcaption>Dashboard snapshot</figcaption></figure>
-            <figure><img src="./BTCUSDT.png" alt="BTCUSDT chart" loading="lazy" /><figcaption>BTCUSDT chart</figcaption></figure>
-            <figure><video controls preload="metadata"><source src="./TRUSTWIN.mp4" type="video/mp4" /></video><figcaption>TrustWin walkthrough</figcaption></figure>
-            <figure><video controls preload="metadata"><source src="./aegispro_9ieOQcJa.mp4" type="video/mp4" /></video><figcaption>Aegis demo</figcaption></figure>
+            <figure>
+              <img src="./CRYPTO.png" alt="PlayWin dashboard" loading="lazy" />
+              <figcaption>Dashboard snapshot</figcaption>
+            </figure>
+
+            <figure>
+              <img src="./BTCUSDT.png" alt="BTCUSDT chart" loading="lazy" />
+              <figcaption>BTCUSDT chart</figcaption>
+            </figure>
+
+            <figure>
+              <video controls preload="metadata">
+                <source src="./TRUSTWIN.mp4" type="video/mp4" />
+              </video>
+              <figcaption>TrustWin walkthrough</figcaption>
+            </figure>
+
+            <figure>
+              <video controls preload="metadata">
+                <source src="./aegispro_9ieOQcJa.mp4" type="video/mp4" />
+              </video>
+              <figcaption>Aegis demo</figcaption>
+            </figure>
           </div>
 
           <div class="links">
@@ -109,6 +245,30 @@
             <a href="https://github.com/fredoomsearch/AegisChat" target="_blank" rel="noreferrer">Aegis GitHub</a>
             <a href="https://dtapppyfront.onrender.com/" target="_blank" rel="noreferrer">PlayWin demo</a>
             <a href="https://github.com/fredoomsearch/DtappPy" target="_blank" rel="noreferrer">PlayWin backend</a>
+          </div>
+
+          <div class="interest-box">
+            <h4 class="en">Why this matters for clients</h4>
+            <h4 class="es">Por qué esto importa para clientes</h4>
+
+            <p class="en">
+              Aegis is being built as a practical internal AI workspace: one place to inspect code, review context,
+              navigate outputs, support analysis workflows and reduce iteration time. Ideal for teams that want faster
+              debugging, technical assistance, internal knowledge access or AI-enhanced operations.
+            </p>
+
+            <p class="es">
+              Aegis se está construyendo como un workspace práctico de AI interna: un solo lugar para inspeccionar código,
+              revisar contexto, navegar resultados, apoyar análisis y reducir tiempos de iteración. Ideal para equipos que
+              buscan debugging más rápido, asistencia técnica, acceso a conocimiento interno u operaciones potenciadas por AI.
+            </p>
+
+            <p class="pilot-note en">
+              Interested in a pilot, custom internal assistant or domain-specific AI workflow? Let’s talk.
+            </p>
+            <p class="pilot-note es">
+              ¿Te interesa un piloto, un asistente interno personalizado o un flujo de AI específico para tu negocio? Hablemos.
+            </p>
           </div>
         </article>
       </div>
@@ -156,8 +316,15 @@
           <h3 class="en">Tech Stack</h3>
           <h3 class="es">Stack técnico</h3>
           <ul class="tags">
-            <li>Python</li><li>FastAPI</li><li>Django</li><li>Angular</li><li>React</li>
-            <li>PostgreSQL</li><li>MySQL</li><li>Docker</li><li>AWS</li>
+            <li>Python</li>
+            <li>FastAPI</li>
+            <li>Django</li>
+            <li>Angular</li>
+            <li>React</li>
+            <li>PostgreSQL</li>
+            <li>MySQL</li>
+            <li>Docker</li>
+            <li>AWS</li>
           </ul>
         </aside>
       </div>
@@ -207,9 +374,28 @@
     };
 
     setLang(localStorage.getItem("portfolio_lang") || "en");
+
     document.querySelectorAll(".lang-btn").forEach(btn => {
       btn.addEventListener("click", () => setLang(btn.dataset.lang));
     });
+
+    const previewMain = document.getElementById("previewMain");
+    const previewCaption = document.getElementById("previewCaption");
+    const previewCaptionEs = document.getElementById("previewCaptionEs");
+    const previewTabs = document.querySelectorAll(".preview-tab");
+
+    previewTabs.forEach(tab => {
+      tab.addEventListener("click", () => {
+        previewMain.src = tab.dataset.img;
+        previewCaption.textContent = tab.dataset.captionEn;
+        previewCaptionEs.textContent = tab.dataset.captionEs;
+
+        previewTabs.forEach(btn => btn.classList.remove("active"));
+        tab.classList.add("active");
+      });
+    });
   </script>
+</body>
+</html>
 </body>
 </html>
