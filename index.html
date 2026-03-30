@@ -516,6 +516,119 @@
       color: #dffcf5;
     }
 
+
+    .latest-card {
+      margin-top: 1rem;
+      border: 1px solid rgba(40, 209, 181, 0.26);
+      background: linear-gradient(180deg, rgba(40,209,181,0.05), rgba(255,255,255,0.02));
+    }
+
+    .new-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.45rem;
+      margin-top: 0.9rem;
+      padding: 0.38rem 0.72rem;
+      border-radius: 999px;
+      border: 1px solid rgba(40, 209, 181, 0.34);
+      background: rgba(40, 209, 181, 0.1);
+      color: #dbfff8;
+      font: 800 0.76rem "Sora", sans-serif;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .new-pill::before {
+      content: "";
+      width: 9px;
+      height: 9px;
+      border-radius: 999px;
+      background: linear-gradient(90deg, var(--accent), var(--accent-2));
+      box-shadow: 0 0 12px rgba(40, 209, 181, 0.6);
+    }
+
+    .feature-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 0.9rem;
+      margin-top: 1rem;
+    }
+
+    .feature-box {
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      padding: 0.95rem;
+      background: rgba(255,255,255,0.025);
+    }
+
+    .feature-box h4 {
+      font-size: 0.98rem;
+      margin: 0;
+    }
+
+    .mini-tags {
+      margin: 0.85rem 0 0;
+      padding: 0;
+      list-style: none;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.44rem;
+    }
+
+    .mini-tags li {
+      padding: 0.28rem 0.55rem;
+      border-radius: 999px;
+      border: 1px solid var(--line);
+      font-size: 0.78rem;
+      color: #d6efff;
+      background: rgba(255,255,255,0.03);
+    }
+
+    .shot-grid {
+      margin-top: 1rem;
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 0.85rem;
+    }
+
+    .shot-card {
+      overflow: hidden;
+      border-radius: 14px;
+      border: 1px solid var(--line);
+      background: rgba(5, 11, 18, 0.88);
+      box-shadow: var(--shadow);
+      transition: 0.18s ease;
+    }
+
+    .shot-card:hover {
+      transform: translateY(-2px);
+      border-color: rgba(40,209,181,0.5);
+    }
+
+    .shot-card a {
+      display: block;
+    }
+
+    .shot-card img {
+      aspect-ratio: 16 / 9;
+      object-fit: cover;
+      background: #030811;
+    }
+
+    .shot-copy {
+      padding: 0.85rem 0.9rem 0.95rem;
+    }
+
+    .shot-copy h4 {
+      font-size: 0.92rem;
+      margin: 0;
+    }
+
+    .shot-copy p {
+      margin-top: 0.45rem;
+      font-size: 0.84rem;
+    }
+
     .timeline {
       display: grid;
       gap: 0.85rem;
@@ -629,8 +742,8 @@
 
     @media (max-width: 980px) {
       .header-row { grid-template-columns: 1fr; }
-      .hero-grid, .about-grid { grid-template-columns: 1fr; }
-      .links, .contact-grid { grid-template-columns: 1fr; }
+      .hero-grid, .about-grid, .feature-grid { grid-template-columns: 1fr; }
+      .links, .contact-grid, .shot-grid { grid-template-columns: 1fr; }
       .thumb-strip { grid-template-columns: repeat(4, minmax(0, 1fr)); }
     }
 
@@ -676,6 +789,7 @@
 
       <nav class="main-nav" aria-label="Main">
         <a href="#projects"><span class="en">Projects</span><span class="es">Proyectos</span></a>
+        <a href="#latest"><span class="en">New</span><span class="es">Nuevo</span></a>
         <a href="#experience"><span class="en">Experience</span><span class="es">Experiencia</span></a>
         <a href="#about"><span class="en">About</span><span class="es">Sobre mí</span></a>
         <a href="#contact"><span class="en">Contact</span><span class="es">Contacto</span></a>
@@ -865,6 +979,139 @@
             </p>
           </div>
         </article>
+
+        <article id="latest" class="card project-card latest-card">
+          <div class="project-head">
+            <span class="chip">NEW · QUANT TERMINAL</span>
+            <p class="stack">YFinance · Multi-agent UX · Local-first analysis · Explainability</p>
+          </div>
+
+          <span class="new-pill en">Latest addition</span>
+          <span class="new-pill es">Nueva adición</span>
+
+          <h3 class="en" style="margin-top:0.85rem;">New: YFinance Quant Assistant screens added to the portfolio</h3>
+          <h3 class="es" style="margin-top:0.85rem;">Nuevo: pantallas de YFinance Quant Assistant agregadas al portafolio</h3>
+
+          <p class="en">
+            This update showcases a more operational UI layer for the project: guided navigation, symbol discovery,
+            clean-row inspection, mode selection, explainable handoffs between agents and a terminal-oriented quant workflow.
+          </p>
+          <p class="es">
+            Esta actualización muestra una capa de UI más operativa para el proyecto: navegación guiada, descubrimiento de símbolos,
+            inspección de filas limpias, selección de modos, handoffs explicables entre agentes y un flujo cuantitativo orientado a terminal.
+          </p>
+
+          <div class="feature-grid">
+            <div class="feature-box">
+              <h4 class="en">What is new here</h4>
+              <h4 class="es">Qué hay de nuevo aquí</h4>
+              <ul class="points en">
+                <li>Local-first terminal experience for market analysis and assistant-guided exploration.</li>
+                <li>Explainable flow across extraction, cleaning, modeling and orchestration.</li>
+                <li>Natural-language prompts to inspect symbols, clean rows, metrics and model decisions.</li>
+              </ul>
+              <ul class="points es">
+                <li>Experiencia local-first en terminal para análisis de mercado y exploración guiada por asistente.</li>
+                <li>Flujo explicable entre extracción, limpieza, modelado y orquestación.</li>
+                <li>Prompts en lenguaje natural para inspeccionar símbolos, filas limpias, métricas y decisiones del modelo.</li>
+              </ul>
+            </div>
+
+            <div class="feature-box">
+              <h4 class="en">Highlighted capabilities</h4>
+              <h4 class="es">Capacidades destacadas</h4>
+              <ul class="mini-tags">
+                <li>Guided help center</li>
+                <li>Mode switching</li>
+                <li>Symbol suggestions</li>
+                <li>Row analysis</li>
+                <li>Source comparison</li>
+                <li>Groq brain mode</li>
+              </ul>
+              <p class="en">
+                Good fit for internal tooling, market research assistants, explainable analytics flows and AI-enhanced operations.
+              </p>
+              <p class="es">
+                Buen encaje para tooling interno, asistentes de research de mercado, flujos analíticos explicables y operaciones potenciadas por AI.
+              </p>
+            </div>
+          </div>
+
+          <div class="shot-grid">
+            <article class="shot-card">
+              <a href="./Screenshot_20260330_103137.png" target="_blank" rel="noreferrer">
+                <img src="./Screenshot_20260330_103137.png" alt="Supported symbols and asset classes view" loading="lazy" />
+              </a>
+              <div class="shot-copy">
+                <h4 class="en">Supported symbols and asset classes</h4>
+                <h4 class="es">Símbolos soportados y clases de activo</h4>
+                <p class="en">Quick discovery for equities, ETFs, indices, forex and crypto aliases.</p>
+                <p class="es">Descubrimiento rápido para acciones, ETFs, índices, forex y aliases cripto.</p>
+              </div>
+            </article>
+
+            <article class="shot-card">
+              <a href="./Screenshot_20260330_103223.png" target="_blank" rel="noreferrer">
+                <img src="./Screenshot_20260330_103223.png" alt="Help center and natural-language prompt examples" loading="lazy" />
+              </a>
+              <div class="shot-copy">
+                <h4 class="en">Help center + natural-language guidance</h4>
+                <h4 class="es">Centro de ayuda + guía en lenguaje natural</h4>
+                <p class="en">The assistant explains what it can inspect and how to move through the workflow.</p>
+                <p class="es">El asistente explica qué puede inspeccionar y cómo moverse por el flujo.</p>
+              </div>
+            </article>
+
+            <article class="shot-card">
+              <a href="./Screenshot_20260330_103509.png" target="_blank" rel="noreferrer">
+                <img src="./Screenshot_20260330_103509.png" alt="Row-level clean data inspection for BTC-USD" loading="lazy" />
+              </a>
+              <div class="shot-copy">
+                <h4 class="en">Row-level clean data inspection</h4>
+                <h4 class="es">Inspección de fila limpia a nivel de registro</h4>
+                <p class="en">Exact row breakdown with open, high, low, close and derived fields.</p>
+                <p class="es">Desglose exacto de fila con open, high, low, close y campos derivados.</p>
+              </div>
+            </article>
+
+            <article class="shot-card">
+              <a href="./Screenshot_20260330_103703.png" target="_blank" rel="noreferrer">
+                <img src="./Screenshot_20260330_103703.png" alt="Extraction summary and pipeline state" loading="lazy" />
+              </a>
+              <div class="shot-copy">
+                <h4 class="en">Extraction summary and pipeline state</h4>
+                <h4 class="es">Resumen de extracción y estado del pipeline</h4>
+                <p class="en">Shows decision confidence, current symbol, mode and handoff to the next agent.</p>
+                <p class="es">Muestra confianza de decisión, símbolo actual, modo y handoff al siguiente agente.</p>
+              </div>
+            </article>
+
+            <article class="shot-card">
+              <a href="./Screenshot_20260330_104132.png" target="_blank" rel="noreferrer">
+                <img src="./Screenshot_20260330_104132.png" alt="Mode center with compare-binance and Groq brain options" loading="lazy" />
+              </a>
+              <div class="shot-copy">
+                <h4 class="en">Mode center and experimental paths</h4>
+                <h4 class="es">Centro de modos y caminos experimentales</h4>
+                <p class="en">Compare sources, activate Groq brain and inspect how the final decision changes.</p>
+                <p class="es">Compara fuentes, activa Groq brain e inspecciona cómo cambia la decisión final.</p>
+              </div>
+            </article>
+
+            <article class="shot-card">
+              <a href="./Screenshot_20260330_104221.png" target="_blank" rel="noreferrer">
+                <img src="./Screenshot_20260330_104221.png" alt="Agent menu with extraction, cleaning, modeling and orchestration" loading="lazy" />
+              </a>
+              <div class="shot-copy">
+                <h4 class="en">Agent menu and workflow visibility</h4>
+                <h4 class="es">Menú de agentes y visibilidad del flujo</h4>
+                <p class="en">Makes the multi-agent structure explicit so the user can inspect each stage.</p>
+                <p class="es">Hace explícita la estructura multiagente para que el usuario inspeccione cada etapa.</p>
+              </div>
+            </article>
+          </div>
+        </article>
+
       </div>
     </section>
 
