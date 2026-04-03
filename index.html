@@ -629,6 +629,45 @@
       font-size: 0.84rem;
     }
 
+
+    .video-card {
+      margin-top: 1rem;
+      border: 1px solid rgba(255, 180, 76, 0.26);
+      background: linear-gradient(180deg, rgba(255,180,76,0.05), rgba(255,255,255,0.02));
+    }
+
+    .video-frame {
+      margin-top: 1rem;
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      overflow: hidden;
+      background: #050b12;
+      box-shadow: var(--shadow);
+    }
+
+    .video-frame video {
+      width: 100%;
+      display: block;
+      aspect-ratio: 16 / 9;
+      background: #02070d;
+    }
+
+    .video-meta {
+      margin-top: 0.9rem;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+
+    .video-meta span {
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      padding: 0.3rem 0.58rem;
+      font-size: 0.78rem;
+      color: #d8ecff;
+      background: rgba(255,255,255,0.03);
+    }
+
     .timeline {
       display: grid;
       gap: 0.85rem;
@@ -790,6 +829,7 @@
       <nav class="main-nav" aria-label="Main">
         <a href="#projects"><span class="en">Projects</span><span class="es">Proyectos</span></a>
         <a href="#latest"><span class="en">New</span><span class="es">Nuevo</span></a>
+        <a href="#demo-video"><span class="en">Demo Video</span><span class="es">Video Demo</span></a>
         <a href="#experience"><span class="en">Experience</span><span class="es">Experiencia</span></a>
         <a href="#about"><span class="en">About</span><span class="es">Sobre mí</span></a>
         <a href="#contact"><span class="en">Contact</span><span class="es">Contacto</span></a>
@@ -1110,6 +1150,52 @@
               </div>
             </article>
           </div>
+        </article>
+
+
+        <article id="demo-video" class="card project-card video-card">
+          <div class="project-head">
+            <span class="chip">NEW · LIVE DEMO VIDEO</span>
+            <p class="stack">Real-time walkthrough · Context navigation · UI flow</p>
+          </div>
+
+          <span class="new-pill en">Video added</span>
+          <span class="new-pill es">Video agregado</span>
+
+          <h3 class="en" style="margin-top:0.85rem;">Functional AEGIS walkthrough video</h3>
+          <h3 class="es" style="margin-top:0.85rem;">Video funcional de recorrido por AEGIS</h3>
+
+          <p class="en">
+            Added a real demo recording to show the system moving through actual interfaces and flows, not just static screenshots.
+            This makes the portfolio more honest and gives a clearer view of runtime behavior.
+          </p>
+          <p class="es">
+            Se agregó una grabación real de demo para mostrar el sistema recorriendo interfaces y flujos reales, no solo capturas estáticas.
+            Esto hace el portafolio más honesto y da una vista más clara del comportamiento en ejecución.
+          </p>
+
+          <div class="video-frame">
+            <video controls preload="metadata" poster="./aegis_demo_poster.jpg">
+              <source src="./AwesomeScreenshot-4_2_2026,8_30_23AM.webm" type="video/webm" />
+              <span class="en">Your browser does not support embedded video.</span>
+              <span class="es">Tu navegador no soporta video embebido.</span>
+            </video>
+          </div>
+
+          <div class="video-meta">
+            <span>WebM</span>
+            <span>1280×720</span>
+            <span>~10m 46s</span>
+            <span class="en">Real product flow</span>
+            <span class="es">Flujo real del producto</span>
+          </div>
+
+          <p class="en" style="margin-top:0.9rem;">
+            Tip: keep this section near the featured project so recruiters can immediately watch the product in motion.
+          </p>
+          <p class="es" style="margin-top:0.9rem;">
+            Tip: mantén esta sección cerca del proyecto principal para que reclutadores puedan ver el producto en movimiento de inmediato.
+          </p>
         </article>
 
       </div>
